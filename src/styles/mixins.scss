@@ -1,0 +1,59 @@
+@mixin alpha {
+  font-size: 1rem;
+  letter-spacing: 0.03rem;
+  line-height: 1.2rem;
+}
+
+@mixin bravo {
+  font-size: 1.3rem;
+  letter-spacing: 0.02rem;
+  line-height: 1.8rem;
+}
+
+@mixin charlie {
+  font-size: 1.5rem;
+  letter-spacing: 0;
+  line-height: 2.2rem;
+}
+
+@mixin delta {
+  font-size: 1.8rem;
+  letter-spacing: 0;
+  line-height: 2.6rem;
+}
+
+@mixin echo {
+  font-size: 2.4rem;
+  letter-spacing: -0.02rem;
+  line-height: 3.4rem;
+}
+
+@mixin foxtrot {
+  font-size: 3.0rem;
+  letter-spacing: -0.04rem;
+  line-height: 3.8rem;
+}
+
+@mixin golf {
+  font-size: 3.8rem;
+  letter-spacing: -0.05rem;
+  line-height: 4.3rem;
+}
+
+@mixin hotel {
+  font-size: 5.0rem;
+  letter-spacing: -0.07rem;
+  line-height: 5.0rem;
+}
+
+@mixin india {
+  font-size: 6.4rem;
+  letter-spacing: -0.1rem;
+  line-height: 6.4rem;
+}
+
+@mixin juliett {
+  font-size: 8.0rem;
+  letter-spacing: -0.2rem;
+  line-height: 8.4rem;
+}

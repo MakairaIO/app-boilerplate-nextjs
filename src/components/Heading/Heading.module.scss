@@ -1,0 +1,15 @@
+.heading {
+  color: var(--brand-aubergine);
+
+  &H1 {
+    padding: var(--spacer-l) 0;
+  }
+
+  &H2 {
+    padding: var(--spacer-m) 0;
+  }
+
+  &H3 {
+    padding: var(--spacer-s) 0;
+  }
+}

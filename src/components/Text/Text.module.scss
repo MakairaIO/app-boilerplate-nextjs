@@ -1,0 +1,63 @@
+@import "../../styles/mixins";
+
+.text {
+  margin: 0;
+  color: var(--brand-aubergine);
+
+  &--alpha {
+    @include alpha
+  }
+
+  &--bravo {
+    @include bravo
+  }
+
+  &--charlie {
+    @include charlie
+  }
+
+  &--delta {
+    @include delta
+  }
+
+  &--echo {
+    @include echo
+  }
+
+  &--foxtrot {
+    @include foxtrot
+  }
+
+  &--golf {
+    @include golf
+  }
+
+  &--hotel {
+    @include hotel
+  }
+
+  &--india {
+    @include india
+  }
+
+  &--juliett {
+    @include juliett
+  }
+
+
+  &--book {
+    font-weight: var(--font-weight-book);
+  }
+
+  &--medium {
+    font-weight: var(--font-weight-medium);
+  }
+
+  &--bold {
+    font-weight: var(--font-weight-bold);
+  }
+
+  &--heavy {
+    font-weight: var(--font-weight-heavy);
+  }
+}

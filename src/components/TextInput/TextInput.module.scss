@@ -1,0 +1,54 @@
+@import "../../styles/mixins";
+
+.textInput {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--spacer-xxs);
+}
+
+.textInputLabel {
+  @include bravo;
+  font-weight: var(--font-weight-book);
+  color: var(--neutral-70);
+  padding-bottom: var(--spacer-three-xs);
+  transition: color var(--transition-regular);
+}
+
+.textInputWrapper {
+  display: flex;
+  position: relative;
+  transition: opacity var(--transition-regular);
+
+  input {
+    @include bravo;
+    height: 3.3rem;
+    border: 1px solid var(--neutral-40);
+    border-radius: 0.4rem;
+    outline: none;
+    font-weight: var(--font-weight-bold);
+    color: var(--brand-aubergine);
+    padding: var(--spacer-xxs);
+    flex-grow: 1;
+    margin-left: 0.1rem;
+
+    &::placeholder {
+      color: var(--neutral-20);
+    }
+
+    &:focus {
+      outline: 2px solid var(--brand-sun);
+    }
+  }
+}
+
+.textInputDescription {
+  @include bravo;
+  font-style: italic;
+  font-weight: var(--font-weight-book);
+  margin-top: 0.35rem;
+  color: var(--neutral-60);
+}
+
+.textInputError {
+  color: var(--brand-coral);
+}
