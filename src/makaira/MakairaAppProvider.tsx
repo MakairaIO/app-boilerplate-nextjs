@@ -14,6 +14,7 @@ type MakairaAppProviderProps = React.PropsWithChildren<{
   makairaHmac: string
   domain: string
   instance: string
+  appType: 'app' | 'content-widget'
 }>
 
 export type MakairaAppContextData = {
@@ -41,13 +42,16 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
   makairaHmac,
   domain,
   instance,
+  appType = 'app',
 }) => {
   const [token, setToken] = useState<string>()
   const client = useRef<MakairaClient>(new MakairaClient())
 
   const handleMessage = useCallback((event: MessageEvent) => {
     if (
-      event.origin.match('https:\\/\\/([a-zA-Z])+\\.makaira\\.io')?.index !== 0
+      event.origin.match('https:\\/\\/([a-zA-Z])+\\.makaira\\.io')?.index !==
+        0 &&
+      event.origin !== 'https://makaira.vm'
     )
       return
 
@@ -86,7 +90,11 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
       const targetOrigin = document.referrer?.length ? document.referrer : '*'
 
       const message = {
-        source: `makaira-app-${process.env.NEXT_PUBLIC_APP_SLUG}`, // replace with makaira-app-{YOU_APP_SLUG}
+        source: `makaira-${appType}-${
+          appType === 'app'
+            ? process.env.NEXT_PUBLIC_APP_SLUG
+            : process.env.NEXT_PUBLIC_APP_SLUG_CONTENT_WIDGET
+        }`,
         action: 'requestUser',
         hmac,
         nonce,
@@ -95,7 +103,7 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
 
       window.parent.postMessage(message, targetOrigin)
     }
-  }, [hmac, makairaHmac, nonce, token])
+  }, [hmac, makairaHmac, nonce, token, appType])
 
   const handleResponseUserRequest = (data: ResponseUserRequestPayload) => {
     console.debug('[Example-App] Received token from Makaira Admin UI.')
