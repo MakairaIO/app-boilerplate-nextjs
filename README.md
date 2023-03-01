@@ -123,6 +123,18 @@ const { isLoading, data: feeds } = useQuery({
 })
 ```
 
+### Content-Widget routes
+This boilerplate contains code so that you can use one instance of this boilerplate to serve an external app
+and a content widget (apps embedded into the page editor) to Makaira. You can find an example page for a content widget
+at the route `/content-widget` which is provided at the [/src/pages/content-widget.tsx](./src/pages/content-widget.tsx). 
+To define a route/page as content widget add its path to the array `CONTENT_WIDGET_PATHS` in [/src/utils/contentWidgetPaths.ts](./src/utils/contentWidgetPaths.ts).
+
+Also, you have to provide the app secret and the slug for the content-widget part of your app as environment variables inside the `.env`.
+```dotenv
+NEXT_PUBLIC_APP_SLUG_CONTENT_WIDGET=<app-secret>
+MAKAIRA_APP_SECRET_CONTENT_WIDGET=<app-slug>
+```
+
 ##  Learn More
 - https://docs.makaira.io/docs/apps
 - https://docs.makaira.io/docs/content-widgets

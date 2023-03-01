@@ -26,7 +26,9 @@ class MakairaClient {
       throw new Error('instance is undefined')
     }
 
-    let url = `https://${this.domain}.makaira.io/${path}`
+    let url = process.env.NEXT_PUBLIC_CUSTOM_MAKAIRA_DOMAIN
+      ? `https://${process.env.NEXT_PUBLIC_CUSTOM_MAKAIRA_DOMAIN}/${path}`
+      : `https://${this.domain}.makaira.io/${path}`
 
     const headers = new Headers()
     headers.append('x-makaira-instance', this.instance)

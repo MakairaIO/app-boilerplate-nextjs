@@ -1,8 +1,7 @@
-
 import * as crypto from 'crypto'
-import * as process from 'process'
 
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
+import { CONTENT_WIDGET_PATHS } from '@/utils/contentWidgetPaths'
 
 type MakairaAuthData = {
   // New generated HMAC which is used to receive the JWT-token from the Makaira Admin UI
@@ -36,12 +35,18 @@ export function withMakaira<T>(
   ): Promise<GetServerSidePropsResult<T & MakairaAuthData>> => {
     const { nonce, domain, instance, hmac } = ctx.query as ExpectedQueryParams
 
+    const url = new URL(ctx.req.url ?? '', `https://${ctx.req.headers.host}`)
+
+    const secret = CONTENT_WIDGET_PATHS.includes(url.pathname)
+      ? process.env.MAKAIRA_APP_SECRET_CONTENT_WIDGET
+      : process.env.MAKAIRA_APP_SECRET
+
     // At first, we need to check if the page was requested from the Makaira Admin UI.
     // The UI sends an HMAC and a Nonce which we can use together with our app secret
     // that the request comes from the Makaira Admin UI (because only there the HMAC
     // can be generated).
     const expectedHMAC = crypto
-      .createHmac('sha256', process.env.MAKAIRA_APP_SECRET ?? '')
+      .createHmac('sha256', secret ?? '')
       .update(`${nonce}:${domain}:${instance}`)
       .digest('hex')
 
@@ -63,7 +68,7 @@ export function withMakaira<T>(
     // from the query parameters so that we can not simply return the received one.
     const tokenNonce = crypto.randomBytes(20).toString('hex')
     const tokenHMAC = crypto
-      .createHmac('sha256', process.env.MAKAIRA_APP_SECRET ?? '')
+      .createHmac('sha256', secret ?? '')
       .update(`${tokenNonce}:${domain}:${instance}:${hmac}`)
       .digest('hex')
 
