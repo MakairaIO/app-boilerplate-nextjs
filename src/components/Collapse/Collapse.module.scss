@@ -1,0 +1,45 @@
+@import "../../styles/mixins";
+
+.collapse-container {
+    :global {
+        .rc-collapse-header {
+            @include delta;
+            color: var(--brand-aubergine);
+            padding: var(--spacer-s) var(--spacer-m);
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .rc-collapse-expand-icon {
+            margin-right: 8px;
+        }
+
+        .rc-collapse-content-box {
+            margin-top: var(--spacer-s);
+            margin-bottom: var(--spacer-s);
+        }
+
+        .rc-collapse-content {
+            color: var(--brand-aubergine);
+            padding-left: var(--spacer-m);
+            padding-right: var(--spacer-m);
+        }
+        
+    }
+
+    // module css here
+    .collapse__title {
+        margin-bottom: var(--spacer-s);
+        color: var(--brand-aubergine);
+        font-weight: bold;
+    }
+
+    .collapse {
+        :global {
+            .rc-collapse-item {
+            }
+        }
+    }
+}
