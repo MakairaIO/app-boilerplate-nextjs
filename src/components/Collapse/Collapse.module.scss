@@ -17,14 +17,20 @@
     }
 
     .rc-collapse-content-box {
-      margin-top: var(--spacer-s);
-      margin-bottom: var(--spacer-s);
+      padding-top: var(--spacer-s);
+      padding-bottom: var(--spacer-s);
     }
 
     .rc-collapse-content {
       color: var(--brand-aubergine);
       padding-left: var(--spacer-m);
       padding-right: var(--spacer-m);
+      transition: all .3s linear;
+      overflow: hidden;
+      
+      &.rc-collapse-content-hidden {
+        display: none;
+      }
     }
 
     .collapse {
