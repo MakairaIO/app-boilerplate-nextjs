@@ -22,6 +22,7 @@
     "next": "13.1.6",
     "rc-dropdown": "^4.0.1",
     "rc-menu": "^9.8.2",
+    "rc-collapse": "^3.5.2",
     "rc-table": "^7.30.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
