@@ -16,6 +16,7 @@ import {
   Radio, 
   Collapse, 
   Panel, 
+  Switch,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -219,6 +220,18 @@ export default function Example() {
           </Text>
         </Panel>
       </Collapse>
+
+      <Divider />
+
+      <div>
+        <Switch title='Switch'/>
+      </div>
+
+      <Divider />
+
+      <div>
+        <Switch title='Switch' disabled/>
+      </div>
     </PageWrapper>
   )
 }
