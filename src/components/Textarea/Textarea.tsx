@@ -14,6 +14,10 @@ type TextareaProps = React.PropsWithChildren<{
   rows?: "auto" | number;
   onChange?: (value: string) => void;
   required?: boolean;
+  wrapperClassName?: string;
+  labelClassName?: string;
+  descriptionClassName?: string;
+  errorClassName?: string;
 }>
 
 type HandlerEvent = <K extends keyof HTMLElementEventMap>(this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any
@@ -30,6 +34,10 @@ const Textarea: FunctionComponent<TextareaProps> = ({
   disabled,
   rows,
   required,
+  wrapperClassName,
+  labelClassName,
+  descriptionClassName,
+  errorClassName,
 }) => {
 
   const textarea = useRef(null)
@@ -90,14 +98,15 @@ const Textarea: FunctionComponent<TextareaProps> = ({
     // eslint-disable-next-line
   }, [])
 
-  const classes = classNames(styles['textarea-input'], {
+  const classes = classNames(styles['textarea-input'], wrapperClassName,
+  {
     [styles['textarea-input__has-error']]: error,
     [styles['textarea-input--auto-rows']]: rows === 'auto',
   })
 
   return (
     <div className={classes}>
-      <div className={styles['textarea-input__label']}>
+      <div className={classNames(styles['textarea-input__label'], labelClassName)}>
         {title && <label>{title}</label>}
         {!!maxlength && (
           <span className={styles['textarea-input__count']}>
@@ -116,13 +125,14 @@ const Textarea: FunctionComponent<TextareaProps> = ({
         required={required}
       />
       {description && (
-        <div className={styles["textarea-input__description"]}>{description}</div>
+        <div className={classNames(styles["textarea-input__description"], descriptionClassName)}>{description}</div>
       )}
       {error && (
         <div
           className={classNames(
             styles["textarea-input__description"],
-            styles["textarea-input__description--error"]
+            styles["textarea-input__description--error"],
+            errorClassName,
           )}
         >
           {error}
