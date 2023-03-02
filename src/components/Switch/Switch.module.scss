@@ -1,0 +1,25 @@
+﻿@import "../../styles/mixins";
+
+
+.switch-input {
+  display: inline-block;
+
+  &--horizontal {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    align-self: flex-start;
+
+    .switch-input__label {
+      margin-bottom: 0;
+      padding-left: var(--spacer-xxs);
+    }
+  }
+
+  .switch-input__label {
+    @include bravo;
+    font-weight: var(--font-weight-book);
+    color: var(--neutral-60);
+    margin-bottom: var(--spacer-three-xs);
+  }
+}

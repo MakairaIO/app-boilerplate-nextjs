@@ -1,6 +1,6 @@
 import { FaArrowLeft } from 'react-icons/fa'
 
-import { PageWrapper, Link, Button } from '@/components'
+import { PageWrapper, Link, Button, Switch } from '@/components'
 import { withMakaira } from '@/makaira/withMakaira'
 
 export default function Example() {
@@ -11,6 +11,14 @@ export default function Example() {
           Back to homepage
         </Button>
       </Link>
+
+      <div>
+        <Switch title='Switch'/>
+      </div>
+
+      <div>
+        <Switch title='Switch' disabled/>
+      </div>
     </PageWrapper>
   )
 }
