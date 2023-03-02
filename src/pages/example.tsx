@@ -1,9 +1,16 @@
+import React, { useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa'
-
-import { PageWrapper, Link, Button, Radio, RadioGroup, Collapse, Panel, Text } from '@/components'
+import { PageWrapper, Link, Button, Radio, Collapse, Panel, Text } from '@/components'
 import { withMakaira } from '@/makaira/withMakaira'
 
 export default function Example() {
+
+  const [value, setValue] = useState('0')
+
+  const onChange = (key: React.Key | React.Key[]) => {
+    setValue(`${key}`)
+  }
+
   return (
     <PageWrapper title="Example page" prefix="You are looking at">
       <Link pathname="/">
@@ -12,104 +19,84 @@ export default function Example() {
         </Button>
       </Link>
 
-      <div>
-        <Radio size="large" label={'Radio button'} value={'radio-1'} />
-      </div>
-
-      <div>
-        <Collapse
-        >
-          <Panel header="This is panel">
-            <Text
-              element="p"
-            >
-              This is paragraph 1
-            </Text>
-            <Text
-              element="p"
-              size="charlie"
-              className="action-layer__content"
-            >
-              This is paragraph 2
-            </Text>
-          </Panel>
-        </Collapse>
-      </div>
+      <Radio size="large" label={'Radio button'} value={'radio-1'} />
 
 
-      <div>
-        <Collapse
-          type='arrow'
-          title='This is collapse'
-        >
-          <Panel header="This is panel 1" type='arrow'>
-            <Text
-              element="p"
-            >
-              This is paragraph 1
-            </Text>
-            <Text
-              element="p"
-              size="charlie"
-              className="action-layer__content"
-            >
-              This is paragraph 2
-            </Text>
-          </Panel>
-          
-          <Panel header="This is panel 2" type='arrow'>
-            <Text
-              element="p"
-            >
-              This is paragraph 1
-            </Text>
-            <Text
-              element="p"
-              size="charlie"
-              className="action-layer__content"
-            >
-              This is paragraph 2
-            </Text>
-          </Panel>
-        </Collapse>
-      </div>
+      <Collapse
+      >
+        <Panel header="This is panel">
+          <Text
+            element="p"
+          >
+            This is paragraph 1
+          </Text>
+          <Text
+            element="p"
+            size="charlie"
+            className="action-layer__content"
+          >
+            This is paragraph 2
+          </Text>
+        </Panel>
+      </Collapse>
 
-      <div>
-        <Collapse
-          type='radio'
-          title='Radio collapse'
-        >
-          <Panel header="This is panel 1" value="value1">
-            <Text
-              element="p"
-            >
-              This is paragraph 1
-            </Text>
-            <Text
-              element="p"
-              size="charlie"
-              className="action-layer__content"
-            >
-              This is paragraph 2
-            </Text>
-          </Panel>
+      <Collapse
+        type='arrow'
+        title='This is collapse'
+      >
+        <Panel header="This is panel 1" type='arrow'>
+          <Text
+            element="p"
+          >
+            This is paragraph 1
+          </Text>
+          <Text
+            element="p"
+            size="charlie"
+            className="action-layer__content"
+          >
+            This is paragraph 2
+          </Text>
+        </Panel>
 
-          <Panel header="This is panel 2" value="value2">
-            <Text
-              element="p"
-            >
-              This is paragraph 1
-            </Text>
-            <Text
-              element="p"
-              size="charlie"
-              className="action-layer__content"
-            >
-              This is paragraph 2
-            </Text>
-          </Panel>
-        </Collapse>
-      </div>
+        <Panel header="This is panel 2" type='arrow'>
+          <Text
+            element="p"
+          >
+            This is paragraph 1
+          </Text>
+          <Text
+            element="p"
+            size="charlie"
+            className="action-layer__content"
+          >
+            This is paragraph 2
+          </Text>
+        </Panel>
+      </Collapse>
+
+      <Collapse
+        type="radio"
+        onChange={onChange}
+        value={value}
+        activeKey={[value]}
+      >
+        <Panel value={'1'} header="This is panel 1" key={1}>
+          <Text
+            element="p"
+          >
+            This is panel 1
+          </Text>
+        </Panel>
+
+        <Panel value={'2'} header="This is panel 2" key={2}>
+          <Text
+            element="p"
+          >
+            This is panel 2
+          </Text>
+        </Panel>
+      </Collapse>
     </PageWrapper>
   )
 }

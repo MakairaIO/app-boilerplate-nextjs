@@ -4,10 +4,9 @@ import csx from 'classnames'
 import motionUtil from './motionUtil';
 import { Radio, RadioGroup, GroupProps } from '@/components';
 import { TfiAngleUp, TfiAngleDown } from 'react-icons/tfi'
-
 import styles from '@/components/Collapse/Collapse.module.scss'
 
-interface CollapseProps {
+export interface CollapseProps {
   title?: string;
   children: React.ReactNode;
   className?: string;
@@ -16,6 +15,7 @@ interface CollapseProps {
   value?: string;
   level?: number;
   noPadding?: boolean;
+  activeKey?: React.Key | React.Key[];
 }
 
 interface CloneElementProps {
@@ -34,7 +34,6 @@ const Collapse: React.FC<CollapseProps> = ({
   ...rest
 }) => {
   const Wrapper = type === 'radio' ? RadioGroup : Fragment;
-
   const wrapperProps: GroupProps = {};
 
   if (type === 'radio') {
@@ -51,7 +50,7 @@ const Collapse: React.FC<CollapseProps> = ({
   const rcCollapseProps: rcCollapseProps = {
     accordion: true,
     openMotion: motionUtil,
-    className: csx(styles['collapse'], styles[`collapse--level-${level}`], styles[`collapse--${type}`], { [styles[`collapse--no-padding`]]: noPadding }, className),
+    className: csx(styles['collapse'], className, ` collapse collapse--${type} collapse--level-${level}`),
     ...rest,
   };
 
@@ -97,22 +96,20 @@ const Panel: React.FC<PanelProps> = ({
   header,
   ...rest
 }) => (
-  <Fragment>
-    <RcPanel
-      header={
-        <div className={csx(styles['collapse__header'])}>
-          {type === 'radio' ? (
-            <Radio size="large" label={header} value={value} />
-          ) : (
-            header
-          )}
-        </div>
-      }
-      showArrow={type === 'arrow' || showArrow}
-      className={className}
-      {...rest}
-    />
-  </Fragment>
+  <RcPanel
+    header={
+      <div className='collapse__header'>
+        {type === 'radio' ? (
+          <Radio size="large" label={header} value={value} />
+        ) : (
+          header
+        )}
+      </div>
+    }
+    showArrow={type === 'arrow' || showArrow}
+    className={className}
+    {...rest}
+  />
 );
 
 export { Collapse, Panel };

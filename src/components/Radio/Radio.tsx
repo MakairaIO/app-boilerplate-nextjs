@@ -34,7 +34,7 @@ export type GroupProps = {
 const RadioContext = React.createContext<{
   onChange?: (value: string) => void;
   value?: string;
-}>({ onChange: () => {} });
+}>({ onChange: () => { } });
 
 const Radio: FC<RadioProps> = ({
   label,
@@ -46,7 +46,7 @@ const Radio: FC<RadioProps> = ({
   wrapperClassName = '',
   ...rest
 }) => {
-  const { value: selectedValue, onChange = () => {} } = useContext(
+  const { value: selectedValue, onChange = () => { } } = useContext(
     RadioContext
   );
 
@@ -74,17 +74,17 @@ const Radio: FC<RadioProps> = ({
 
   return (
     <div
-      className={csx(styles['radio-button__label-not-clickable'],  wrapperClassName)}
+      className={csx(styles['radio-button__label-not-clickable'], wrapperClassName)}
     >
       <Label
-        label={''} 
+        label={''}
         disabled={disabled}
         size={size}
         direction={direction}
         selectedValue={selectedValue}
         value={value}
         handleChange={handleChange}
-        {...rest}      />
+        {...rest} />
       {label}
     </div>
   );
@@ -104,7 +104,7 @@ const Label: FC<LabelProps> = ({
 
   return (
     <label
-      className={csx(styles['radio-button'], styles['radio-button'], styles[`radio-button--${size}`], {[styles[`radio-button--${direction}`]]: disabled},  wrapperClassName)}
+      className={csx(styles['radio-button'], styles['radio-button'], styles[`radio-button--${size}`], { [styles[`radio-button--${direction}`]]: disabled }, wrapperClassName)}
       {...rest}
     >
       <input
