@@ -12,6 +12,7 @@ import {
   Text,
   Checkbox,
   Divider,
+  Textarea,
 } from '@/components'
 import { withMakaira } from '@/makaira/withMakaira'
 
@@ -99,6 +100,29 @@ export default function Example() {
         <MenuItem key="Users">Users</MenuItem>
         <MenuItem key="Deployment">Deployment</MenuItem>
       </Menu>
+      <Divider />
+      <Textarea 
+        maxlength={200}
+        maxlengthDesc={'Characters'}
+        title="Textarea"
+        placeholder='Textarea placeholder'
+        description='Textarea description'
+        value={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'}
+        error="Please enter the text"
+        rows={5}
+      />
+      <Divider />
+      <Textarea 
+        maxlength={200}
+        maxlengthDesc={'Characters'}
+        title="Textarea"
+        placeholder='Textarea placeholder'
+        description='Textarea description'
+        value={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'}
+        disabled
+        rows={5}
+      />
+     
     </PageWrapper>
   )
 }
