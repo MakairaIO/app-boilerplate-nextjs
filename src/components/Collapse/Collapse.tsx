@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import RcCollapse, { CollapseProps as rcCollapseProps, Panel as RcPanel, CollapsePanelProps as RcPanelProps } from 'rc-collapse';
 import csx from 'classnames'
 import motionUtil from './motionUtil';
-import { Radio, RadioGroup, GroupProps } from '@/components';
+import { Radio, RadioGroup, GroupProps } from '@/components/Radio/Radio';
 import { TfiAngleUp, TfiAngleDown } from 'react-icons/tfi'
 import styles from '@/components/Collapse/Collapse.module.scss'
 
