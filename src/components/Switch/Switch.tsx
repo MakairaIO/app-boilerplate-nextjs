@@ -1,4 +1,4 @@
-﻿import { FC } from 'react';
+﻿import { cloneElement, FC } from 'react';
 import classNames from 'classnames'
 import RcSwitch, { SwitchChangeEventHandler, SwitchClickEventHandler } from 'rc-switch'
 import styles from '@/components/Switch/Switch.module.scss'
@@ -21,8 +21,10 @@ export type SwitchProps = {
   type?: 'vertical' | 'horizontal',
   className?: string;
   labelClassName?: string;
-  loadingIcon?: React.ReactNode;
+  loading?: boolean;
+  loadingIcon?: React.ReactElement;
   style?: React.CSSProperties;
+  size?: 'small' | 'large';
 }
 
 const Switch: FC<SwitchProps> = ({
@@ -39,11 +41,20 @@ const Switch: FC<SwitchProps> = ({
   type = 'vertical',
   className,
   labelClassName,
-  loadingIcon
+  loadingIcon,
+  style,
+  size = 'large',
+  loading = false,
 }) => {
+
+  let LoadingIcon = null;
+  if (loading && loadingIcon) {
+    LoadingIcon = cloneElement(loadingIcon, { className: 'switch--loading' })
+  }
+  
   return (
     <div
-      className={classNames(styles['switch-input'], styles[`switch-input--${type}`], className)}
+      className={classNames(styles['switch-input'], styles[`switch-input--${type}`], styles[size], className)}
     >
       {title && <div className={classNames(styles["switch-input__label"], labelClassName)}>{title}</div>}
       <RcSwitch
@@ -56,9 +67,9 @@ const Switch: FC<SwitchProps> = ({
         onKeyDown={onKeyDown}
         onClick={onClick}
         tabIndex={tabIndex}
-        disabled={disabled}
-        style={styles}
-        loadingIcon={loadingIcon}
+        disabled={disabled || loading}
+        style={style}
+        loadingIcon={LoadingIcon}
       />
     </div>
   )
