@@ -17,6 +17,7 @@ import {
   Collapse, 
   Panel, 
   Switch,
+  Spinner,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -230,7 +231,19 @@ export default function Example() {
       <Divider />
 
       <div>
-        <Switch title='Switch' disabled/>
+        <Switch title='Switch disabled' disabled />
+      </div>
+      <Divider />
+      <div>
+        <Switch title='Switch loading' loadingIcon={<Spinner />} loading/>
+      </div>
+      <Divider />
+      <div>
+        <Switch title='Switch horizontal' type="horizontal"/>
+      </div>
+      <Divider />
+      <div>
+        <Switch title='Switch small' type='vertical' size='small'/>
       </div>
     </PageWrapper>
   )
