@@ -1,66 +1,67 @@
 html,
 body {
-    max-width: 100vw;
-    overflow-x: hidden;
-    font-size: 10px;
-    padding: 0;
-    margin: 0;
+  max-width: 100vw;
+  overflow-x: hidden;
+  font-size: 10px;
+  padding: 0;
+  margin: 0;
 }
 
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-    background: var(--neutral-10);
+  background: var(--neutral-10);
 }
 
 a {
-    color: inherit;
-    text-decoration: none;
+  color: inherit;
+  text-decoration: none;
 }
 
 :root {
-    --max-width: 1100px;
-    --border-radius: 12px;
+  --max-width: 1100px;
+  --border-radius: 12px;
 
-    --brand-aubergine: #61304D;
-    --brand-aubergine-inactive: #9C8B95;
-    --brand-aubergine-hover: #4E273E;
-    --brand-coral: #EB6E68;
-    --brand-coral-hover: #E54139;
-    --brand-coral-inactive: #C98D8A;
-    --brand-cyan: #63B6C8;
-    --brand-sun: #F5BF33;
-    --neutral-00: #fff;
-    --neutral-10: #ECF2F3;
-    --neutral-20: #DEE7E8;
-    --neutral-40: #BDD2D6;
-    --neutral-50: #A2BABE;
-    --neutral-60: #84A4A9;
-    --neutral-70: #537074;
-    --neutral-80: #334548;
-    --neutral-90: #192224;
-    --neutral-100: #000;
-    --legende: #84A400;
-    --divider: #DDE7E9;
+  --brand-aubergine: #61304d;
+  --brand-aubergine-inactive: #9c8b95;
+  --brand-aubergine-hover: #4e273e;
+  --brand-coral: #eb6e68;
+  --brand-coral-hover: #e54139;
+  --brand-coral-inactive: #c98d8a;
+  --brand-cyan: #63b6c8;
+  --brand-sun: #f5bf33;
+  --neutral-00: #fff;
+  --neutral-10: #ecf2f3;
+  --neutral-20: #dee7e8;
+  --neutral-40: #bdd2d6;
+  --neutral-50: #a2babe;
+  --neutral-60: #84a4a9;
+  --neutral-70: #537074;
+  --neutral-80: #334548;
+  --neutral-90: #192224;
+  --neutral-100: #000;
+  --legende: #84a400;
+  --divider: #dde7e9;
+  --white: #ffffff;
 
-    --font-weight-light: 100;
-    --font-weight-medium: 400;
-    --font-weight-book: 300;
-    --font-weight-bold: 700;
-    --font-weight-heavy: 900;
+  --font-weight-light: 100;
+  --font-weight-medium: 400;
+  --font-weight-book: 300;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 900;
 
-    --spacer-four-xs: 2px;
-    --spacer-three-xs: 4px;
-    --spacer-xxs: 8px;
-    --spacer-xs: 12px;
-    --spacer-s: 16px;
-    --spacer-m: 20px;
-    --spacer-l: 24px;
-    --spacer-xl: 32px;
-    --spacer-xxl: 48px;
-    --spacer-three-xl: 64px;
+  --spacer-four-xs: 2px;
+  --spacer-three-xs: 4px;
+  --spacer-xxs: 8px;
+  --spacer-xs: 12px;
+  --spacer-s: 16px;
+  --spacer-m: 20px;
+  --spacer-l: 24px;
+  --spacer-xl: 32px;
+  --spacer-xxl: 48px;
+  --spacer-three-xl: 64px;
 
-    --transition-regular: .3s ease;
+  --transition-regular: 0.3s ease;
 }
