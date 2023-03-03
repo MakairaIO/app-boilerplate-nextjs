@@ -1,0 +1,125 @@
+﻿@import "../../styles/mixins";
+
+.rich-text {
+  display: block;
+
+  .rich-text__message {
+    @include bravo;
+    font-style: italic;
+    font-weight: var(--font-weight-book);
+    margin-top: 0.35rem;
+    color: var(--neutral-60);
+  }
+
+  .rich-text__label {
+    @include bravo;
+    color: var(--neutral-70);
+    padding-bottom: var(--spacer-three-xs);
+    transition: color var(--transition-regular);
+  }
+
+  .rich-text__suspense-loading {
+    min-height: 140px;
+  }
+
+  :global {
+    .jodit-container {
+
+      &:not(.jodit_inline) {
+        border-radius: 4px;
+        border-color: var(--neutral-40);
+      }
+
+      .jodit-toolbar__box,
+      .jodit-ui-separator {
+        border-color: var(--neutral-40);
+      }
+
+      .jodit-toolbar-button {
+        button svg {
+          fill: var(--brand-aubergine);
+        }
+      }
+
+      .jodit-workplace {
+        color: var(--brand-aubergine);
+        background: var(--neutral-00);
+
+        blockquote {
+          padding: var(--spacer-xxs) var(--spacer-xs);
+          margin: 0 0 var(--spacer-xs);
+          border-left: 3px solid var(--neutral-40);
+          color: var(--neutral-40);
+        }
+  
+        b, strong {
+          font-weight: var(--font-weight-heavy);
+        }
+  
+        ul, ol {
+          padding-inline-start: 40px;
+        }
+  
+        ul {
+          list-style: disc;
+        }
+  
+        ol {
+          list-style: decimal;
+        }
+  
+        pre {
+          padding: var(--spacer-three-xs) var(--spacer-xxs);
+          background-color: var(--neutral-10);
+          border: 1px solid var(--neutral-40);
+          border-radius: 4px;
+        }
+      }
+
+      .jodit-status-bar__item {
+        .jodit-status-bar-link {
+          display: none;
+        }
+      }
+    }
+
+    .jodit-toolbar-button__button:hover:not([disabled]) {
+      background-color: var(--neutral-20) !important;
+    }
+    
+    .jodit-toolbar-button__button[aria-pressed=true] {
+      background-color: var(--neutral-20) !important;
+    }
+
+    .jodit_sticky .jodit-toolbar__box {
+      top: -1.6rem;
+    }
+
+    .jodit-ui-group__ul .jodit-toolbar-button__trigger
+    .jodit-ui-group__ol .jodit-toolbar-button__trigger {
+      display: none;
+    }
+
+    .jodit-status-bar__item-right {
+      color: var(--neutral-60);
+    }
+
+    .jodit-toolbar__box:not(:empty) {
+      background-color: var(--neutral-00);
+    }
+
+    .jodit-status-bar {
+      background-color: var(--neutral-00);
+      height: 30px;
+    }
+
+    .jodit-toolbar-button__button:hover:not([disabled]) {
+      background-color: var(--brand-aubergine) !important;
+
+      svg {
+        fill: var(--neutral-00);
+      }
+    }
+  }
+}
+

@@ -18,6 +18,7 @@ import {
   Panel, 
   Switch,
   Spinner,
+  RichTextInput,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -245,6 +246,8 @@ export default function Example() {
       <div>
         <Switch title='Switch small' type='vertical' size='small'/>
       </div>
+      <Divider />
+      <RichTextInput label='dasdasdasda' language='en' className='testing-rich-text'/>
     </PageWrapper>
   )
 }
