@@ -12,7 +12,7 @@ export default function Example() {
         </Button>
       </Link>
 
-      <RichTextInput label='dasdasdasda' language='en' className='testing-rich-text'/>
+      <RichTextInput label='Rich Text Input' language='en'/>
     </PageWrapper>
   )
 }
