@@ -1,6 +1,6 @@
 import { FaArrowLeft } from 'react-icons/fa'
 
-import { PageWrapper, Link, Button } from '@/components'
+import { PageWrapper, Link, Button, RichTextInput } from '@/components'
 import { withMakaira } from '@/makaira/withMakaira'
 
 export default function Example() {
@@ -11,6 +11,8 @@ export default function Example() {
           Back to homepage
         </Button>
       </Link>
+
+      <RichTextInput label='dasdasdasda' language='en' className='testing-rich-text'/>
     </PageWrapper>
   )
 }
