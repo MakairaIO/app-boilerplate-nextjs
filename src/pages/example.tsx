@@ -247,7 +247,8 @@ export default function Example() {
         <Switch title='Switch small' type='vertical' size='small'/>
       </div>
       <Divider />
-      <RichTextInput label='dasdasdasda' language='en' className='testing-rich-text'/>
+      
+      <RichTextInput label='Rich Text Input' language='en'/>
     </PageWrapper>
   )
 }
