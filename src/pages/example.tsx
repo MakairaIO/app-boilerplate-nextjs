@@ -20,6 +20,7 @@ import {
   Spinner,
   RichTextInput,
   Select,
+  AutoComplete,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -323,6 +324,18 @@ export default function Example() {
         title="Empty/Borderless select"
         placeholder="Choose an importer..."
         borderless={true}
+      />
+      <Divider />
+      <AutoComplete
+        description="The selected type will be used when comparing two products."
+        title="Auto Complete"
+        placeholder="Choose an importer..."
+        options={[
+          { value: 'equals', label: 'equals' },
+          { value: 'greater', label: 'greater' },
+          { value: 'less', label: 'less' },
+          { value: 'between', label: 'between' },
+        ]}
       />
       <Divider />
     </PageWrapper>
