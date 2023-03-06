@@ -170,6 +170,7 @@
   background: var(--white);
   min-height: 3.3rem;
   position: absolute;
+  overflow: hidden;
 
   &[class~='makaira-select-dropdown-hidden'] {
     display: none;

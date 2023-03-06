@@ -9,12 +9,12 @@ import { FaTimes, FaAngleDown } from 'react-icons/fa'
 import styles from './Select.module.scss'
 import csx from 'classnames'
 
-type SelectOption = {
+export type SelectOption = {
   value: string
   label: string
 }
 
-interface SelectProps extends RcSelectProps {
+export interface SelectProps extends RcSelectProps {
   customDropdownPlacement?: 'bottomLeft' | 'topLeft'
   size?: 'normal' | 'large'
   title?: string
@@ -59,14 +59,13 @@ const Select: React.FC<SelectProps> = ({
   borderless = false,
   className,
   fullWidth,
+  dropdownRender,
   ...rest
 }) => {
   const classNames = csx(styles['select-input'], className, {
     [styles['select-input--borderless']]: borderless,
     [styles['select-input--error']]: error,
     [styles['select-input--large']]: size === 'large',
-    // 'select-input--full-width': fullWidth,
-    // 'select-input--allow-clear': allowClear,
   })
 
   return (
@@ -82,6 +81,7 @@ const Select: React.FC<SelectProps> = ({
         )}
         dropdownAlign={PLACEMENTS[customDropdownPlacement]}
         prefixCls="makaira-select"
+        dropdownRender={dropdownRender}
         {...rest}
       >
         {groupOptions &&
