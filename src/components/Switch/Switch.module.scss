@@ -23,52 +23,41 @@
     margin-bottom: var(--spacer-three-xs);
   }
 
-  &.small {
-    :global {
-      .rc-switch-checked {
-        .switch--loading {
-          position: absolute;
-          top: 1px;
-          width: 18px;
-          height: 18px;
-          left: 27px;
-          z-index: 1;
-        }
-      }
-    }
-  }
+  :global {
 
-  &.large {
-    :global {
+    .rc-switch {
+      width: 59px;
+      height: 33px;
+      border: 1px solid var(--neutral-40);
+      background-color: var(--neutral-20);
+      -webkit-appearance: button;
 
-      .rc-switch {
-        width: 59px;
-        height: 33px;
-
-        &:after {
-          width: 27px;
-          height: 27px;
-        }
-      }
-
-      .switch--loading {
-        position: absolute;
-        top: 1px;
-        left: 0;
+      &:after {
         width: 27px;
         height: 27px;
-        z-index: 1;
-        transition: all 0.3s cubic-bezier(0.35, 0, 0.25, 1);
+        left: 2px;
+        top: 2px;
+        border: 1px solid var(--neutral-40);
+        box-sizing: border-box;
       }
+    }
 
-      .rc-switch-checked {
+    .rc-switch-checked {
+      background-color: var(--legende);
+    }
 
-        &:after {
-          left: 27px;
-        }
-        .switch--loading {
-          left: 27px;
-        }
+    .rc-switch-inner {
+      color: var(--neutral-00);
+      font-size: 12px;
+      position: absolute;
+      left: 24px;
+      top: 0;
+    }
+
+    .rc-switch-checked {
+
+      &:after {
+        left: 28px;
       }
     }
   }
