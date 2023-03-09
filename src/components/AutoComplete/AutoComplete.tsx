@@ -48,13 +48,13 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ options: defaultOptions, on
 
   return (
       <Select
-        className={styles['autocomplete-input']}
+        className={styles.autocomplete}
         allowClear={true}
         onDropdownVisibleChange={handleDropdownVisibleChange}
         options={options}
         dropdownRender={(menu) => (
           <>
-            <div className={styles['autocomplete-input__search']}>
+            <div className={styles.search}>
               <input ref={searchInputRef} onChange={handleSearchChange} />
               <FaSearch />
             </div>
