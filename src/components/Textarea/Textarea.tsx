@@ -4,8 +4,8 @@ import styles from '@/components/Textarea/Textarea.module.scss'
 
 type TextareaProps = React.PropsWithChildren<{
   value?: string;
-  maxlength?: number;
-  maxlengthDesc?: string;
+  maxLength?: number;
+  maxLengthDesc?: string;
   title?: string;
   placeholder?: string;
   description?: string;
@@ -23,10 +23,10 @@ type TextareaProps = React.PropsWithChildren<{
 type HandlerEvent = <K extends keyof HTMLElementEventMap>(this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any
 
 const Textarea: FunctionComponent<TextareaProps> = ({
-  value: propsValue,
+  value = '',
   onChange,
-  maxlength,
-  maxlengthDesc,
+  maxLength,
+  maxLengthDesc,
   title,
   placeholder,
   description,
@@ -41,15 +41,9 @@ const Textarea: FunctionComponent<TextareaProps> = ({
 }) => {
 
   const textarea = useRef(null)
-  const [value, setValue] = useState(propsValue || '')
-  const warningClass = maxlength && value?.length > maxlength ? styles['warning'] : ''
-
-  useEffect(() => {
-    setValue(propsValue || '')
-  }, [propsValue])
+  const warningClass = maxLength && value?.length > maxLength ? styles.warning : ''
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setValue(e.target.value)
     if (onChange) {
       onChange(e.target.value)
     }
@@ -100,18 +94,18 @@ const Textarea: FunctionComponent<TextareaProps> = ({
 
   const classes = classNames(styles['textarea-input'], wrapperClassName,
   {
-    [styles['textarea-input__has-error']]: error,
-    [styles['textarea-input--auto-rows']]: rows === 'auto',
+    [styles['has-error']]: error,
+    [styles['auto-rows']]: rows === 'auto',
   })
 
   return (
     <div className={classes}>
-      <div className={classNames(styles['textarea-input__label'], labelClassName)}>
+      <div className={classNames("label", labelClassName)}>
         {title && <label>{title}</label>}
-        {!!maxlength && (
-          <span className={styles['textarea-input__count']}>
+        {!!maxLength && (
+          <span className="count">
             <span className={warningClass}>{value ? value.length : 0}</span>/
-            {maxlength} {maxlengthDesc}
+            {maxLength} {maxLengthDesc}
           </span>
         )}
       </div>
@@ -125,13 +119,13 @@ const Textarea: FunctionComponent<TextareaProps> = ({
         required={required}
       />
       {description && (
-        <div className={classNames(styles["textarea-input__description"], descriptionClassName)}>{description}</div>
+        <div className={classNames(styles.description, descriptionClassName)}>{description}</div>
       )}
       {error && (
         <div
           className={classNames(
-            styles["textarea-input__description"],
-            styles["textarea-input__description--error"],
+            styles.description,
+            "description--error",
             errorClassName,
           )}
         >
