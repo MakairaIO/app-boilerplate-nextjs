@@ -1,104 +1,80 @@
 @import '../../styles/mixins';
 
-.select-input {
+.wrapper {
   display: inline-block;
+
   :global {
-    .select-input__label {
+    .rc-select {
       @include bravo;
-      color: var(--neutral-70);
-      margin-bottom: 4px;
-    }
-    .select-input__message {
-      color: var(--neutral-60);
-      margin-top: 0.35rem;
-    }
-    .select-input__info {
-      color: var(--aubergine);
-      margin-left: 0.6rem;
-    }
-    .select-input__main {
-      display: flex;
-      align-items: center;
-    }
-    .select-input--full-width {
-      width: 100%;
-      .makaira-select {
-        width: 100%;
-      }
-    }
-    .select-input--allow-clear {
-      .makaira-select-selector {
-        padding: 0 48px 0 8px;
-      }
-      .makaira-select-selection-item {
-        max-width: calc(100% - 56px);
-      }
-    }
-    .makaira-select {
-      @include bravo;
-      min-width: 9rem;
+      min-width: 10rem;
       width: auto;
       color: var(--brand-aubergine);
       height: 3.3rem;
       display: inline-block;
       position: relative;
-      .makaira-select-selection-placeholder {
+
+      .rc-select-selection-placeholder {
         pointer-events: none;
         color: var(--neutral-80);
         position: absolute;
         opacity: 0.4;
       }
     }
-    .makaira-select-selector {
+
+    .rc-select-selector {
       @include bravo;
       cursor: pointer;
       border: 1px solid var(--neutral-40);
       background: var(--white);
       border-radius: 4px;
-      padding: 0 28px 0 8px;
+      padding: 0 2.8rem 0 .8rem;
       display: flex;
       height: 100%;
       align-items: center;
-      .makaira-select-selection-search-input {
+
+      .rc-select-selection-search-input {
         display: block;
         background: none;
         width: 100%;
         height: 100%;
-      }
-      input {
         padding: 0;
         cursor: pointer;
         border: none;
         outline: none;
       }
     }
-    .makaira-select-selection-item,
-    .makaira-select-selection-placeholder {
+
+    .rc-select-selection-item,
+    .rc-select-selection-placeholder {
       position: absolute;
       font-weight: var(--font-weight-bold);
       min-width: 20px;
-      max-width: calc(100% - 32px);
+      max-width: calc(100% - 3rem);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
-    .makaira-select-disabled,
-    .makaira-select-disabled input,
-    .makaira-select-disabled .makaira-select-selector {
+
+    .rc-select-disabled,
+    .rc-select-disabled input,
+    .rc-select-disabled .rc-select-selector {
       cursor: not-allowed;
     }
-    .makaira-select-disabled {
-      .makaira-select-selector {
+
+    .rc-select-disabled {
+      .rc-select-selector {
         background: #fafafa;
       }
     }
-    .makaira-select-focused {
-      .makaira-select-selector {
+
+    .rc-select-focused {
+      .rc-select-selector {
         outline: 2px solid var(--sunny);
       }
     }
-    .makaira-select-allow-clear {
-      .makaira-select-clear {
+
+    .rc-select-allow-clear {
+      .rc-select-clear {
         position: absolute;
         right: 28px;
         top: 0;
@@ -107,13 +83,19 @@
         align-items: center;
         cursor: pointer;
       }
+
       .icon {
         width: 16px;
         height: 16px;
       }
+
+      .rc-select-selection-search-input {
+        padding-right: 1.2rem;
+      }
     }
-    .makaira-select-show-arrow {
-      .makaira-select-arrow {
+
+    .rc-select-show-arrow {
+      .rc-select-arrow {
         pointer-events: none;
         position: absolute;
         right: 8px;
@@ -122,6 +104,7 @@
         display: flex;
         align-items: center;
       }
+
       .icon {
         width: 16px;
         height: 16px;
@@ -137,10 +120,21 @@
   }
 }
 
-.select-input--borderless {
+.label {
+  @include bravo;
+  color: var(--neutral-70);
+  margin-bottom: 4px;
+}
+
+.message {
+  color: var(--neutral-60);
+  margin-top: 0.35rem;
+}
+
+.borderless {
   :global {
-    .makaira-select-selector,
-    .makaira-select-item-option-content {
+    .rc-select-selector,
+    .rc-select-item-option-content {
       border: none;
       outline: none;
       background: unset;
@@ -148,15 +142,15 @@
   }
 }
 
-.select-input--error {
+.error {
+  .label,
+  .message {
+    color: var(--brand-coral) !important;
+  }
   :global {
-    .select-input__label,
-    .select-input__message {
-      color: var(--brand-coral) !important;
-    }
-    .makaira-select {
-      &.makaira-select-single {
-        .makaira-select-selector {
+    .rc-select {
+      &.rc-select-single {
+        .rc-select-selector {
           border-color: var(--brand-coral) !important;
         }
       }
@@ -164,7 +158,7 @@
   }
 }
 
-.select-input__dropdown {
+.dropdown {
   border-radius: 0.4rem;
   border: 1px solid var(--neutral-40);
   background: var(--white);
@@ -172,44 +166,51 @@
   position: absolute;
   overflow: hidden;
 
-  &[class~='makaira-select-dropdown-hidden'] {
+  &[class~='rc-select-dropdown-hidden'] {
     display: none;
   }
 
   :global {
-    .makaira-select-item {
+    .rc-select-item {
       @include bravo;
       position: absolute;
       padding: 4px 8px;
       cursor: pointer;
     }
-    .makaira-select-item-group {
+
+    .rc-select-item-group {
       color: var(--neutral-70);
       font-weight: var(--font-weight-bold);
       position: relative;
     }
-    .makaira-select-item-option {
+
+    .rc-select-item-option {
       position: relative;
     }
-    .makaira-select-item-option-grouped {
+
+    .rc-select-item-option-grouped {
       padding-left: 24px;
     }
-    .makaira-select-item-option-state {
+
+    .rc-select-item-option-state {
       display: none;
       position: absolute;
       top: 4px;
       right: 0;
       pointer-events: none;
     }
-    .makaira-select-item-option-selected,
-    .makaira-select-item-option-active {
+
+    .rc-select-item-option-selected,
+    .rc-select-item-option-active {
       background: var(--brand-aubergine);
       color: var(--white);
     }
-    .makaira-select-item-option-disabled {
+
+    .rc-select-item-option-disabled {
       opacity: 0.7;
     }
-    .makaira-select-item-empty {
+
+    .rc-select-item-empty {
       @include bravo;
       text-align: center;
       color: var(--neutral-30);
@@ -218,33 +219,53 @@
   }
 }
 
-.select-input--large {
+.large {
   :global {
-    .makaira-select-selector,
-    .makaira-select-item-option-content,
-    .makaira-select-item-empty {
+    .rc-select-selector,
+    .rc-select-item-option-content,
+    .rc-select-item-empty {
       @include echo;
       font-weight: var(--font-weight-book);
     }
-    .makaira-select {
+
+    .rc-select {
       height: 4rem;
     }
-    .makaira-select-selection-placeholder {
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      overflow: hidden;
-      font-weight: normal;
+
+    .rc-select-allow-clear {
+      .rc-select-selection-search-input {
+        padding-right: 4.5rem;
+      }
+      .rc-select-selection-item,
+      .rc-select-selection-placeholder {
+        margin-right: 2rem;
+      }
     }
-    .makaira-select-selection-search-input {
+
+    .rc-select-selection-placeholder {
+      max-width: 20rem !important
+    }
+
+    .rc-select-selection-search-input {
       @include echo;
       height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: .8rem;
+      padding-right: 2.5rem;
     }
-    .makaira-select-selection-item {
+
+    .rc-select-selection-item,
+    .rc-select-selection-placeholder {
       font-weight: var(--font-weight-book);
       padding-bottom: 6px;
+      position: relative !important;
+      max-width: inherit;
     }
-    .makaira-select-show-arrow {
-      .makaira-select-arrow {
+
+    .rc-select-show-arrow {
+      .rc-select-arrow {
         .svg {
           height: 25px;
           width: 25px;

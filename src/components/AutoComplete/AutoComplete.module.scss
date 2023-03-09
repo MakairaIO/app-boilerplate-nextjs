@@ -1,6 +1,6 @@
 @import '../../styles/mixins';
 
-.autocomplete-input {
+.autocomplete {
     :global {
         .makaira-select-selection-search-input {
             -webkit-user-select: none;  
@@ -10,7 +10,7 @@
         }
     }
 }
-.autocomplete-input__search {
+.search {
     background: var(--neutral-10);
     padding: 8px;
     position: relative;
