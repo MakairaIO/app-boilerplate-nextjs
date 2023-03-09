@@ -22,21 +22,21 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ options: defaultOptions, on
   }
 
   const handleSearchChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchValue = event.target.value;
+    const query = event.target.value;
     let filteredOptions: SelectOption[] = defaultOptions || [];
 
-    if(searchValue) {
+    if(query) {
       if (typeof onSearch === 'function') {
-        filteredOptions = await onSearch(searchValue);
+        filteredOptions = await onSearch(query);
       } else if (defaultOptions) {
         filteredOptions = defaultOptions.filter((option) => {
             return (
               option.value
                 .toLowerCase()
-                .includes(searchValue.toLowerCase()) ||
+                .includes(query.toLowerCase()) ||
               option.label
                 .toLowerCase()
-                .includes(searchValue.toLowerCase())
+                .includes(query.toLowerCase())
             )
           
         })

@@ -20,7 +20,6 @@ export interface SelectProps extends RcSelectProps {
   title?: string
   description?: string
   error?: boolean
-  fullWidth?: boolean
   options?: SelectOption[]
   groupOptions?: {
     label?: string
@@ -58,29 +57,26 @@ const Select: React.FC<SelectProps> = ({
   groupOptions = [],
   borderless = false,
   className,
-  fullWidth,
   dropdownRender,
   ...rest
 }) => {
-  const classNames = csx(styles['select-input'], className, {
-    [styles['select-input--borderless']]: borderless,
-    [styles['select-input--error']]: error,
-    [styles['select-input--large']]: size === 'large',
+  const classNames = csx(styles.wrapper, className, {
+    [styles.borderless]: borderless || size === 'large',
+    [styles.error]: error,
+    [styles.large]: size === 'large',
   })
 
   return (
     <div className={classNames}>
-      {title && <div className="select-input__label">{title}</div>}
-      <div className="select-input__main"></div>
+      {title && <div className={styles.label}>{title}</div>}
       <RcSelect
-        inputIcon={FaAngleDown}
-        clearIcon={FaTimes}
+        inputIcon={() => <FaAngleDown />}
+        clearIcon={() => <FaTimes />}
         dropdownClassName={csx(
-          styles['select-input__dropdown'],
-          size === 'large' ? styles['select-input--large'] : ''
+          styles.dropdown,
+          size === 'large' ? styles.large : ''
         )}
         dropdownAlign={PLACEMENTS[customDropdownPlacement]}
-        prefixCls="makaira-select"
         dropdownRender={dropdownRender}
         {...rest}
       >
@@ -89,9 +85,6 @@ const Select: React.FC<SelectProps> = ({
             <OptGroup label={group.label} key={group.label}>
               {group.children.map((option) => (
                 <Option
-                  className={
-                    size === 'large' ? 'makaira-select-option--large' : ''
-                  }
                   key={option.value}
                   value={option.value}
                 >
@@ -104,7 +97,6 @@ const Select: React.FC<SelectProps> = ({
         {options &&
           options.map((option) => (
             <Option
-              className={size === 'large' ? 'makaira-select-option--large' : ''}
               value={option.value}
               key={option.value}
             >
@@ -117,7 +109,7 @@ const Select: React.FC<SelectProps> = ({
           element="p"
           weight="book"
           size="bravo"
-          className="select-input__message"
+          className={styles.message}
         >
           {description || error}
         </Text>

@@ -29,9 +29,9 @@ export default function Example() {
       <Select
         description="The selected type will be used when comparing two products."
         title="Large select"
-        allowClear={true}
         showSearch={true}
         size="large"
+        defaultValue={'greater'}
         placeholder="Choose an importer..."
         options={[
           { value: 'equals', label: 'equals' },
