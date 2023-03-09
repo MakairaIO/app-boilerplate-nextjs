@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { CSSProperties, ReactHTML } from 'react'
 import csx from 'classnames'
 import RcTooltip from 'rc-tooltip'
 import 'rc-tooltip/assets/bootstrap.css'
@@ -12,12 +12,16 @@ interface TooltipProps {
   overlayClassName?: string
   children?: React.ReactElement
   zIndex?: number
+  wrapperClassName?: string
+  wrapperStyle?: CSSProperties
+  wrapperTagName?:  keyof ReactHTML
 }
 
-const Tooltip: React.FC<TooltipProps> = ({ children, ...rest }) => {
+const Tooltip: React.FC<TooltipProps> = ({ children, wrapperClassName, wrapperStyle, wrapperTagName = 'div', ...rest }) => {
+  const Wrapper = React.createElement( wrapperTagName, { className: csx(styles.wrapper, wrapperClassName), style: wrapperStyle }, children);
   return (
-    <RcTooltip overlayClassName={styles.tooltipOverlay} {...rest}>
-      {children}
+    <RcTooltip overlayClassName={styles.overlay} {...rest}>
+      {Wrapper}
     </RcTooltip>
   )
 }
