@@ -38,6 +38,7 @@ type RichTextInputProps = {
 
 export const RichTextInput: FC<RichTextInputProps> = (props) => {
   const { 
+    value,
     description, 
     label, 
     language = 'en', 
@@ -56,7 +57,6 @@ export const RichTextInput: FC<RichTextInputProps> = (props) => {
 
   const touched = useRef(false)
   const editor = useRef(null);
-  const [value, setValue] = useState(props.value || '')
   const [JoditEditor, setJoditEditor] = useState<any>(null)
 
   useEffect(() => {
@@ -77,13 +77,9 @@ export const RichTextInput: FC<RichTextInputProps> = (props) => {
     buttons,
   }), [language])
 
-  useEffect(() => {
-    setValue(props.value || '')
-  }, [props.value])
-
   const handleChange = (val: string) => {
     if (!touched.current) return
-    setValue(val)
+
     if (onChange) {
       onChange(val)
     }
