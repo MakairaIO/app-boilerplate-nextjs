@@ -1,6 +1,6 @@
 @import '../../styles/mixins';
 
-.tooltipOverlay {
+.overlay {
   background-color: transparent;
   max-width: 250px;
   padding: 5px;
@@ -45,4 +45,8 @@
       background-color: rgba(0, 0, 0, 0.85);
     }
   }
+}
+
+.wrapper {
+  display: inline-block;
 }
