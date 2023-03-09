@@ -30,6 +30,7 @@ import {
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
+import Pagination from '@/components/Pagination/Pagination'
 
 export default function Example() {
   const [value, setValue] = useState('0')
@@ -437,18 +438,53 @@ export default function Example() {
         <Heading2>Page Heading Main H2</Heading2>
         <Heading3>Page Heading Main H3</Heading3>
       </PageWrapper>
-      <PageWrapper title="Tables" prefix="You are looking at">
-        <Table
-          data={[
-            { name: 'Apple', value: '1' },
-            { name: 'Banana', value: '2' },
-            { name: 'Eggs', value: '3' },
-          ]}
+      <PageWrapper title='Table' prefix='You are looking at'>
+        <h2>Table</h2>
+        <Table data={[
+          { "name": "Apple", "value": "1" },
+          { "name": "Banana", "value": "2" },
+          { "name": "Eggs", "value": "3" }
+        ]}
           rowKey="name"
         >
-          <Column title="name" dataIndex={'name'} key="name" />
-          <Column title="value" dataIndex={'value'} key="value" />
+          <Column title="name" dataIndex={"name"} key="name" />
+          <Column title="value" dataIndex={"value"} key="value" />
         </Table>
+
+        <h2>Table with loading</h2>
+        <Table data={[
+          { "name": "Apple", "value": "1" },
+          { "name": "Banana", "value": "2" },
+          { "name": "Eggs", "value": "3" }
+        ]}
+          rowKey="name"
+          loading
+        >
+          <Column title="name" dataIndex={"name"} key="name" />
+          <Column title="value" dataIndex={"value"} key="value" />
+        </Table>
+
+        <h2>Table with pagination and columns props</h2>
+        <Table data={[
+          { "name": "Apple", "value": "1" },
+          { "name": "Banana", "value": "2" },
+          { "name": "Eggs", "value": "3" }
+        ]}
+          rowKey="name"
+          columns={[
+            { title: "name", dataIndex: "name", key: "name" },
+            { title: "value", dataIndex: "value", key: "value" }
+          ]}
+          pagination={{
+            initialCurrentPage: 8,
+            maxPage: 12,
+            onPageSwitch: () => { }
+          }}
+        >
+        </Table>
+      </PageWrapper>
+      <PageWrapper title='Pagination' prefix='You are looking at'>
+        <Pagination initialCurrentPage={8} maxPage={12} onPageSwitch={() => { }} />
       </PageWrapper>
     </>
   )

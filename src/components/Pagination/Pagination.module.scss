@@ -1,0 +1,70 @@
+﻿@import "../../styles/mixins";
+
+
+.pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.page {
+  @include charlie();
+  color: var(--brand-aubergine);
+  height: 3.2rem;
+  width: 3.2rem;
+  cursor: pointer;
+  font-weight: var(--font-weight-bold);
+  border: 0;
+  border-radius: 1.6rem;
+  margin: 0 var(--spacer-three-xs);
+  transition: background 200ms ease-out, padding 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+  &:focus {
+    outline: var(--outline);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+  
+  &:hover {
+    background: var(--neutral-60);
+    color: var(--neutral-00);
+  }
+
+  &.active {
+    color: var(--neutral-00);
+    background: var(--neutral-60);
+  }
+}
+
+.dots {
+  font-weight: var(--font-weight-book);
+  color: var(--neutral-60);
+  margin: 0 var(--spacer-three-xs);
+}
+
+.nav-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: var(--spacer-xl);
+  width: var(--spacer-xl);
+  cursor: pointer;
+  border: 0;
+  margin: 0 var(--spacer-three-xs);
+
+  &:focus {
+    outline: var(--outline);
+  }
+
+  .icon {
+    color: var(--neutral-60);
+    height: 1.6rem;
+    width: 1.6rem;
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+  }
+}
