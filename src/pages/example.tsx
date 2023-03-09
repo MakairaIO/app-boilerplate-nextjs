@@ -25,6 +25,8 @@ import {
   Heading1,
   Heading2,
   Heading3,
+  Table,
+  Column,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -378,6 +380,17 @@ export default function Example() {
         <Heading3>
           Page Heading Main H3
         </Heading3>
+      <Divider />
+        <Table data={[
+          { "name": "Apple", "value": "1" },
+          { "name": "Banana", "value": "2" },
+          { "name": "Eggs", "value": "3" }
+        ]}
+        rowKey="name"
+        >
+          <Column title="name" dataIndex={"name"} key="name"/>
+          <Column title="value" dataIndex={"value"} key="value"/>
+        </Table>
       <Divider />
     </PageWrapper>
   )
