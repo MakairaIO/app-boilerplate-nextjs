@@ -27,6 +27,7 @@
     "rc-switch": "^3.2.2",
     "rc-table": "^7.30.4",
     "rc-select": "^14.3.0",
+    "rc-tooltip": "^6.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
