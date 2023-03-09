@@ -323,10 +323,8 @@ export default function Example() {
           </Dropdown>
           <Menu mode="horizontal">
             <SubMenu
-              popupOffset={[-20, 0]}
               title={<Button icon={FaTools} variant="reduced" />}
               key="Settings1"
-              popupClassName="page-header__popup"
             >
               <GroupTitle>Tools</GroupTitle>
               <SubMenu key="Importer1" title="Importer">
