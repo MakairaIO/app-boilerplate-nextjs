@@ -1,0 +1,106 @@
+@import "../../styles/mixins";
+
+.radio-button {
+  @include bravo;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  font-weight: var(--font-weight-bold);
+  color: var(--brand-aubergine);
+  min-width: 1.8rem;
+
+  &>input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  &:hover {
+    input {
+      &:not(:disabled) {
+        &~.radio-button__checkmark {
+          background-color: var(--neutral-10);
+        }
+      }
+    }
+  }
+
+  input {
+    &:checked {
+      &~.radio-button__checkmark {
+        &:after {
+          transform: translate(-50%, -50%) scale(1);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.radio-button__checkmark {
+  flex: 0 0 1.8rem;
+  height: 1.8rem;
+  background-color: var(--neutral-00);
+  border-radius: 50%;
+  position: relative;
+  border: 1px solid var(--neutral-40);
+  margin-right: var(--spacer-xxs);
+  transition: background 0.3s ease;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: var(--brand-aubergine);
+    transition: all 0.2s ease;
+  }
+}
+
+.radio-button--large {
+  @include delta;
+
+  .radio-button__checkmark {
+    margin-right: var(--spacer-xs);
+    flex: 0 0 2.6rem;
+    height: 2.6rem;
+
+    &:after {
+      width: 1.6rem;
+      height: 1.6rem;
+    }
+  }
+}
+
+.radio-button--vertical {
+  display: inline-flex;
+  flex-direction: column;
+
+  .radio-button__checkmark {
+    width: 1.8rem;
+    margin: 0;
+  }
+
+  &.radio-button--large {
+    .radio-button__checkmark {
+      width: 2.6rem;
+    }
+  }
+}
+
+.radio-button--disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.radio-button__label-not-clickable {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacer-xxs);
+}

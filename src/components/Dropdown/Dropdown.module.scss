@@ -1,0 +1,31 @@
+.rc-dropdown {
+  :global {
+    .rc-menu {
+      padding: var(--spacer-xxs);
+      box-shadow: var(--elevation-50);
+      border: 0;
+    }
+
+    .rc-menu-item {
+      cursor: default;
+      padding: var(--spacer-xxs) var(--spacer-xs) !important;
+    }
+
+    .rc-menu-item-selected {
+      background: none !important;
+      &::after {
+        content: unset !important;
+      }
+    }
+    .rc-menu-item-active {
+      background-color: var(--brand-aubergine) !important;
+      .text {
+        color: white;
+      }
+
+      &:after {
+        content: unset !important;
+      }
+    }
+  }
+}
