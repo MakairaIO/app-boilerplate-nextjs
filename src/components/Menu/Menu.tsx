@@ -12,21 +12,19 @@ import { PropsWithChildren } from 'react'
 import 'rc-menu/assets/index.css'
 
 const GroupTitle: React.FC<PropsWithChildren> = ({ children }) => {
-  return <div className="menu-v3__block-title">{children}</div>
+  return <div className={styles.blockTitle}>{children}</div>
 }
 
 const SubMenuCustom: React.FC<SubMenuProps> = ({
   title,
   children,
-  className,
   ...rest
 }) => {
   return (
     <SubMenu
       popupOffset={[8, 0]}
-      className={csx('menu-v3__submenu', className || '')}
       title={title}
-      expandIcon={<FaChevronRight className={'menu-v3__icon'} />}
+      expandIcon={<FaChevronRight className={styles.expandIcon} />}
       {...rest}
     >
       {children}
@@ -34,23 +32,15 @@ const SubMenuCustom: React.FC<SubMenuProps> = ({
   )
 }
 
-const MenuItemCustom: React.FC<MenuItemProps> = ({
-  children,
-  className,
-  ...rest
-}) => {
-  return (
-    <MenuItem className={csx('menu-v3__item', className)} {...rest}>
-      {children}
-    </MenuItem>
-  )
+const MenuItemCustom: React.FC<MenuItemProps> = ({ children, ...rest }) => {
+  return <MenuItem {...rest}>{children}</MenuItem>
 }
 
 const Menu: React.FC<MenuProps> = ({ children, className, mode, ...rest }) => {
   const rootClassName = csx(
-    styles['menu-v3'],
-    className || '',
-    mode === 'horizontal' ? styles['menu-v3__horizontal'] : ''
+    styles.wrapper,
+    className,
+    mode === 'horizontal' ? styles.horizontal : ''
   )
   return (
     <div className={rootClassName}>
