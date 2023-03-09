@@ -13,18 +13,19 @@ import {
   Checkbox,
   Divider,
   Textarea,
-  Radio, 
-  Collapse, 
-  Panel, 
+  Radio,
+  Collapse,
+  Panel,
   Switch,
   Spinner,
   RichTextInput,
+  Select,
+  AutoComplete,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
 
 export default function Example() {
-
   const [value, setValue] = useState('0')
 
   const onChange = (key: React.Key | React.Key[]) => {
@@ -115,47 +116,42 @@ export default function Example() {
         <MenuItem key="Deployment">Deployment</MenuItem>
       </Menu>
       <Divider />
-      <Textarea 
+      <Textarea
         maxlength={200}
         maxlengthDesc={'Characters'}
         title="Textarea"
-        placeholder='Textarea placeholder'
-        description='Textarea description'
-        value={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'}
+        placeholder="Textarea placeholder"
+        description="Textarea description"
+        value={
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'
+        }
         error="Please enter the text"
         rows={5}
       />
       <Divider />
-      <Textarea 
+      <Textarea
         maxlength={200}
         maxlengthDesc={'Characters'}
         title="Textarea"
-        placeholder='Textarea placeholder'
-        description='Textarea description'
-        value={'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'}
+        placeholder="Textarea placeholder"
+        description="Textarea description"
+        value={
+          'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'
+        }
         disabled
         rows={5}
       />
-     
-     <Divider />
+
+      <Divider />
 
       <Radio size="large" label={'Radio button'} value={'radio-1'} />
 
       <Divider />
 
-      <Collapse
-      >
+      <Collapse>
         <Panel header="This is panel">
-          <Text
-            element="p"
-          >
-            This is paragraph 1
-          </Text>
-          <Text
-            element="p"
-            size="charlie"
-            className="action-layer__content"
-          >
+          <Text element="p">This is paragraph 1</Text>
+          <Text element="p" size="charlie" className="action-layer__content">
             This is paragraph 2
           </Text>
         </Panel>
@@ -163,43 +159,24 @@ export default function Example() {
 
       <Divider />
 
-      <Collapse
-        type='arrow'
-        title='This is collapse'
-      >
-        <Panel header="This is panel 1" type='arrow'>
-          <Text
-            element="p"
-          >
-            This is paragraph 1
-          </Text>
-          <Text
-            element="p"
-            size="charlie"
-            className="action-layer__content"
-          >
+      <Collapse type="arrow" title="This is collapse">
+        <Panel header="This is panel 1" type="arrow">
+          <Text element="p">This is paragraph 1</Text>
+          <Text element="p" size="charlie" className="action-layer__content">
             This is paragraph 2
           </Text>
         </Panel>
 
-        <Panel header="This is panel 2" type='arrow'>
-          <Text
-            element="p"
-          >
-            This is paragraph 1
-          </Text>
-          <Text
-            element="p"
-            size="charlie"
-            className="action-layer__content"
-          >
+        <Panel header="This is panel 2" type="arrow">
+          <Text element="p">This is paragraph 1</Text>
+          <Text element="p" size="charlie" className="action-layer__content">
             This is paragraph 2
           </Text>
         </Panel>
       </Collapse>
 
       <Divider />
-      
+
       <Collapse
         type="radio"
         onChange={onChange}
@@ -207,48 +184,160 @@ export default function Example() {
         activeKey={[value]}
       >
         <Panel value={'1'} header="This is panel 1" key={1}>
-          <Text
-            element="p"
-          >
-            This is panel 1
-          </Text>
+          <Text element="p">This is panel 1</Text>
         </Panel>
 
         <Panel value={'2'} header="This is panel 2" key={2}>
-          <Text
-            element="p"
-          >
-            This is panel 2
-          </Text>
+          <Text element="p">This is panel 2</Text>
         </Panel>
       </Collapse>
 
       <Divider />
 
       <div>
-        <Switch title='Switch'/>
+        <Switch title="Switch" />
       </div>
 
       <Divider />
 
       <div>
-        <Switch title='Switch disabled' disabled />
+        <Switch title="Switch disabled" disabled />
       </div>
       <Divider />
       <div>
-        <Switch title='Switch loading' loadingIcon={<Spinner />} loading/>
+        <Switch title="Switch loading" loadingIcon={<Spinner />} loading />
       </div>
       <Divider />
       <div>
-        <Switch title='Switch horizontal' type="horizontal"/>
+        <Switch title="Switch horizontal" type="horizontal" />
       </div>
       <Divider />
       <div>
-        <Switch title='Switch small' type='vertical' size='small'/>
+        <Switch title="Switch small" type="vertical" size="small" />
       </div>
       <Divider />
-      
-      <RichTextInput label='Rich Text Input' language='en'/>
+
+      <RichTextInput label="Rich Text Input" language="en" />
+      <Divider />
+      <Select
+        description="The selected type will be used when comparing two products."
+        title="Default select"
+        allowClear={true}
+        showSearch={true}
+        placeholder="Choose an importer..."
+        options={[
+          { value: 'equals', label: 'equals' },
+          { value: 'greater', label: 'greater' },
+          { value: 'less', label: 'less' },
+          { value: 'between', label: 'between' },
+        ]}
+      />
+      <Divider />
+      <Select
+        description="The selected type will be used when comparing two products."
+        title="Large select"
+        allowClear={true}
+        showSearch={true}
+        size="large"
+        placeholder="Choose an importer..."
+        options={[
+          { value: 'equals', label: 'equals' },
+          { value: 'greater', label: 'greater' },
+          { value: 'less', label: 'less' },
+          { value: 'between', label: 'between' },
+        ]}
+      />
+      <Divider />
+      <Select
+        description="The selected type will be used when comparing two products."
+        title="Error select"
+        error={true}
+        placeholder="Choose an importer..."
+        options={[
+          { value: 'equals', label: 'equals' },
+          { value: 'greater', label: 'greater' },
+        ]}
+      />
+      <Divider />
+      <Select
+        description="The selected type will be used when comparing two products."
+        title="Grouped options select"
+        allowClear={true}
+        showSearch={true}
+        placeholder="Choose an importer..."
+        groupOptions={[
+          {
+            label: '',
+            children: [
+              {
+                value: '',
+                label: 'Alle Importer',
+              },
+            ],
+          },
+          {
+            label: 'Laufend',
+            children: [
+              {
+                value: 'stage--oxid6--1-0',
+                label: 'live - en, de',
+              },
+            ],
+          },
+          {
+            label: 'Beendet',
+            children: [
+              {
+                value: 'stage--oxid6--2-gc8j5',
+                label: 'manuell - vor 6 Monaten',
+              },
+              {
+                value: 'stage--oxid6--2-smxh5',
+                label: 'manuell - vor 6 Monaten',
+              },
+              {
+                value: 'stage--oxid6--2-vb4m2',
+                label: 'manuell - vor 6 Monaten',
+              },
+              {
+                value: 'stage--oxid6--2-x2gpl',
+                label: 'manuell - vor 6 Monaten',
+              },
+              {
+                value: 'stage--oxid6--2-p5qhk',
+                label: 'manuell - vor 6 Monaten',
+              },
+            ],
+          },
+        ]}
+      />
+      <Divider />
+      <Select
+        description="The selected type will be used when comparing two products."
+        title="Disabled select"
+        disabled
+        placeholder="Choose an importer..."
+      />
+      <Divider />
+      <Select
+        description="The selected type will be used when comparing two products."
+        title="Empty/Borderless select"
+        placeholder="Choose an importer..."
+        borderless={true}
+      />
+      <Divider />
+      <AutoComplete
+        description="The selected type will be used when comparing two products."
+        title="Auto Complete"
+        placeholder="Choose an importer..."
+        options={[
+          { value: 'equals', label: 'equals' },
+          { value: 'greater', label: 'greater' },
+          { value: 'less', label: 'less' },
+          { value: 'between', label: 'between' },
+        ]}
+      />
+      <Divider />
     </PageWrapper>
   )
 }
