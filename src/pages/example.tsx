@@ -22,6 +22,9 @@ import {
   Select,
   AutoComplete,
   Tooltip,
+  Heading1,
+  Heading2,
+  Heading3,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -365,6 +368,16 @@ export default function Example() {
           { value: 'between', label: 'between' },
         ]}
       />
+      <Divider />
+        <Heading1>
+          Page Heading Main H1
+        </Heading1>
+        <Heading2>
+          Page Heading Main H2
+        </Heading2>
+        <Heading3>
+          Page Heading Main H3
+        </Heading3>
       <Divider />
     </PageWrapper>
   )
