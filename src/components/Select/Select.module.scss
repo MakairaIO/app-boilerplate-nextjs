@@ -27,7 +27,7 @@
       border: 1px solid var(--neutral-40);
       background: var(--white);
       border-radius: 4px;
-      padding: 0 2.8rem 0 .8rem;
+      padding: 0 2.5rem 0 .8rem;
       display: flex;
       height: 100%;
       align-items: center;
@@ -38,9 +38,9 @@
         width: 100%;
         height: 100%;
         padding: 0;
-        cursor: pointer;
         border: none;
         outline: none;
+        cursor: pointer;
       }
     }
 
@@ -55,15 +55,11 @@
       text-overflow: ellipsis;
     }
 
-    .rc-select-disabled,
-    .rc-select-disabled input,
-    .rc-select-disabled .rc-select-selector {
-      cursor: not-allowed;
-    }
-
     .rc-select-disabled {
+      cursor: not-allowed;
+      .rc-select-selection-search-input,
       .rc-select-selector {
-        background: #fafafa;
+        cursor: not-allowed;
       }
     }
 
@@ -91,6 +87,11 @@
 
       .rc-select-selection-search-input {
         padding-right: 1.2rem;
+      }
+
+      .rc-select-selection-item,
+      .rc-select-selection-placeholder {
+        max-width: calc(100% - 4.5rem);
       }
     }
 
