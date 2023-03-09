@@ -4,7 +4,7 @@ import RcTooltip from 'rc-tooltip'
 import 'rc-tooltip/assets/bootstrap.css'
 import styles from './Tooltip.module.scss'
 
-interface TooltipProps {
+export interface TooltipProps {
   overlay: (() => React.ReactNode) | React.ReactNode
   defaultVisible?: boolean
   visible?: boolean
