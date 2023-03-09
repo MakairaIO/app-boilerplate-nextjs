@@ -48,6 +48,26 @@
       }
     }
   }
+
+}
+
+.loading {
+  position: relative;
+
+  .loadingSnipper {
+    position: absolute;
+    top: calc(50% + 24px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  
+  :global {
+    .makaira-table {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
 }
 
 .rightArrow {

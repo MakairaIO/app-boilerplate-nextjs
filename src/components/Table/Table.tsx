@@ -3,6 +3,8 @@ import React from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 
 import styles from '@/components/Table/Table.module.scss'
+import { Spinner } from '@/components'
+import classNames from 'classnames'
 
 type TableProps = React.PropsWithChildren<{
   pathname?: string
@@ -10,6 +12,7 @@ type TableProps = React.PropsWithChildren<{
   rowKey: string
   onRowClick?: Function
   showRightArrow?: boolean
+  loading?: boolean
 }>
 
 const Table: React.FunctionComponent<TableProps> = ({
@@ -18,9 +21,14 @@ const Table: React.FunctionComponent<TableProps> = ({
   onRowClick = () => {},
   children,
   showRightArrow = false,
+  loading
 }) => {
+  const className = classNames(styles.table, { 
+    [styles.loading]: loading 
+  })
   return (
-    <div className={styles.table}>
+    <div className={className}>
+      {loading && <Spinner size='normal' className={styles.loadingSnipper}/>}
       <RcTable
         data={data}
         rowKey={rowKey}

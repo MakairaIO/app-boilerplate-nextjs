@@ -1,6 +1,6 @@
 import { FaArrowLeft } from 'react-icons/fa'
 
-import { PageWrapper, Link, Button } from '@/components'
+import { PageWrapper, Link, Button, Table, Column } from '@/components'
 import { withMakaira } from '@/makaira/withMakaira'
 
 export default function Example() {
@@ -11,6 +11,31 @@ export default function Example() {
           Back to homepage
         </Button>
       </Link>
+
+      <h2>Table</h2>
+      <Table data={[
+        { "name": "Apple", "value": "1" },
+        { "name": "Banana", "value": "2" },
+        { "name": "Eggs", "value": "3" }
+      ]}
+        rowKey="name"
+      >
+        <Column title="name" dataIndex={"name"} key="name" />
+        <Column title="value" dataIndex={"value"} key="value" />
+      </Table>
+      
+      <h2>Table with loading</h2>
+      <Table data={[
+        { "name": "Apple", "value": "1" },
+        { "name": "Banana", "value": "2" },
+        { "name": "Eggs", "value": "3" }
+      ]}
+        rowKey="name"
+        loading
+      >
+        <Column title="name" dataIndex={"name"} key="name" />
+        <Column title="value" dataIndex={"value"} key="value" />
+      </Table>
     </PageWrapper>
   )
 }
