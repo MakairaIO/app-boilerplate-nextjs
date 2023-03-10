@@ -1,6 +1,6 @@
 import { FaArrowLeft } from 'react-icons/fa'
 
-import { PageWrapper, Link, Button } from '@/components'
+import { PageWrapper, Link, Button, Tooltip } from '@/components'
 import { withMakaira } from '@/makaira/withMakaira'
 
 export default function Example() {

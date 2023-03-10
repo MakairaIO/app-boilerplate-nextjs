@@ -1,0 +1,56 @@
+@import '../../styles/mixins';
+
+.overlay {
+  background-color: transparent;
+  max-width: 250px;
+  padding: 5px;
+
+  &[class~='rc-tooltip-placement-bottom'] {
+    :global {
+      .rc-tooltip-arrow {
+        border-bottom-color: rgba(0, 0, 0, 0.85);
+        top: 0;
+      }
+    }
+  }
+
+  &[class~='rc-tooltip-placement-left'] {
+    :global {
+      .rc-tooltip-arrow {
+        border-left-color: rgba(0, 0, 0, 0.85);
+        right: 0;
+      }
+    }
+  }
+
+  &[class~='rc-tooltip-placement-right'] {
+    :global {
+      .rc-tooltip-arrow {
+        border-right-color: rgba(0, 0, 0, 0.85);
+        left: 0;
+      }
+    }
+  }
+  &[class~='rc-tooltip-placement-top'] {
+    :global {
+      .rc-tooltip-arrow {
+        border-top-color: rgba(0, 0, 0, 0.85);
+        bottom: 0;
+      }
+    }
+  }
+
+  :global {
+    .rc-tooltip-inner {
+      @include bravo;
+      color: var(--white);
+      border: none;
+      border-radius: 2px;
+      background-color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+
+.wrapper {
+  display: inline-block;
+}
