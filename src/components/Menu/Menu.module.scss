@@ -9,6 +9,7 @@
   & + li {
     border-top: 1px solid var(--neutral-10);
   }
+
   &:not(:first-child) {
     margin-top: 2rem;
   }
@@ -26,6 +27,7 @@
 .wrapper {
   max-width: 20rem;
   font-family: var(--font-family-regular);
+
   :global {
     .rc-menu.rc-menu-vertical {
       background-color: white;
@@ -72,10 +74,12 @@
         border-radius: 2px;
         transition: all 0.3s ease;
       }
+
       .rc-menu-item:empty,
       .rc-menu-submenu .rc-menu-submenu-title:empty {
         display: none;
       }
+
       .rc-menu-item-active,
       .rc-menu-submenu-active .rc-menu-submenu-title {
         background-color: rgba(236, 242, 243, 0.5);
@@ -106,16 +110,25 @@
 .horizontal {
   &[class~='page-header__popup'] {
     :global {
-      .rc-menu::before {
-        position: absolute;
-        content: '';
-        top: -0.8rem;
-        left: 2.8rem;
-        border-left: 0.8rem solid transparent;
-        border-right: 0.8rem solid transparent;
-        border-bottom: 0.8rem solid var(--white);
-        width: 0;
-        height: 0;
+      .rc-menu {
+        &::before {
+          position: absolute;
+          content: '';
+          top: -0.8rem;
+          left: 2.8rem;
+          border-left: 0.8rem solid transparent;
+          border-right: 0.8rem solid transparent;
+          border-bottom: 0.8rem solid var(--white);
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+  :global {
+    .rc-menu-submenu-horizontal {
+      .rc-menu-submenu-title {
+        padding: 1rem 1rem 1rem 0 !important;
       }
     }
   }
