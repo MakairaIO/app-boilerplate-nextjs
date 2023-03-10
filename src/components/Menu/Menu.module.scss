@@ -108,7 +108,7 @@
 }
 
 .horizontal {
-  &[class~='rc-menu-submenu-popup'] {
+  &[class~='submenu__lv1'] {
     :global {
       .rc-menu {
         &::before {
