@@ -16,7 +16,7 @@ type ColorPickerProps = {
 
 const ColorPicker: React.FC<ColorPickerProps> = (props) => {
   const containerRef = useRef<HTMLDivElement>(null)
-  const { onChange = console.log } = props
+  const { onChange = () => {} } = props
   const colorValue = props.value
     ? props.value
     : {
