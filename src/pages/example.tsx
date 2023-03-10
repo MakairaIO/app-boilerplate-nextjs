@@ -313,6 +313,15 @@ export default function Example() {
           <Radio label={'Radio button'} value={'radio-1'} disabled />
           <Radio size="large" label={'Radio button'} value={'radio-1'} />
         </div>
+
+        <Divider />
+
+        <div>
+        <NumberInput value={number} max={20} min={5} label="Number Input" description='Input description' onChange={setNumber}/>
+        <NumberInput value={number} max={20} min={5} label="Number Input" disabled style={{marginLeft: '30px'}}/>
+        </div>
+
+        
       </PageWrapper>
       <PageWrapper
         title="Menu & Dropdown"
@@ -612,11 +621,6 @@ export default function Example() {
             },
           ]}
         ></Tabs>
-      </PageWrapper>
-      
-      <PageWrapper title='NumberInput' prefix='You are looking at'>
-        <NumberInput value={number} max={20} min={5} label="Number Input" description='Input description' onChange={setNumber}/>
-        <NumberInput value={number} max={20} min={5} label="Number Input" disabled style={{marginLeft: '30px'}}/>
       </PageWrapper>
     </>
   )
