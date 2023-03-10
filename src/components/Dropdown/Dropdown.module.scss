@@ -1,7 +1,7 @@
 .rc-dropdown {
   :global {
     .rc-menu {
-      padding: var(--spacer-xxs);
+      padding: var(--spacer-xxs) !important;
       box-shadow: var(--elevation-50);
       border: 0;
     }
