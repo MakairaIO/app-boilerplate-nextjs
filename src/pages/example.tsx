@@ -6,6 +6,10 @@ import {
   FaRegArrowAltCircleLeft,
   FaRegArrowAltCircleRight,
   FaRegArrowAltCircleUp,
+  FaCheckCircle,
+  FaBookmark,
+  FaSpinner,
+  FaChessKnight,
 } from 'react-icons/fa'
 
 import {
@@ -36,6 +40,7 @@ import {
   Table,
   Column,
   Tabs,
+  Badge,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -317,11 +322,23 @@ export default function Example() {
         <Divider />
 
         <div>
-        <NumberInput value={number} max={20} min={5} label="Number Input" description='Input description' onChange={setNumber}/>
-        <NumberInput value={number} max={20} min={5} label="Number Input" disabled style={{marginLeft: '30px'}}/>
+          <NumberInput
+            value={number}
+            max={20}
+            min={5}
+            label="Number Input"
+            description="Input description"
+            onChange={setNumber}
+          />
+          <NumberInput
+            value={number}
+            max={20}
+            min={5}
+            label="Number Input"
+            disabled
+            style={{ marginLeft: '30px' }}
+          />
         </div>
-
-        
       </PageWrapper>
       <PageWrapper
         title="Menu & Dropdown"
@@ -621,6 +638,25 @@ export default function Example() {
             },
           ]}
         ></Tabs>
+      </PageWrapper>
+      <PageWrapper
+        title="Badges"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+          <Badge type="primary" text="Primary" icon={FaCheckCircle} />
+          <Badge type="secondary" text="Secondary" icon={FaBookmark} />
+          <Badge type="success" text="Sucess" icon={FaChessKnight} />
+
+          <Badge type="primary" icon={FaCheckCircle} />
+          <Badge type="secondary" icon={FaBookmark} />
+          <Badge type="success" icon={FaChessKnight} />
+
+          <Badge spin={true} icon={FaSpinner} />
+          <Badge spin={true} type="secondary" text="Loading" icon={FaSpinner} />
+          <Badge type="success" spin={true} text="Badge" icon={FaCheckCircle} />
+        </div>
       </PageWrapper>
     </>
   )
