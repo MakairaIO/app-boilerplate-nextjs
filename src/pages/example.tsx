@@ -598,7 +598,7 @@ export default function Example() {
       
       <PageWrapper title='NumberInput' prefix='You are looking at'>
         <NumberInput value={number} max={20} min={5} label="Number Input" description='Input description' onChange={setNumber}/>
-        <NumberInput value={number} max={20} min={5} label="Number Input" disabled />
+        <NumberInput value={number} max={20} min={5} label="Number Input" disabled style={{marginLeft: '30px'}}/>
       </PageWrapper>
     </>
   )
