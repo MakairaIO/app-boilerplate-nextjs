@@ -108,14 +108,14 @@
 }
 
 .horizontal {
-  &[class~='page-header__popup'] {
+  &[class~='rc-menu-submenu-popup'] {
     :global {
       .rc-menu {
         &::before {
           position: absolute;
           content: '';
           top: -0.8rem;
-          left: 2.8rem;
+          left: 1rem;
           border-left: 0.8rem solid transparent;
           border-right: 0.8rem solid transparent;
           border-bottom: 0.8rem solid var(--white);
@@ -128,7 +128,7 @@
   :global {
     .rc-menu-submenu-horizontal {
       .rc-menu-submenu-title {
-        padding: 1rem 1rem 1rem 0 !important;
+        padding: 1rem !important;
       }
     }
   }
