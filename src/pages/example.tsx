@@ -49,7 +49,11 @@ export default function Example() {
 
   return (
     <>
-      <PageWrapper title="Buttons" prefix="You are looking at">
+      <PageWrapper
+        title="Buttons"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
           <Button
             icon={FaArrowLeft}
@@ -135,7 +139,11 @@ export default function Example() {
           </Button>
         </div>
       </PageWrapper>
-      <PageWrapper title="Form Elements" prefix="You are looking at">
+      <PageWrapper
+        title="Form Elements"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
           <Checkbox name="chk_01" label="Sample checkbox" />
           <Checkbox name="chk_02" label="Disabled checkbox" disabled />
@@ -303,7 +311,11 @@ export default function Example() {
           <Radio size="large" label={'Radio button'} value={'radio-1'} />
         </div>
       </PageWrapper>
-      <PageWrapper title="Menu & Dropdown" prefix="You are looking at">
+      <PageWrapper
+        title="Menu & Dropdown"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 40 }}>
           <Dropdown
             options={[
@@ -379,7 +391,11 @@ export default function Example() {
           </Menu>
         </div>
       </PageWrapper>
-      <PageWrapper title="Collapse" prefix="You are looking at">
+      <PageWrapper
+        title="Collapse"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div
           style={{
             display: 'grid',
@@ -439,12 +455,20 @@ export default function Example() {
           </Collapse>
         </div>
       </PageWrapper>
-      <PageWrapper title="Headings" prefix="You are looking at">
+      <PageWrapper
+        title="Headings"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <Heading1>Page Heading Main H1</Heading1>
         <Heading2>Page Heading Main H2</Heading2>
         <Heading3>Page Heading Main H3</Heading3>
       </PageWrapper>
-      <PageWrapper title="Table" prefix="You are looking at">
+      <PageWrapper
+        title="Table"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <h2>Table</h2>
         <Table
           data={[
@@ -491,7 +515,11 @@ export default function Example() {
           }}
         ></Table>
       </PageWrapper>
-      <PageWrapper title="Tootips" prefix="You are looking at">
+      <PageWrapper
+        title="Tootips"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div
           style={{
             display: 'flex',
@@ -529,7 +557,11 @@ export default function Example() {
           </Tooltip>
         </div>
       </PageWrapper>
-      <PageWrapper title="Pagination" prefix="You are looking at">
+      <PageWrapper
+        title="Pagination"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <Pagination
           initialCurrentPage={8}
           maxPage={12}
