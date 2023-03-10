@@ -1,4 +1,12 @@
-import { FaArrowLeft, FaChevronDown, FaTools } from 'react-icons/fa'
+import {
+  FaArrowLeft,
+  FaChevronDown,
+  FaTools,
+  FaRegArrowAltCircleDown,
+  FaRegArrowAltCircleLeft,
+  FaRegArrowAltCircleRight,
+  FaRegArrowAltCircleUp,
+} from 'react-icons/fa'
 
 import {
   PageWrapper,
@@ -436,53 +444,97 @@ export default function Example() {
         <Heading2>Page Heading Main H2</Heading2>
         <Heading3>Page Heading Main H3</Heading3>
       </PageWrapper>
-      <PageWrapper title='Table' prefix='You are looking at'>
+      <PageWrapper title="Table" prefix="You are looking at">
         <h2>Table</h2>
-        <Table data={[
-          { "name": "Apple", "value": "1" },
-          { "name": "Banana", "value": "2" },
-          { "name": "Eggs", "value": "3" }
-        ]}
+        <Table
+          data={[
+            { name: 'Apple', value: '1' },
+            { name: 'Banana', value: '2' },
+            { name: 'Eggs', value: '3' },
+          ]}
           rowKey="name"
         >
-          <Column title="name" dataIndex={"name"} key="name" />
-          <Column title="value" dataIndex={"value"} key="value" />
+          <Column title="name" dataIndex={'name'} key="name" />
+          <Column title="value" dataIndex={'value'} key="value" />
         </Table>
 
         <h2>Table with loading</h2>
-        <Table data={[
-          { "name": "Apple", "value": "1" },
-          { "name": "Banana", "value": "2" },
-          { "name": "Eggs", "value": "3" }
-        ]}
+        <Table
+          data={[
+            { name: 'Apple', value: '1' },
+            { name: 'Banana', value: '2' },
+            { name: 'Eggs', value: '3' },
+          ]}
           rowKey="name"
           loading
         >
-          <Column title="name" dataIndex={"name"} key="name" />
-          <Column title="value" dataIndex={"value"} key="value" />
+          <Column title="name" dataIndex={'name'} key="name" />
+          <Column title="value" dataIndex={'value'} key="value" />
         </Table>
 
         <h2>Table with pagination and columns props</h2>
-        <Table data={[
-          { "name": "Apple", "value": "1" },
-          { "name": "Banana", "value": "2" },
-          { "name": "Eggs", "value": "3" }
-        ]}
+        <Table
+          data={[
+            { name: 'Apple', value: '1' },
+            { name: 'Banana', value: '2' },
+            { name: 'Eggs', value: '3' },
+          ]}
           rowKey="name"
           columns={[
-            { title: "name", dataIndex: "name", key: "name" },
-            { title: "value", dataIndex: "value", key: "value" }
+            { title: 'name', dataIndex: 'name', key: 'name' },
+            { title: 'value', dataIndex: 'value', key: 'value' },
           ]}
           pagination={{
             initialCurrentPage: 8,
             maxPage: 12,
-            onPageSwitch: () => { }
+            onPageSwitch: () => {},
+          }}
+        ></Table>
+      </PageWrapper>
+      <PageWrapper title="Tootips" prefix="You are looking at">
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 50,
           }}
         >
-        </Table>
+          <Tooltip
+            placement="top"
+            overlay={<span>An additional info tooltip is displayed</span>}
+          >
+            <Button icon={FaRegArrowAltCircleUp} variant="reduced" />
+          </Tooltip>
+
+          <Tooltip
+            placement="bottom"
+            overlay={<span>An additional info tooltip is displayed</span>}
+          >
+            <Button icon={FaRegArrowAltCircleDown} variant="reduced" />
+          </Tooltip>
+
+          <Tooltip
+            placement="left"
+            overlay={<span>An additional info tooltip is displayed</span>}
+            wrapperStyle={{ marginLeft: 200 }}
+          >
+            <Button icon={FaRegArrowAltCircleLeft} variant="reduced" />
+          </Tooltip>
+
+          <Tooltip
+            placement="right"
+            overlay={<span>An additional info tooltip is displayed</span>}
+          >
+            <Button icon={FaRegArrowAltCircleRight} variant="reduced" />
+          </Tooltip>
+        </div>
       </PageWrapper>
-      <PageWrapper title='Pagination' prefix='You are looking at'>
-        <Pagination initialCurrentPage={8} maxPage={12} onPageSwitch={() => { }} />
+      <PageWrapper title="Pagination" prefix="You are looking at">
+        <Pagination
+          initialCurrentPage={8}
+          maxPage={12}
+          onPageSwitch={() => {}}
+        />
       </PageWrapper>
     </>
   )
