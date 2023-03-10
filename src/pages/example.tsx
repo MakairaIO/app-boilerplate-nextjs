@@ -15,7 +15,7 @@ export default function Example() {
         </Button>
       </Link>
       <NumberInput value={number} max={20} min={5} label="Number Input" description='Input description' onChange={setNumber}/>
-      <NumberInput value={number} max={20} min={5} label="Number Input Disabled" disabled/>
+      <NumberInput value={number} max={20} min={5} label="Number Input Disabled" disabled style={{marginLeft: '30px'}}/>
     </PageWrapper>
   )
 }

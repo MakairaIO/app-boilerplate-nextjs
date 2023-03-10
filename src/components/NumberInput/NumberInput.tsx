@@ -12,7 +12,9 @@ type NumberInputProps = {
   max?: number;
   min?: number;
   value: number;
-  disabled?: boolean
+  disabled?: boolean;
+  className?: string;
+  style?: React.CSSProperties
 }
 
 const NumberInput: React.FC<NumberInputProps> = (props) => {
@@ -24,6 +26,8 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     min,
     value,
     disabled,
+    className,
+    style,
   } = props
 
   function handleChange(newValue: number) {
@@ -57,7 +61,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
   const id = useId()
 
   return (
-    <div className={classNames("number-input", styles.numberInput)}>
+    <div className={classNames("number-input", styles.numberInput, className)} style={style}>
       {label && (
         <Text element="div" className={styles.label}>
           {label}
