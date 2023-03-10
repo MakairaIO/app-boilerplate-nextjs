@@ -40,9 +40,11 @@ import {
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
 import Pagination from '@/components/Pagination/Pagination'
+import NumberInput from '@/components/NumberInput/NumberInput'
 
 export default function Example() {
   const [value, setValue] = useState('0')
+  const [number, setNumber] = useState(10)
 
   const onChange = (key: React.Key | React.Key[]) => {
     setValue(`${key}`)
@@ -592,6 +594,11 @@ export default function Example() {
           ]}>
 
         </Tabs>
+      </PageWrapper>
+      
+      <PageWrapper title='NumberInput' prefix='You are looking at'>
+        <NumberInput value={number} max={20} min={5} label="Number Input" description='Input description' onChange={setNumber}/>
+        <NumberInput value={number} max={20} min={5} label="Number Input" disabled />
       </PageWrapper>
     </>
   )
