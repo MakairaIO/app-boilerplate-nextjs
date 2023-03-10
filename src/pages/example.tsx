@@ -41,6 +41,7 @@ import {
   Column,
   Tabs,
   Badge,
+  AppMenu,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -656,6 +657,34 @@ export default function Example() {
           <Badge spin={true} icon={FaSpinner} />
           <Badge spin={true} type="secondary" text="Loading" icon={FaSpinner} />
           <Badge type="success" spin={true} text="Badge" icon={FaCheckCircle} />
+        </div>
+      </PageWrapper>
+      <PageWrapper
+        title="App Menu"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+          <AppMenu text="No badge" icon={FaBookmark} />
+          <AppMenu icon={FaRegArrowAltCircleRight} />
+          <AppMenu text="Text only" />
+          <AppMenu
+            badge={
+              <Badge type="success" text="Badge only" icon={FaCheckCircle} />
+            }
+          />
+          <AppMenu
+            text="App store"
+            icon={FaChessKnight}
+            badge={<Badge type="success" text="Sucess" icon={FaCheckCircle} />}
+          />
+          <AppMenu
+            text="Too long fancy text"
+            icon={FaCheckCircle}
+            badge={
+              <Badge spin text="Loading" type="secondary" icon={FaSpinner} />
+            }
+          />
         </div>
       </PageWrapper>
     </>
