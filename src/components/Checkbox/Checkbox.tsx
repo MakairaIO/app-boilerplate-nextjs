@@ -7,25 +7,26 @@ interface CheckboxProps {
   name: string
   label: string
   disabled?: boolean
+  onClick?: () => void;
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
   name,
   label,
+  onClick,
   disabled = false,
 }) => {
+  
   const classes = csx(
-    styles.checkbox,
-    disabled ? styles.checkbox__disabled : ''
+    styles.wrapper,
+    disabled ? styles.disabled : ''
   )
-
-  const disabledProp = disabled ? { disabled: true } : {}
 
   return (
     <label className={classes} htmlFor={name}>
-      <input name={name} type="checkbox" id={name} {...disabledProp} />
+      <input name={name} type="checkbox" id={name} onClick={onClick} disabled={disabled} />
       <span className={styles.checkmark}></span>
-      <Text className={styles.checkbox__text} weight="medium">
+      <Text className={styles.text} weight="medium">
         {label}
       </Text>
     </label>

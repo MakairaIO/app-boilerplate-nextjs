@@ -7,12 +7,14 @@ import styles from '@/components/PageWrapper/PageTitle.module.scss'
 type PageTitleProps = React.PropsWithChildren<{
   className?: string
   prefix?: string
+  suffix?: string
 }>
 
 const PageTitle: FunctionComponent<PageTitleProps> = ({
   className,
   children,
   prefix,
+  suffix,
   ...rest
 }) => {
   return (
@@ -27,6 +29,13 @@ const PageTitle: FunctionComponent<PageTitleProps> = ({
           {children}
         </Text>
       </div>
+      {suffix && (
+        <div className={styles.suffix}>
+          <Text className={styles.text} element="p" size="delta" weight="book">
+            {suffix}
+          </Text>
+        </div>
+      )}
     </div>
   )
 }

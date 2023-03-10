@@ -1,4 +1,12 @@
-import { FaArrowLeft, FaChevronDown, FaTools } from 'react-icons/fa'
+import {
+  FaArrowLeft,
+  FaChevronDown,
+  FaTools,
+  FaRegArrowAltCircleDown,
+  FaRegArrowAltCircleLeft,
+  FaRegArrowAltCircleRight,
+  FaRegArrowAltCircleUp,
+} from 'react-icons/fa'
 
 import {
   PageWrapper,
@@ -42,7 +50,11 @@ export default function Example() {
 
   return (
     <>
-      <PageWrapper title="Buttons" prefix="You are looking at">
+      <PageWrapper
+        title="Buttons"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
           <Button
             icon={FaArrowLeft}
@@ -128,7 +140,11 @@ export default function Example() {
           </Button>
         </div>
       </PageWrapper>
-      <PageWrapper title="Form Elements" prefix="You are looking at">
+      <PageWrapper
+        title="Form Elements"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
           <Checkbox name="chk_01" label="Sample checkbox" />
           <Checkbox name="chk_02" label="Disabled checkbox" disabled />
@@ -296,7 +312,11 @@ export default function Example() {
           <Radio size="large" label={'Radio button'} value={'radio-1'} />
         </div>
       </PageWrapper>
-      <PageWrapper title="Menu & Dropdown" prefix="You are looking at">
+      <PageWrapper
+        title="Menu & Dropdown"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 40 }}>
           <Dropdown
             options={[
@@ -324,10 +344,8 @@ export default function Example() {
           </Dropdown>
           <Menu mode="horizontal">
             <SubMenu
-              popupOffset={[-20, 0]}
               title={<Button icon={FaTools} variant="reduced" />}
               key="Settings1"
-              popupClassName="page-header__popup"
             >
               <GroupTitle>Tools</GroupTitle>
               <SubMenu key="Importer1" title="Importer">
@@ -374,7 +392,11 @@ export default function Example() {
           </Menu>
         </div>
       </PageWrapper>
-      <PageWrapper title="Collapse" prefix="You are looking at">
+      <PageWrapper
+        title="Collapse"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <div
           style={{
             display: 'grid',
@@ -434,58 +456,118 @@ export default function Example() {
           </Collapse>
         </div>
       </PageWrapper>
-      <PageWrapper title="Headings" prefix="You are looking at">
+      <PageWrapper
+        title="Headings"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <Heading1>Page Heading Main H1</Heading1>
         <Heading2>Page Heading Main H2</Heading2>
         <Heading3>Page Heading Main H3</Heading3>
       </PageWrapper>
-      <PageWrapper title='Table' prefix='You are looking at'>
+      <PageWrapper
+        title="Table"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
         <h2>Table</h2>
-        <Table data={[
-          { "name": "Apple", "value": "1" },
-          { "name": "Banana", "value": "2" },
-          { "name": "Eggs", "value": "3" }
-        ]}
+        <Table
+          data={[
+            { name: 'Apple', value: '1' },
+            { name: 'Banana', value: '2' },
+            { name: 'Eggs', value: '3' },
+          ]}
           rowKey="name"
         >
-          <Column title="name" dataIndex={"name"} key="name" />
-          <Column title="value" dataIndex={"value"} key="value" />
+          <Column title="name" dataIndex={'name'} key="name" />
+          <Column title="value" dataIndex={'value'} key="value" />
         </Table>
 
         <h2>Table with loading</h2>
-        <Table data={[
-          { "name": "Apple", "value": "1" },
-          { "name": "Banana", "value": "2" },
-          { "name": "Eggs", "value": "3" }
-        ]}
+        <Table
+          data={[
+            { name: 'Apple', value: '1' },
+            { name: 'Banana', value: '2' },
+            { name: 'Eggs', value: '3' },
+          ]}
           rowKey="name"
           loading
         >
-          <Column title="name" dataIndex={"name"} key="name" />
-          <Column title="value" dataIndex={"value"} key="value" />
+          <Column title="name" dataIndex={'name'} key="name" />
+          <Column title="value" dataIndex={'value'} key="value" />
         </Table>
 
         <h2>Table with pagination and columns props</h2>
-        <Table data={[
-          { "name": "Apple", "value": "1" },
-          { "name": "Banana", "value": "2" },
-          { "name": "Eggs", "value": "3" }
-        ]}
+        <Table
+          data={[
+            { name: 'Apple', value: '1' },
+            { name: 'Banana', value: '2' },
+            { name: 'Eggs', value: '3' },
+          ]}
           rowKey="name"
           columns={[
-            { title: "name", dataIndex: "name", key: "name" },
-            { title: "value", dataIndex: "value", key: "value" }
+            { title: 'name', dataIndex: 'name', key: 'name' },
+            { title: 'value', dataIndex: 'value', key: 'value' },
           ]}
           pagination={{
             initialCurrentPage: 8,
             maxPage: 12,
-            onPageSwitch: () => { }
+            onPageSwitch: () => {},
+          }}
+        ></Table>
+      </PageWrapper>
+      <PageWrapper
+        title="Tootips"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: 50,
           }}
         >
-        </Table>
+          <Tooltip
+            placement="top"
+            overlay={<span>An additional info tooltip is displayed</span>}
+          >
+            <Button icon={FaRegArrowAltCircleUp} variant="reduced" />
+          </Tooltip>
+
+          <Tooltip
+            placement="bottom"
+            overlay={<span>An additional info tooltip is displayed</span>}
+          >
+            <Button icon={FaRegArrowAltCircleDown} variant="reduced" />
+          </Tooltip>
+
+          <Tooltip
+            placement="left"
+            overlay={<span>An additional info tooltip is displayed</span>}
+            wrapperStyle={{ marginLeft: 200 }}
+          >
+            <Button icon={FaRegArrowAltCircleLeft} variant="reduced" />
+          </Tooltip>
+
+          <Tooltip
+            placement="right"
+            overlay={<span>An additional info tooltip is displayed</span>}
+          >
+            <Button icon={FaRegArrowAltCircleRight} variant="reduced" />
+          </Tooltip>
+        </div>
       </PageWrapper>
-      <PageWrapper title='Pagination' prefix='You are looking at'>
-        <Pagination initialCurrentPage={8} maxPage={12} onPageSwitch={() => { }} />
+      <PageWrapper
+        title="Pagination"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <Pagination
+          initialCurrentPage={8}
+          maxPage={12}
+          onPageSwitch={() => {}}
+        />
       </PageWrapper>
 
       <PageWrapper title='Tabs' prefix='You are looking at'>

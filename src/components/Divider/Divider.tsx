@@ -6,7 +6,10 @@ interface DividerProps {
 }
 
 const Divider: React.FC<DividerProps> = ({ mode = 'horizontal' }) => {
-  return <hr className={styles.divider} />
+
+  const className = mode === 'vertical' ? styles.vertical : styles.horizontal;
+
+  return <div className={className}></div>
 }
 
 Divider.displayName = 'Divider'
