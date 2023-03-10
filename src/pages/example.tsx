@@ -36,6 +36,7 @@ import {
   Table,
   Column,
   Tabs,
+  ColorPicker,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -45,6 +46,11 @@ import NumberInput from '@/components/NumberInput/NumberInput'
 export default function Example() {
   const [value, setValue] = useState('0')
   const [number, setNumber] = useState(10)
+  const [color, setColor] = useState({
+    "hsla": "hsla(0, 40%, 52%, 1)",
+    "rgba": "rgba(182, 84, 84, 1)",
+    "hex": "#b65454"
+  })
 
   const onChange = (key: React.Key | React.Key[]) => {
     setValue(`${key}`)
@@ -312,6 +318,10 @@ export default function Example() {
           <Radio label={'Radio button'} value={'radio-1'} />
           <Radio label={'Radio button'} value={'radio-1'} disabled />
           <Radio size="large" label={'Radio button'} value={'radio-1'} />
+        </div>
+
+        <div style={{ marginTop: '20px'}}>
+          <ColorPicker onChange={setColor} value={color} description="This area is covered in mud! Be aware of crossing snakes."/>
         </div>
       </PageWrapper>
       <PageWrapper
