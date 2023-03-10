@@ -15,6 +15,7 @@ interface TooltipProps {
   wrapperClassName?: string
   wrapperStyle?: CSSProperties
   wrapperTagName?:  keyof ReactHTML
+  trigger?: string | string[];
 }
 
 const Tooltip: React.FC<TooltipProps> = ({ children, wrapperClassName, wrapperStyle, wrapperTagName = 'div', ...rest }) => {
