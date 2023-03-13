@@ -1,5 +1,5 @@
-﻿import React, { useRef } from 'react'
-import { Sketch, ColorResult } from '@uiw/react-color'
+﻿import React, { Suspense, useEffect, useRef, useState } from 'react'
+import { ColorResult } from '@uiw/react-color'
 import styles from '@/components/ColorPicker/ColorPicker.module.scss'
 import { Tooltip } from '@/components'
 
@@ -12,11 +12,16 @@ type ColorPickerProps = {
   value?: ColorType,
   onChange?: (color: ColorType) => void;
   description?: string;
+  lazyLoadingText: string;
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = (props) => {
+  const [Sketch, setSketch] = useState<any>(null)
   const containerRef = useRef<HTMLDivElement>(null)
-  const { onChange = console.log } = props
+  const { 
+    onChange = () => {},
+    lazyLoadingText = 'Loading...' 
+  } = props
   const colorValue = props.value
     ? props.value
     : {
@@ -27,6 +32,12 @@ const ColorPicker: React.FC<ColorPickerProps> = (props) => {
 
   const rgbLabel = ['R', 'G', 'B', 'A']
   const hex = colorValue.hex
+
+  useEffect(() => {
+     import('@uiw/react-color').then(module => {
+      setSketch(module.Sketch)
+    })
+  }, [])
 
   function handleColorChange(color: ColorResult) {
     const { hsla, rgba, hex } = formatColors(color)
@@ -62,11 +73,13 @@ const ColorPicker: React.FC<ColorPickerProps> = (props) => {
         <Tooltip
           placement="topLeft"
           overlay={
+          <Suspense fallback={<div className={styles['color-picker__suspense-loading']}>{lazyLoadingText}</div>}>
             <Sketch
               color={hex}
               onChange={handleColorChange}
               presetColors={[]}
             />
+          </Suspense>
           }
           trigger="click"
           overlayClassName={styles.popover}
