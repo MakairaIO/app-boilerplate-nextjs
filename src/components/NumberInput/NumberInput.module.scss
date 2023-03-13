@@ -1,0 +1,100 @@
+@import "../../styles/mixins";
+
+.numberInput {
+  display: inline-flex;
+  flex-direction: column;
+
+  * {
+    box-sizing: border-box;
+  }
+}
+
+.label {
+	color: var(--neutral-70);
+	margin-bottom: var(--spacer-three-xs);
+}
+
+.panel {
+	width: max-content;
+	display: flex;
+	border: 1px solid var(--neutral-40);
+	border-radius: 4px;
+
+	&:hover {
+		.controlPanel {
+			border-left: 1px solid var(--neutral-40);
+			.button {
+				&:first-child {
+					border-bottom: 1px solid var(--neutral-40);
+				}
+			}
+			.buttonIcon {
+				color: var(--brand-aubergine);
+			}
+		}
+	}
+
+	.controlPanel {
+		display: flex;
+		flex-direction: column;
+		border-left: 1px solid var(--neutral-10);
+	}
+	.controlPanelDisabled {
+		.button {
+			cursor: not-allowed;
+		}
+	}
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+}
+.input {
+  height: 3.1rem;
+  outline: none;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-aubergine);
+  padding: var(--spacer-xxs);
+  margin-left: 1px;
+  width: 7.4rem;
+  border: none;
+  &::placeholder {
+    color: var(--neutral-20);
+  }
+}
+
+.button {
+  border: none;
+  width: 2.4rem;
+  height: 1.5rem;
+  touch-action: manipulation;
+  overflow: visible;
+  display: inline-flex;
+  justify-content: center;
+  cursor: pointer;
+
+  &:first-child {
+    border-bottom: 1px solid var(--neutral-10);
+  }
+}
+
+.buttonIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: var(--neutral-40);
+  margin: auto;
+}
+
+
+.message {
+	font-style: italic;
+	font-weight: var(--font-weight-book);
+	margin-top: 0.35rem;
+	color: var(--neutral-60);
+}
