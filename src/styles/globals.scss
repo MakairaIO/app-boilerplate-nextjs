@@ -46,7 +46,6 @@ a {
   --neutral-100: #000;
   --legende: #84a400;
   --divider: #dde7e9;
-  --white: #ffffff;
 
   --font-weight-light: 100;
   --font-weight-medium: 400;
@@ -66,6 +65,9 @@ a {
   --spacer-three-xl: 64px;
 
   --transition-regular: 0.3s ease;
+
+  --elevation-15: 0 2px 4px -1px rgba(0, 0, 0, 0.15),
+  0 3px 10px -5px rgba(0, 0, 0, 0.3);
 }
 
 @font-face {

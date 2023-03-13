@@ -6,6 +6,10 @@ import {
   FaRegArrowAltCircleLeft,
   FaRegArrowAltCircleRight,
   FaRegArrowAltCircleUp,
+  FaCheckCircle,
+  FaBookmark,
+  FaSpinner,
+  FaChessKnight,
 } from 'react-icons/fa'
 
 import {
@@ -37,6 +41,8 @@ import {
   Column,
   Tabs,
   ColorPicker,
+  Badge,
+  AppMenu,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -320,6 +326,26 @@ export default function Example() {
           <Radio size="large" label={'Radio button'} value={'radio-1'} />
         </div>
 
+        <div>
+          <NumberInput
+            value={number}
+            max={20}
+            min={5}
+            label="Number Input"
+            description="Input description"
+            onChange={setNumber}
+          />
+          <NumberInput
+            value={number}
+            max={20}
+            min={5}
+            label="Number Input"
+            disabled
+            style={{ marginLeft: '30px' }}
+          />
+        </div>
+
+        <Divider />
         <div style={{ marginTop: '20px'}}>
           <ColorPicker onChange={setColor} value={color} description="This area is covered in mud! Be aware of crossing snakes."/>
         </div>
@@ -623,10 +649,52 @@ export default function Example() {
           ]}
         ></Tabs>
       </PageWrapper>
-      
-      <PageWrapper title='NumberInput' prefix='You are looking at'>
-        <NumberInput value={number} max={20} min={5} label="Number Input" description='Input description' onChange={setNumber}/>
-        <NumberInput value={number} max={20} min={5} label="Number Input" disabled style={{marginLeft: '30px'}}/>
+      <PageWrapper
+        title="Badges"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+          <Badge type="primary" text="Primary" icon={FaCheckCircle} />
+          <Badge type="secondary" text="Secondary" icon={FaBookmark} />
+          <Badge type="success" text="Sucess" icon={FaChessKnight} />
+
+          <Badge type="primary" icon={FaCheckCircle} />
+          <Badge type="secondary" icon={FaBookmark} />
+          <Badge type="success" icon={FaChessKnight} />
+
+          <Badge spin={true} icon={FaSpinner} />
+          <Badge spin={true} type="secondary" text="Loading" icon={FaSpinner} />
+          <Badge type="success" spin={true} text="Badge" icon={FaCheckCircle} />
+        </div>
+      </PageWrapper>
+      <PageWrapper
+        title="App Menu"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+          <AppMenu text="No badge" icon={FaBookmark} />
+          <AppMenu icon={FaRegArrowAltCircleRight} />
+          <AppMenu text="Text only" />
+          <AppMenu
+            badge={
+              <Badge type="success" text="Badge only" icon={FaCheckCircle} />
+            }
+          />
+          <AppMenu
+            text="App store"
+            icon={FaChessKnight}
+            badge={<Badge type="success" text="Sucess" icon={FaCheckCircle} />}
+          />
+          <AppMenu
+            text="Too long fancy text"
+            icon={FaCheckCircle}
+            badge={
+              <Badge spin text="Loading" type="secondary" icon={FaSpinner} />
+            }
+          />
+        </div>
       </PageWrapper>
     </>
   )
