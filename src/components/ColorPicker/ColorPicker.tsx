@@ -12,7 +12,7 @@ type ColorPickerProps = {
   value?: ColorType,
   onChange?: (color: ColorType) => void;
   description?: string;
-  lazyLoadingText: string;
+  lazyLoadingText?: string;
 }
 
 const ColorPicker: React.FC<ColorPickerProps> = (props) => {
