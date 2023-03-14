@@ -4,13 +4,12 @@ import Dialog from 'rc-dialog'
 import {IDialogPropTypes} from 'rc-dialog/lib/IDialogPropTypes'
 import { FaTimes } from 'react-icons/fa'
 import {ShadowScroll} from '@/components'
-
 import 'rc-dialog/assets/index.css'
 import styles from '@/components/Modal/Modal.module.scss'
 
-
 export interface ModalProps extends IDialogPropTypes {
   header?: string | ReactNode,
+  maxHeight?: string
 }
 
 const Modal: FunctionComponent<ModalProps> = ({
@@ -20,13 +19,16 @@ const Modal: FunctionComponent<ModalProps> = ({
   onClose = () => {},
   className = '',
   mask = false,
+  maxHeight = 'calc(100vh - 6rem)',
   ...rest
 }) => {
   if (!rest?.visible) return <></>
 
   return (
     <Dialog
-      style={{...rest?.style}}
+      style={{
+        ...rest?.style,
+      }}
       closeIcon={<FaTimes/>}
       className = {
         csx(`${styles.modal} ${className}`)
@@ -42,8 +44,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       {...rest}
     >
       {children && (
-        // <div className={styles.modalContent}>{children}</div>
-        <ShadowScroll className={styles.modalContent}>{children}</ShadowScroll>
+        <ShadowScroll className={styles.modalContent} maxHeight={maxHeight}>{children}</ShadowScroll>
       )}
     </Dialog>
   )
