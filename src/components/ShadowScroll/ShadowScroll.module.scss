@@ -1,0 +1,91 @@
+@import "../../styles/mixins";
+
+.wrapper {
+  // transition: 0.3s ease;
+  // position: relative;
+  // overflow: hidden !important;
+  // display: flex;
+  // flex-direction: column;
+  :global {
+    .shadow-scroll {
+      transition: 0.3s ease;
+      position: relative;
+      overflow: hidden !important;
+      display: flex;
+      flex-direction: column;
+    }
+    .shadow-scroll--vertical > .shadow-scroll__top,
+    .shadow-scroll--vertical > .shadow-scroll__bottom {
+      position: absolute;
+      height: 1px;
+      left: 0;
+      right: 0;
+      transition: 0.3s ease;
+      z-index: 1;
+    }
+    .shadow-scroll--vertical {
+      &.shadow-scroll--has-scroll {
+        & > .shadow-scroll__top {
+          box-shadow: 0 -5px 20px 5px var(--neutral-50);
+        }
+        & > .shadow-scroll__bottom {
+          box-shadow: 0 5px 20px 5px var(--neutral-50);
+        }
+      }
+      & > .shadow-scroll__top {
+        top: -1px;
+      }
+      &.shadow-scroll--top {
+        & > .shadow-scroll__top {
+          box-shadow: 0 -5px 5px 5px transparent;
+        }
+      }
+      & > .shadow-scroll__bottom {
+        bottom: -1px;
+      }
+      &.shadow-scroll--bottom {
+        & > .shadow-scroll__bottom {
+          box-shadow: 0 5px 5px 5px transparent;
+        }
+      }
+    }
+    .shadow-scroll--horizontal > .shadow-scroll__top,
+    .shadow-scroll--horizontal > .shadow-scroll__bottom {
+      position: absolute;
+      width: 1px;
+      top: 0;
+      bottom: 0;
+      transition: 0.3s ease;
+      z-index: 1;
+    }
+    .shadow-scroll--horizontal {
+      &.shadow-scroll--has-scroll {
+        & > .shadow-scroll__top {
+          box-shadow: -5px 0 20px 5px var(--neutral-50);
+        }
+        & > .shadow-scroll__bottom {
+          box-shadow: 5px 0 20px 5px var(--neutral-50);
+        }
+      }
+      & > .shadow-scroll__top {
+        left: -1px;
+      }
+      &.shadow-scroll--top {
+        & > .shadow-scroll__top {
+          box-shadow: -5px 0 5px 5px transparent;
+        }
+      }
+      & > .shadow-scroll__bottom {
+        right: -1px;
+      }
+      &.shadow-scroll--bottom {
+        & > .shadow-scroll__bottom {
+          box-shadow: 5px 0 5px 5px transparent;
+        }
+      }
+    }
+    .shadow-scroll__body {
+      overflow: auto;
+    }
+  }
+}

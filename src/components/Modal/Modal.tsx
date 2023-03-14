@@ -3,6 +3,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import Dialog from 'rc-dialog'
 import {IDialogPropTypes} from 'rc-dialog/lib/IDialogPropTypes'
 import { FaTimes } from 'react-icons/fa'
+import {ShadowScroll} from '@/components'
 
 import 'rc-dialog/assets/index.css'
 import styles from '@/components/Modal/Modal.module.scss'
@@ -41,7 +42,8 @@ const Modal: FunctionComponent<ModalProps> = ({
       {...rest}
     >
       {children && (
-        <div className={styles.modalContent}>{children}</div>
+        // <div className={styles.modalContent}>{children}</div>
+        <ShadowScroll className={styles.modalContent}>{children}</ShadowScroll>
       )}
     </Dialog>
   )
