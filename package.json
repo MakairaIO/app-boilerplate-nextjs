@@ -20,6 +20,7 @@
     "eslint": "8.33.0",
     "eslint-config-next": "13.1.6",
     "next": "13.1.6",
+    "rc-dialog": "^9.1.0",
     "rc-table": "^7.30.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
