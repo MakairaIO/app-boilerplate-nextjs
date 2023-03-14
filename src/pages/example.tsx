@@ -43,6 +43,8 @@ import {
   ColorPicker,
   Badge,
   AppMenu,
+  Modal, 
+  ShadowScroll
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -57,6 +59,7 @@ export default function Example() {
     "rgba": "rgba(182, 84, 84, 1)",
     "hex": "#b65454"
   })
+  const [open, setOpen] = useState(false)
 
   const onChange = (key: React.Key | React.Key[]) => {
     setValue(`${key}`)
@@ -696,8 +699,91 @@ export default function Example() {
           />
         </div>
       </PageWrapper>
+      <PageWrapper
+        title="Modal"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+        <Button onClick={() => setOpen(true)}>Open Modal</Button>
+        <Modal
+          onClose={() => setOpen(false)}
+          visible={open}
+          header={<ModalHeader />}
+          footer={<ModalFooter />}
+          style={{ marginTop: 40}}
+          maxHeight='300px'
+          mask={true}
+        >
+          <ModalBody />
+        </Modal>
+        </div>
+      </PageWrapper>
     </>
   )
 }
 
 export const getServerSideProps = withMakaira()
+
+
+const ModalHeader = () => {
+  return (
+    <div>
+      Importassistent.
+    </div>
+  )
+}
+
+const ModalBody = () => {
+  return (
+    <div>
+      <div>
+        Installieren des OXID Connect Modul in deinem OXID Shop
+      </div>
+      <div>
+        Um makaira.io einsetzen zu können Ut labore et dolore magna aliquyam
+        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+        ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+        ipsum dolor sit amet.
+      </div>
+      <div>
+        Sobald Du das eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet.
+      </div>
+      <div>
+        Um makaira.io einsetzen zu können Ut labore et dolore magna aliquyam
+        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+        ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+        ipsum dolor sit amet.
+      </div>
+      <div>
+        Sobald Du das eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet.
+      </div>
+      <div>
+        Um makaira.io einsetzen zu können Ut labore et dolore magna aliquyam
+        erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
+        ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem
+        ipsum dolor sit amet.
+      </div>
+      <div>
+        Sobald Du das eos et accusam et justo duo dolores et ea rebum. Stet
+        clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit
+        amet.
+      </div>
+    </div>
+  )
+}
+
+const ModalFooter = () => {
+  return (
+    <Button
+      className="ia-modal__button"
+      variant="primary"
+    >
+      Erledigt! Weiter geht’s
+    </Button>
+  )
+}

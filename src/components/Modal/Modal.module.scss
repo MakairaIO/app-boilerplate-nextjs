@@ -1,0 +1,112 @@
+@import "../../styles/mixins";
+
+.wrapper {
+  max-width: 60rem;
+  margin: auto;
+  overflow: hidden;
+  :global {
+    .rc-dialog-mask {
+      z-index: 999;
+      background-color: rgba(83, 112, 116, 0.2);
+
+      &+.rc-dialog-wrap {
+        z-index: 999;
+      }
+    }
+
+    .rc-dialog-wrap {
+      z-index: 999;
+    }
+
+    .rc-dialog-content {
+      max-height: calc(var(--modal-max-height) - var(--spacer-s) * 2);
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+
+      &>*:last-child {
+        border-bottom: none;
+      }
+    }
+
+    .rc-dialog-title {
+      color: var(--brand-aubergine);
+      font-weight: var(--font-weight-bold);
+      font-size: 2.4rem;
+      letter-spacing: -.2px;
+      line-height: 3.4rem;
+    }
+
+    .rc-dialog-footer {
+      button {
+        &+button {
+          margin-left: var(--spacer-xxs);
+        }
+      }
+    }
+
+    .rc-dialog-close {
+      opacity: 1;
+      color: var(--brand-aubergine);
+      height: 3.4rem;
+      width: 3.2rem;
+      right: var(--spacer-s);
+      top: var(--spacer-s);
+      z-index: 1000;
+    }
+
+
+    .rc-dialog-header,
+    .rc-dialog-footer {
+      padding: var(--spacer-s) var(--spacer-xxs);
+      margin: 0 var(--spacer-s);
+    }
+
+    .rc-dialog-body {
+      padding: 0;
+      margin: 0 var(--spacer-s);
+    }
+
+    .rc-dialog-header,
+    .rc-dialog-footer {
+      transition: box-shadow 0.3s ease;
+      border: none;
+      z-index: 1;
+    }
+
+    .rc-dialog-fade-enter,
+    .rc-dialog-fade-appear,
+    .rc-dialog-fade-leave {
+      animation-duration: 0.2s;
+    }
+  }
+
+  .modal {
+    --modal-max-height: 70rem;
+    --modal-padding: 1.6rem;
+    box-shadow: var(--elevation-50);
+    background-color: var(--neutral-00);
+    padding: 0;
+    transition: margin var(--transition-regular);
+    margin-top: calc(var(--offset-top) + 3rem);
+    border-radius: 8px;
+  }
+
+  .modalContent {
+    padding: var(--spacer-s) var(--spacer-xxs);
+    overflow: auto;
+    border-top: 1px solid #dde7e9;
+    border-bottom: 1px solid #dde7e9;
+
+    color: var(--brand-aubergine);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-light);
+    letter-spacing: 0;
+    line-height: 2.2rem
+  }
+
+  .modalFooter {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
