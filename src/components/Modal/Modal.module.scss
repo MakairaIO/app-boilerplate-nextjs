@@ -31,9 +31,7 @@
     .rc-dialog-title {
       color: var(--brand-aubergine);
       font-weight: var(--font-weight-bold);
-      font-size: 2.4rem;
-      letter-spacing: -.2px;
-      line-height: 3.4rem;
+      @include echo
     }
 
     .rc-dialog-footer {
@@ -90,21 +88,19 @@
     background-color: var(--neutral-00);
     padding: 0;
     transition: margin var(--transition-regular);
-    margin-top: calc(var(--offset-top) + 3rem);
     border-radius: 8px;
+    transform: translateY(-50%);
+    top: 50%;
   }
 
   .modalContent {
+    @include charlie;
     padding: var(--spacer-s) var(--spacer-xxs);
     overflow: auto;
-    border-top: 1px solid #dde7e9;
-    border-bottom: 1px solid #dde7e9;
-
+    border-top: 1px solid var(--divider);
+    border-bottom: 1px solid var(--divider);
     color: var(--brand-aubergine);
-    font-size: 1.5rem;
     font-weight: var(--font-weight-light);
-    letter-spacing: 0;
-    line-height: 2.2rem
   }
 
   .modalFooter {

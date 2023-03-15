@@ -713,7 +713,6 @@ export default function Example() {
           visible={open}
           header={<ModalHeader />}
           footer={<ModalFooter />}
-          style={{ marginTop: 40}}
           maxHeight='300px'
           mask={true}
         >
