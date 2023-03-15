@@ -1,6 +1,6 @@
 ﻿import { useEffect, useState } from 'react'
 import csx from 'classnames'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import { SlArrowLeft, SlArrowRight } from 'react-icons/sl'
 
 import styles from '@/components/Pagination/Pagination.module.scss'
 import classNames from 'classnames'
@@ -84,7 +84,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         })}
         onClick={() => handlePageSwitch(currentPage - 1)}
       >
-        <FaChevronLeft className={styles.icon}/>
+        <SlArrowLeft className={styles.icon}/>
       </button>
       <div className={styles.pages}>
         <button
@@ -119,7 +119,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         })}
         onClick={() => handlePageSwitch(currentPage + 1)}
       >
-        <FaChevronRight className={styles.icon}/>
+        <SlArrowRight className={styles.icon}/>
       </button>
     </div>
   )

@@ -2,7 +2,7 @@ import csx from 'classnames'
 import React, { FunctionComponent, ReactNode } from 'react'
 import Dialog from 'rc-dialog'
 import {IDialogPropTypes} from 'rc-dialog/lib/IDialogPropTypes'
-import { FaTimes } from 'react-icons/fa'
+import { GrClose } from 'react-icons/gr'
 import {ShadowScroll} from '@/components'
 import 'rc-dialog/assets/index.css'
 import styles from '@/components/Modal/Modal.module.scss'
@@ -29,7 +29,7 @@ const Modal: FunctionComponent<ModalProps> = ({
       style={{
         ...rest?.style,
       }}
-      closeIcon={<FaTimes/>}
+      closeIcon={<GrClose/>}
       className = {
         csx(`${styles.modal} ${className}`)
       }

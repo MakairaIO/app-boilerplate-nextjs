@@ -5,8 +5,7 @@ import RcSelect, {
   SelectProps as RcSelectProps,
 } from 'rc-select'
 import { Text } from '@/components'
-import { FaTimes } from 'react-icons/fa'
-import { TfiAngleDown } from 'react-icons/tfi'
+import { TfiAngleDown, TfiClose } from 'react-icons/tfi'
 import styles from './Select.module.scss'
 import csx from 'classnames'
 
@@ -72,7 +71,7 @@ const Select: React.FC<SelectProps> = ({
       {title && <div className={styles.label}>{title}</div>}
       <RcSelect
         inputIcon={() => <TfiAngleDown />}
-        clearIcon={() => <FaTimes />}
+        clearIcon={() => <TfiClose />}
         dropdownClassName={csx(
           styles.dropdown,
           size === 'large' ? styles.large : ''

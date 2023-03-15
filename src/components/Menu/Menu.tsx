@@ -5,7 +5,6 @@ import RcMenu, {
   MenuItemProps,
   MenuProps,
 } from 'rc-menu'
-import { FaChevronRight } from 'react-icons/fa'
 import { TfiAngleRight } from 'react-icons/tfi'
 import styles from './Menu.module.scss'
 import csx from 'classnames'

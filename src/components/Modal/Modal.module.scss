@@ -53,8 +53,11 @@
       right: var(--spacer-s);
       top: var(--spacer-s);
       z-index: 1000;
-    }
 
+      svg path{
+        stroke: currentColor;
+      }
+    }
 
     .rc-dialog-header,
     .rc-dialog-footer {
