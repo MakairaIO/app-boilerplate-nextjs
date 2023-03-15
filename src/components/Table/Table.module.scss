@@ -3,6 +3,7 @@
 .table {
   :global {
     .makaira-table {
+      margin-bottom: var(--spacer-xl);
       table {
         width: 100%;
         border-spacing: 0;
@@ -34,10 +35,6 @@
       }
 
       .makaira-table-tbody {
-        tr:nth-child(2n) .makaira-table-cell {
-          background: #F5F8F9;
-        }
-
         .makaira-table-cell {
           @include charlie;
           font-weight: var(--font-weight-medium);
@@ -49,6 +46,16 @@
     }
   }
 
+}
+
+.alternateBackground {
+  :global {
+    .makaira-table-tbody {
+      tr:nth-child(2n) .makaira-table-cell {
+        background: #F5F8F9;
+      }
+    }
+  }
 }
 
 .loading {
@@ -74,8 +81,4 @@
   color: var(--neutral-50);
   height: 1.8rem;
   width: 1.8rem;
-}
-
-.pagination {
-  margin-top: var(--spacer-xxs)
 }

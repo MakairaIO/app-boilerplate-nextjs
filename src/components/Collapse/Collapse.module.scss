@@ -13,7 +13,10 @@
     }
 
     .rc-collapse-expand-icon {
-      margin-right: 8px;
+      margin-right: var(--spacer-xxs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .rc-collapse-content-box {

@@ -12,6 +12,8 @@ import {
   FaChessKnight,
 } from 'react-icons/fa'
 
+import { TfiAngleDown } from 'react-icons/tfi'
+
 import {
   PageWrapper,
   Link,
@@ -376,7 +378,7 @@ export default function Example() {
             ]}
           >
             <Button
-              icon={FaChevronDown}
+              icon={TfiAngleDown}
               variant="secondary"
               iconPosition="right"
             >

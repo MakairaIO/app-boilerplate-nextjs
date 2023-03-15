@@ -6,6 +6,7 @@ import RcMenu, {
   MenuProps,
 } from 'rc-menu'
 import { FaChevronRight } from 'react-icons/fa'
+import { TfiAngleRight } from 'react-icons/tfi'
 import styles from './Menu.module.scss'
 import csx from 'classnames'
 import { PropsWithChildren } from 'react'
@@ -24,7 +25,7 @@ const SubMenuCustom: React.FC<SubMenuProps> = ({
     <SubMenu
       popupOffset={[8, 0]}
       title={title}
-      expandIcon={<FaChevronRight className={styles.expandIcon} />}
+      expandIcon={<TfiAngleRight className={styles.expandIcon} />}
       {...rest}
     >
       {children}

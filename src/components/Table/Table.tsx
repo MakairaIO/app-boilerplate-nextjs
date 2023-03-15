@@ -18,7 +18,8 @@ type TableProps = React.PropsWithChildren<{
   showRightArrow?: boolean
   loading?: boolean
   columns?: ColumnType
-  pagination?: PaginationProps
+  pagination?: PaginationProps,
+  alternateRowBackground?: Boolean
 }>
 
 const Table: React.FunctionComponent<TableProps> = ({
@@ -30,9 +31,11 @@ const Table: React.FunctionComponent<TableProps> = ({
   loading,
   columns,
   pagination,
+  alternateRowBackground = false
 }) => {
   const className = classNames(styles.table, { 
-    [styles.loading]: loading 
+    [styles.loading]: loading,
+    [styles.alternateBackground] : alternateRowBackground
   })
   return (
     <div className={className}>

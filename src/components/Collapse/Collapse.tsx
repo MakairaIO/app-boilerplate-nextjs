@@ -3,7 +3,7 @@ import RcCollapse, { CollapseProps as rcCollapseProps, Panel as RcPanel, Collaps
 import csx from 'classnames'
 import motionUtil from './motionUtil';
 import { Radio, RadioGroup, GroupProps } from '@/components/Radio/Radio';
-import { TfiAngleUp, TfiAngleDown } from 'react-icons/tfi'
+import { RxChevronUp, RxChevronDown } from 'react-icons/rx'
 import styles from '@/components/Collapse/Collapse.module.scss'
 
 export interface CollapseProps {
@@ -43,7 +43,7 @@ const Collapse: React.FC<CollapseProps> = ({
 
   const expandIcon: React.FC<RcPanelProps> = ({ isActive }) => {
     return <Fragment>
-      {isActive ? <TfiAngleUp /> : <TfiAngleDown />}
+      {isActive ? <RxChevronUp /> : <RxChevronDown />}
     </Fragment>
   }
 
