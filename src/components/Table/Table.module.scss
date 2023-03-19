@@ -3,6 +3,7 @@
 .table {
   :global {
     .makaira-table {
+      margin-bottom: var(--spacer-xl);
       table {
         width: 100%;
         border-spacing: 0;
@@ -34,10 +35,6 @@
       }
 
       .makaira-table-tbody {
-        tr:nth-child(2n) .makaira-table-cell {
-          background: #F5F8F9;
-        }
-
         .makaira-table-cell {
           @include charlie;
           font-weight: var(--font-weight-medium);
@@ -46,6 +43,36 @@
           background: var(--neutral-00);
         }
       }
+    }
+  }
+
+}
+
+.alternateBackground {
+  :global {
+    .makaira-table-tbody {
+      tr:nth-child(2n) .makaira-table-cell {
+        background: #F5F8F9;
+      }
+    }
+  }
+}
+
+.loading {
+  position: relative;
+
+  .loadingSnipper {
+    position: absolute;
+    top: calc(50% + 24px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+  }
+  
+  :global {
+    .makaira-table {
+      opacity: 0.5;
+      pointer-events: none;
     }
   }
 }

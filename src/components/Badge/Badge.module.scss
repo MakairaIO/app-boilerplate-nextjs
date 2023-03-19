@@ -1,0 +1,57 @@
+.wrapper {
+  display: inline-flex;
+  border-radius: 12px;
+  align-items: center;
+  padding: 0 6px 0 4px;
+  height: 2.4rem;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  svg {
+    fill: var(--white);
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}
+
+.spin {
+  animation: rotate-center 1.3s infinite ease-in-out;
+}
+
+.text {
+  margin-left: 4px;
+  color: var(--white);
+  margin-bottom: 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.iconOnly {
+  width: 2.4rem;
+  padding: 0;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+}
+
+.secondary {
+  background-color: var(--neutral-50);
+}
+.success {
+  background-color: var(--legende);
+}
+.primary {
+  background-color: var(--brand-aubergine);
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

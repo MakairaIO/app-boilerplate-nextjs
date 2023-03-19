@@ -1,0 +1,64 @@
+﻿@import "../../styles/mixins";
+
+
+.switch-input {
+  display: inline-block;
+
+  &--horizontal {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    align-self: flex-start;
+
+    .switch-input__label {
+      margin-bottom: 0;
+      padding-left: var(--spacer-xxs);
+    }
+  }
+
+  .switch-input__label {
+    @include bravo;
+    font-weight: var(--font-weight-book);
+    color: var(--neutral-60);
+    margin-bottom: var(--spacer-three-xs);
+  }
+
+  :global {
+
+    .rc-switch {
+      width: 59px;
+      height: 33px;
+      border: 1px solid var(--neutral-40);
+      background-color: var(--neutral-20);
+      -webkit-appearance: button;
+
+      &:after {
+        width: 27px;
+        height: 27px;
+        left: 2px;
+        top: 2px;
+        border: 1px solid var(--neutral-40);
+        box-sizing: border-box;
+      }
+    }
+
+    .rc-switch-checked {
+      background-color: var(--legende);
+    }
+
+    .rc-switch-inner {
+      color: var(--neutral-00);
+      font-size: 12px;
+      position: absolute;
+      left: 24px;
+      top: 0;
+    }
+
+    .rc-switch-checked {
+
+      &:after {
+        left: 28px;
+      }
+    }
+  }
+}

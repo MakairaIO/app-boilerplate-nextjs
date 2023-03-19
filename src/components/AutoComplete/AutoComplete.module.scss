@@ -1,0 +1,50 @@
+@import '../../styles/mixins';
+
+.autocomplete {
+    :global {
+        .makaira-select-selection-search-input {
+            -webkit-user-select: none;  
+            -moz-user-select: none;    
+            -ms-user-select: none;      
+            user-select: none;
+        }
+    }
+}
+.search {
+    background: var(--neutral-10);
+    padding: 8px;
+    position: relative;
+
+    input {
+      @include bravo;
+      height: 2.8rem;
+      width: 100%;
+      border: 1px solid var(--neutral-40);
+      border-radius: 0.4rem;
+      outline: none;
+      font-weight: var(--font-weight-bold);
+      color: var(--brand-aubergine);
+      padding: var(--spacer-xxs);
+      flex-grow: 1;
+      margin-left: 0.1rem;
+      padding-right: 2.8rem;
+  
+      &::placeholder {
+        color: var(--neutral-20);
+      }
+  
+      &:focus {
+        outline: 2px solid var(--brand-sun);
+      }
+    }
+
+    & > svg {
+      position: absolute;
+      top: 1.4rem;
+      right: 1.4rem;
+      width: 1.6rem;
+      height: 1.6rem;
+      fill: var(--neutral-70);
+    }
+
+  }

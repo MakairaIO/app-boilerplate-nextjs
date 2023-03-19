@@ -1,0 +1,153 @@
+@import '../../styles/mixins';
+
+.blockTitle {
+  @include delta;
+  font-weight: var(--font-weight-bold);
+  color: var(--brand-aubergine);
+  margin-bottom: var(--spacer-xxs);
+
+  & + li {
+    border-top: 1px solid var(--neutral-10);
+  }
+
+  &:not(:first-child) {
+    margin-top: 2rem;
+  }
+}
+
+.expandIcon {
+  position: absolute;
+  width: 2.4rem;
+  height: 1.6rem;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.wrapper {
+  max-width: 20rem;
+  font-family: var(--font-family-regular);
+
+  :global {
+    .rc-menu.rc-menu-vertical {
+      background-color: white;
+      min-width: 26rem;
+      box-shadow: 0 4px 8px -1px rgba(0, 0, 0, 0.05),
+        0 13px 21px -3px rgba(0, 0, 0, 0.05),
+        0 18px 50px 4px rgba(0, 0, 0, 0.08);
+      padding: var(--spacer-s);
+      border-radius: 4px;
+      border: none;
+
+      li {
+        border-bottom: 1px solid var(--neutral-10);
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      &.rc-menu-item {
+        padding: 0;
+        transition: all 0.3s ease;
+        &.rc-menu-item-selected {
+          background-color: transparent;
+        }
+      }
+
+      .rc-menu-submenu {
+        &.rc-menu-submenu-open {
+          .rc-menu-submenu-title {
+            background-color: var(--brand-aubergine);
+            color: #fff;
+          }
+        }
+      }
+
+      .rc-menu-item,
+      .rc-menu-submenu .rc-menu-submenu-title {
+        @include charlie;
+        font-weight: var(--font-weight-medium);
+        color: var(--brand-aubergine);
+        display: block;
+        padding: var(--spacer-xxs);
+        cursor: pointer;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+      }
+
+      .rc-menu-item:empty,
+      .rc-menu-submenu .rc-menu-submenu-title:empty {
+        display: none;
+      }
+
+      .rc-menu-item-active,
+      .rc-menu-submenu-active .rc-menu-submenu-title {
+        background-color: rgba(236, 242, 243, 0.5);
+      }
+    }
+
+    .rc-menu.rc-menu-horizontal {
+      box-shadow: none;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: inherit;
+      position: relative;
+
+      .rc-menu-submenu-active,
+      .rc-menu-submenu-active .rc-menu-submenu-title {
+        border: none;
+        background-color: transparent;
+      }
+    }
+
+    .rc-menu-submenu-popup {
+      z-index: 999;
+    }
+  }
+}
+
+.horizontal {
+  &[class~='submenu__lv1'] {
+    :global {
+      .rc-menu {
+        &::before {
+          position: absolute;
+          content: '';
+          top: -0.8rem;
+          left: 1rem;
+          border-left: 0.8rem solid transparent;
+          border-right: 0.8rem solid transparent;
+          border-bottom: 0.8rem solid var(--white);
+          width: 0;
+          height: 0;
+        }
+      }
+    }
+  }
+  :global {
+    .rc-menu-submenu-horizontal {
+      .rc-menu-submenu-title {
+        padding: 1rem !important;
+      }
+    }
+  }
+}
+
+@keyframes rcMenuOpenZoomIn {
+  0% {
+    opacity: 0 transform translateY(-10px);
+  }
+  100% {
+    opacity: 1 transform translateY(0);
+  }
+}
+
+@keyframes rcMenuOpenZoomOut {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0 transform translateY(-10px);
+  }
+}
