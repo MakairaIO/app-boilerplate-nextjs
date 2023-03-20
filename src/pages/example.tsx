@@ -45,8 +45,9 @@ import {
   ColorPicker,
   Badge,
   AppMenu,
-  Modal, 
-  ShadowScroll
+  Modal,
+  ShadowScroll,
+  Statistic,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -57,9 +58,9 @@ export default function Example() {
   const [value, setValue] = useState('0')
   const [number, setNumber] = useState(10)
   const [color, setColor] = useState({
-    "hsla": "hsla(0, 40%, 52%, 1)",
-    "rgba": "rgba(182, 84, 84, 1)",
-    "hex": "#b65454"
+    hsla: 'hsla(0, 40%, 52%, 1)',
+    rgba: 'rgba(182, 84, 84, 1)',
+    hex: '#b65454',
   })
   const [open, setOpen] = useState(false)
 
@@ -351,8 +352,12 @@ export default function Example() {
         </div>
 
         <Divider />
-        <div style={{ marginTop: '20px'}}>
-          <ColorPicker onChange={setColor} value={color} description="This area is covered in mud! Be aware of crossing snakes."/>
+        <div style={{ marginTop: '20px' }}>
+          <ColorPicker
+            onChange={setColor}
+            value={color}
+            description="This area is covered in mud! Be aware of crossing snakes."
+          />
         </div>
       </PageWrapper>
       <PageWrapper
@@ -707,17 +712,46 @@ export default function Example() {
         suffix="from Makaira library"
       >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
-        <Button onClick={() => setOpen(true)}>Open Modal</Button>
-        <Modal
-          onClose={() => setOpen(false)}
-          visible={open}
-          header={<ModalHeader />}
-          footer={<ModalFooter />}
-          maxHeight='300px'
-          mask={true}
-        >
-          <ModalBody />
-        </Modal>
+          <Button onClick={() => setOpen(true)}>Open Modal</Button>
+          <Modal
+            onClose={() => setOpen(false)}
+            visible={open}
+            header={<ModalHeader />}
+            footer={<ModalFooter />}
+            maxHeight="300px"
+            mask={true}
+          >
+            <ModalBody />
+          </Modal>
+        </div>
+      </PageWrapper>
+      <PageWrapper
+        title="Statistic"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+          <Statistic
+            value="720"
+            status="down"
+            title="Orders"
+            text="in the last 7 days"
+            tooltip="12/03/2023 - 18/03/2023"
+          />
+          <Statistic
+            value="€ 450"
+            status="up"
+            title="Conversion fee"
+            text="in the last 10 days"
+          />
+          <Statistic
+            value="340 %"
+            status="up"
+            type="secondary"
+            title="A/B Performance"
+            text="more revenue"
+            onClick={() => true}
+          />
         </div>
       </PageWrapper>
     </>
@@ -726,21 +760,14 @@ export default function Example() {
 
 export const getServerSideProps = withMakaira()
 
-
 const ModalHeader = () => {
-  return (
-    <div>
-      Importassistent.
-    </div>
-  )
+  return <div>Importassistent.</div>
 }
 
 const ModalBody = () => {
   return (
     <div>
-      <div>
-        Installieren des OXID Connect Modul in deinem OXID Shop
-      </div>
+      <div>Installieren des OXID Connect Modul in deinem OXID Shop</div>
       <div>
         Um makaira.io einsetzen zu können Ut labore et dolore magna aliquyam
         erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et
@@ -780,10 +807,7 @@ const ModalBody = () => {
 
 const ModalFooter = () => {
   return (
-    <Button
-      className="ia-modal__button"
-      variant="primary"
-    >
+    <Button className="ia-modal__button" variant="primary">
       Erledigt! Weiter geht’s
     </Button>
   )
