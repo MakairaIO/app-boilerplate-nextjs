@@ -1,10 +1,9 @@
-﻿@import "../../styles/mixins";
-
+﻿@import '../../styles/mixins';
 
 .pagination {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .page {
@@ -17,8 +16,9 @@
   border: 0;
   border-radius: 1.6rem;
   margin: 0 var(--spacer-three-xs);
-  transition: background 200ms ease-out, padding 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  background: inherit;
+  transition: background 200ms ease-out,
+    padding 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  background: none;
 
   &:focus {
     outline: var(--outline);
@@ -27,7 +27,7 @@
   &:last-child {
     margin-right: 0;
   }
-  
+
   &:hover {
     background: var(--neutral-60);
     color: var(--neutral-00);
@@ -54,6 +54,7 @@
   cursor: pointer;
   border: 0;
   margin: 0 var(--spacer-three-xs);
+  background: none;
 
   &:focus {
     outline: var(--outline);
