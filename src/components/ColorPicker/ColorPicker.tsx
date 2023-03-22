@@ -73,13 +73,21 @@ const ColorPicker: React.FC<ColorPickerProps> = (props) => {
         <Tooltip
           placement="topLeft"
           overlay={
-          <Suspense fallback={<div className={styles['color-picker__suspense-loading']}>{lazyLoadingText}</div>}>
-            <Sketch
-              color={hex}
-              onChange={handleColorChange}
-              presetColors={[]}
-            />
-          </Suspense>
+            <Suspense
+              fallback={
+                <div className={styles['color-picker__suspense-loading']}>
+                  {lazyLoadingText}
+                </div>
+              }
+            >
+              {Sketch && (
+                <Sketch
+                  color={hex}
+                  onChange={handleColorChange}
+                  presetColors={[]}
+                />
+              )}
+            </Suspense>
           }
           trigger="click"
           overlayClassName={styles.popover}
