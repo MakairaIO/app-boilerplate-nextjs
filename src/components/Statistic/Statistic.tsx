@@ -24,16 +24,6 @@ const Statistic: React.FC<StatisticProps> = ({
   tooltip,
   onClick,
 }) => {
-  const getCaret = () => {
-    return !status ? (
-      <></>
-    ) : status === 'up' ? (
-      <FaCaretUp className={styles.caretUp} />
-    ) : (
-      <FaCaretDown className={styles.caretDown} />
-    )
-  }
-
   return (
     <div
       className={csx(styles.wrapper, styles[type])}
@@ -44,7 +34,8 @@ const Statistic: React.FC<StatisticProps> = ({
         <Text element="span" size="echo" weight="medium">
           {value}
         </Text>
-        {getCaret()}
+        {status === 'up' && <FaCaretUp className={styles.caretUp} />}
+        {status === 'down' && <FaCaretDown className={styles.caretDown} />}
       </div>
       <Text
         className={styles.title}
