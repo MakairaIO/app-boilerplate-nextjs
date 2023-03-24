@@ -707,6 +707,81 @@ export default function Example() {
         </div>
       </PageWrapper>
       <PageWrapper
+        title="Stastics"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30, marginBottom: 30 }}>
+          <Statistic
+            value="940"
+            title="Orders"
+            text="in the last 7 days"
+            status="down"
+            size='small'
+          />
+          <Statistic
+            value="€ 450.2"
+            title="Conversion fee"
+            text="in the last 10 days"
+            status="up"
+            size='small'
+          />
+          <Statistic
+            value="34,45 %"
+            title="A/B Performance"
+            text="more revenue"
+            status="up"
+            type="secondary"
+            size='small'
+          />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30, marginBottom: 30 }}>
+          <Statistic
+            value="940"
+            title="Orders"
+            text="in the last 7 days"
+            status="down"
+          />
+          <Statistic
+            value="€ 450.2"
+            title="Conversion fee"
+            text="in the last 10 days"
+            status="up"
+          />
+          <Statistic
+            value="34,45 %"
+            title="A/B Performance"
+            text="more revenue"
+            status="up"
+            type="secondary"
+          />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+          <Statistic
+            value="940"
+            title="Orders"
+            text="in the last 7 days"
+            status="down"
+            size='large'
+          />
+          <Statistic
+            value="€ 450.2"
+            title="Conversion fee"
+            text="in the last 10 days"
+            status="up"
+            size='large'
+          />
+          <Statistic
+            value="34,45 %"
+            title="A/B Performance"
+            text="more revenue"
+            status="up"
+            type="secondary"
+            size='large'
+          />
+        </div>
+      </PageWrapper>
+      <PageWrapper
         title="Modal"
         prefix="You are looking at"
         suffix="from Makaira library"
@@ -723,35 +798,6 @@ export default function Example() {
           >
             <ModalBody />
           </Modal>
-        </div>
-      </PageWrapper>
-      <PageWrapper
-        title="Statistic"
-        prefix="You are looking at"
-        suffix="from Makaira library"
-      >
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
-          <Statistic
-            value="720"
-            status="down"
-            title="Orders"
-            text="in the last 7 days"
-            tooltip="12/03/2023 - 18/03/2023"
-          />
-          <Statistic
-            value="€ 450"
-            status="up"
-            title="Conversion fee"
-            text="in the last 10 days"
-          />
-          <Statistic
-            value="340 %"
-            status="up"
-            type="secondary"
-            title="A/B Performance"
-            text="more revenue"
-            onClick={() => true}
-          />
         </div>
       </PageWrapper>
     </>

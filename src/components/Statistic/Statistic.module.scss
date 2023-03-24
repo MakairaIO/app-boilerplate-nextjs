@@ -6,8 +6,6 @@
   padding: 16px;
   background-color: var(--brand-aubergine);
   border-radius: 4px;
-  height: 142px;
-  width: 174px;
   color: var(--white);
 }
 
@@ -24,9 +22,33 @@
   }
 }
 
+.small {
+  width: 150px;
+  height: 125px;
+
+  .value {
+    margin-bottom: 18px;
+  }
+}
+
+.medium {
+  width: 175px;
+  height: 145px;
+}
+
+.large {
+  width: 220px;
+  height: 200px;
+
+  .value {
+    margin-bottom: 36px;
+  }
+}
+
 .value {
   margin-top: 8px;
   margin-bottom: 24px;
+  margin-left: 5px;
   display: flex;
   align-items: center;
 
