@@ -1,6 +1,6 @@
 import React from 'react'
 import styles from '@/components/Statistic/Statistic.module.scss'
-import { Text } from '../Text/Text'
+import { Text, TextSize } from '../Text/Text'
 import csx from 'classnames'
 import { FaCaretDown, FaCaretUp } from 'react-icons/fa'
 import { Tooltip } from '../Tooltip/Tooltip'
@@ -13,6 +13,7 @@ interface StatisticProps {
   type?: 'primary' | 'secondary'
   status?: 'up' | 'down'
   onClick?: () => void
+  size?: 'small' | 'medium' | 'large'
 }
 
 const Statistic: React.FC<StatisticProps> = ({
@@ -23,15 +24,33 @@ const Statistic: React.FC<StatisticProps> = ({
   status,
   tooltip,
   onClick,
+  size = 'medium'
 }) => {
+
+  const valueTextSize: Record<string, TextSize> = {
+    small: 'delta',
+    medium: 'echo',
+    large: 'foxtrot'
+  }
+  const titleTextSize: Record<string, TextSize>  = {
+    small: 'bravo',
+    medium: 'charlie',
+    large: 'delta'
+  }
+  const textSize: Record<string, TextSize>  = {
+    small: 'alpha',
+    medium: 'bravo',
+    large: 'charlie'
+  }
+
   return (
     <div
-      className={csx(styles.wrapper, styles[type])}
+      className={csx(styles.wrapper, styles[type], styles[size])}
       onClick={onClick}
       style={onClick ? { cursor: 'pointer' } : {}}
     >
       <div className={styles.value}>
-        <Text element="span" size="echo" weight="medium">
+        <Text element="span" size={valueTextSize[size]} weight="medium">
           {value}
         </Text>
         {status === 'up' && <FaCaretUp className={styles.caretUp} />}
@@ -40,7 +59,7 @@ const Statistic: React.FC<StatisticProps> = ({
       <Text
         className={styles.title}
         element="span"
-        size="charlie"
+        size={titleTextSize[size]}
         weight="medium"
       >
         {title}
@@ -50,7 +69,7 @@ const Statistic: React.FC<StatisticProps> = ({
           <Text
             className={styles.text}
             element="span"
-            size="bravo"
+            size={textSize[size]}
             weight="medium"
           >
             {text}

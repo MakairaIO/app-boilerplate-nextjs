@@ -711,7 +711,31 @@ export default function Example() {
         prefix="You are looking at"
         suffix="from Makaira library"
       >
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30, marginBottom: 30 }}>
+          <Statistic
+            value="940"
+            title="Orders"
+            text="in the last 7 days"
+            status="down"
+            size='small'
+          />
+          <Statistic
+            value="€ 450.2"
+            title="Conversion fee"
+            text="in the last 10 days"
+            status="up"
+            size='small'
+          />
+          <Statistic
+            value="34,45 %"
+            title="A/B Performance"
+            text="more revenue"
+            status="up"
+            type="secondary"
+            size='small'
+          />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30, marginBottom: 30 }}>
           <Statistic
             value="940"
             title="Orders"
@@ -730,6 +754,30 @@ export default function Example() {
             text="more revenue"
             status="up"
             type="secondary"
+          />
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
+          <Statistic
+            value="940"
+            title="Orders"
+            text="in the last 7 days"
+            status="down"
+            size='large'
+          />
+          <Statistic
+            value="€ 450.2"
+            title="Conversion fee"
+            text="in the last 10 days"
+            status="up"
+            size='large'
+          />
+          <Statistic
+            value="34,45 %"
+            title="A/B Performance"
+            text="more revenue"
+            status="up"
+            type="secondary"
+            size='large'
           />
         </div>
       </PageWrapper>
