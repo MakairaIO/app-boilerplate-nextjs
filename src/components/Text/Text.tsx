@@ -1,20 +1,11 @@
 import csx from 'classnames'
 import React, { FunctionComponent } from 'react'
-
 import styles from '@/components/Text/Text.module.scss'
 
+export type TextSize = 'alpha' | 'bravo' | 'charlie' | 'delta' | 'echo' | 'foxtrot' | 'golf' | 'hotel' | 'india' | 'juliett'
+
 type TextProps = React.PropsWithChildren<{
-  size?:
-    | 'alpha'
-    | 'bravo'
-    | 'charlie'
-    | 'delta'
-    | 'echo'
-    | 'foxtrot'
-    | 'golf'
-    | 'hotel'
-    | 'india'
-    | 'juliett'
+  size?: TextSize
   weight?: 'book' | 'medium' | 'bold' | 'heavy'
   className?: string
   element?: string
