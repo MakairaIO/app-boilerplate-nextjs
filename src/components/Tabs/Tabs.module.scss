@@ -47,6 +47,7 @@
 .tabPanels {
   @include bravo();
   padding: 16px 0px;
+  color: var(--brand-aubergine);
 }
 
 .panel {

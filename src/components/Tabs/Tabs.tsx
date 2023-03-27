@@ -1,6 +1,5 @@
-﻿import React, { Fragment, useId, useMemo, useState } from 'react'
+﻿import React, { useId, useState } from 'react'
 import classNames from 'classnames'
-
 import styles from '@/components/Tabs/Tabs.module.scss'
 import { TabContent } from './TabContent';
 
@@ -21,7 +20,7 @@ const Tabs: React.FC<TabsProps> = ({
   items,
   className,
   defaultActiveKey,
-  onChange = (key: string) => { }
+  onChange = (key: string) => {}
 }) => {
   const [activeKey, setActiveKey] = useState(defaultActiveKey);
   const [renderedKeys, setRenderedKeys] = useState([defaultActiveKey]);

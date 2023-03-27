@@ -30,3 +30,15 @@
     color: var(--neutral-60);
   }
 }
+
+.suffix {
+  flex: 1;
+  text-align: left;
+  padding-left: var(--spacer-m);
+  padding-top: var(--spacer-l);
+
+  .text {
+    width: calc(230px - var(--spacer-s));
+    color: var(--neutral-60);
+  }
+}

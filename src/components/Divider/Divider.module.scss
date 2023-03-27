@@ -1,0 +1,14 @@
+.horizontal {
+  margin: 1.5rem 0;
+  border: none;
+  border-top: 1px solid var(--neutral-40);
+  width: 100%;
+}
+
+.vertical {
+  margin: 0 1.5rem;
+  border: none;
+  border-left: 1px solid var(--neutral-40);
+  height: 100%;
+  min-height: 5rem;
+}

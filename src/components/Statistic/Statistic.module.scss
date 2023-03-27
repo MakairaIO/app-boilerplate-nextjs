@@ -1,0 +1,83 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: var(--brand-aubergine);
+  border-radius: 4px;
+  color: var(--white);
+}
+
+.primary {
+  background-color: var(--brand-aubergine);
+}
+
+.secondary {
+  background-color: var(--legende);
+
+  .caretUp,
+  .caretDown {
+    fill: var(--white);
+  }
+}
+
+.small {
+  width: 150px;
+  height: 125px;
+
+  .value {
+    margin-bottom: 18px;
+  }
+}
+
+.medium {
+  width: 175px;
+  height: 145px;
+}
+
+.large {
+  width: 220px;
+  height: 200px;
+
+  .value {
+    margin-bottom: 36px;
+  }
+}
+
+.value {
+  margin-top: 8px;
+  margin-bottom: 24px;
+  margin-left: 5px;
+  display: flex;
+  align-items: center;
+
+  span {
+    color: var(--white);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: 0.5rem;
+  }
+}
+
+.caretUp {
+  fill: var(--legende);
+}
+
+.caretDown {
+  fill: var(--brand-coral-hover);
+}
+
+.title {
+  color: var(--neutral-20);
+}
+
+.text {
+  color: var(--white);
+}
