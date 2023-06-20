@@ -1,9 +1,9 @@
-﻿import React, { Fragment, useId, useMemo, useState } from 'react'
+﻿import React, { useId, useState } from 'react'
 import classNames from 'classnames'
-
 import styles from '@/components/Tabs/Tabs.module.scss'
+import { TabContent } from './TabContent';
 
-type TabsItem = {
+export type TabsItem = {
   key: string;
   title: string;
   content: React.ReactNode | string;
@@ -65,41 +65,16 @@ const Tabs: React.FC<TabsProps> = ({
       </div>
       <div className={styles.tabPanels} >
         {
-          items.map(item => {
-            const isActive = activeKey === item.key
-            const shouldRender = renderedKeys.includes(item.key)
-
-            const panel = useMemo(() => {
-              if (!shouldRender) return null
-
-              let additionProps: any = {}
-              let content: React.ReactNode = null
-
-              if (React.isValidElement(item.content)) {
-                content = item.content
-              } else {
-                additionProps.dangerouslySetInnerHTML = {
-                  __html: item.content
-                }
-              }
-              return (
-                <div
-                  role="tabpanel"
-                  id={getTabContentId(item.key)}
-                  tabIndex={isActive ? 0 : -1}
-                  aria-hidden={!isActive}
-                  aria-labelledby={getTabId(item.key)}
-                  className={classNames(styles.panel, { [styles.active]: isActive })}
-                  {...additionProps}
-                  key={`panel-${item.key}`}
-                >
-                  {content}
-                </div>
-              )
-            }, [item, shouldRender, isActive])
-
-            return panel
-          })
+          items.map(item => (
+            <TabContent
+              item={item}
+              activeKey={activeKey}
+              getTabContentId={getTabContentId}
+              getTabId={getTabId}
+              renderedKeys={renderedKeys}
+              key={item.key}
+            />
+          ))
         }
       </div>
     </div>
