@@ -7,9 +7,7 @@ import {
 
 
 const useMakairaApp = (): MakairaAppContextData => {
-  const { token, instance, domain, client } = useContext(MakairaAppContext)
-
-  return { token, instance, domain, client }
+  return useContext(MakairaAppContext)
 }
 
 export default useMakairaApp

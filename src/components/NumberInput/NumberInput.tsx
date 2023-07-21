@@ -14,7 +14,10 @@ type NumberInputProps = {
   value: number;
   disabled?: boolean;
   className?: string;
-  style?: React.CSSProperties
+  style?: React.CSSProperties,
+  error?: {
+    message: string
+  }
 }
 
 const NumberInput: React.FC<NumberInputProps> = (props) => {
@@ -28,6 +31,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
     disabled,
     className,
     style,
+    error
   } = props
 
   function handleChange(newValue: number) {
@@ -63,7 +67,7 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
   return (
     <div className={classNames("number-input", styles.numberInput, className)} style={style}>
       {label && (
-        <Text element="div" className={styles.label}>
+        <Text element="div" className={classNames('label', styles.label)}>
           {label}
         </Text>
       )}
@@ -83,16 +87,23 @@ const NumberInput: React.FC<NumberInputProps> = (props) => {
             [styles.controlPanelDisabled]: props.disabled,
           })}
         >
-          <button className={styles.button} onClick={handleChangeUp}>
+          <button type='button' className={styles.button} onClick={handleChangeUp}>
             <FaAngleUp width={16} height={16} className={styles.buttonIcon} />
           </button>
-          <button className={styles.button} onClick={handleChangeDown}>
+          <button type='button' className={styles.button} onClick={handleChangeDown}>
             <FaAngleDown width={16} height={16} className={styles.buttonIcon} />
           </button>
         </div>
       </div>
       {description && (
         <div className={styles.message}>{description}</div>
+      )}
+      {error && (
+        <div
+          className={classNames(styles.message, styles.error)}
+        >
+          {error.message}
+        </div>
       )}
     </div>
   )

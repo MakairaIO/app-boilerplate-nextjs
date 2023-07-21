@@ -11,6 +11,10 @@
     color: var(--neutral-60);
   }
 
+  .rich-text__error {
+    color: var(--brand-coral);
+  }
+
   .rich-text__label {
     @include bravo;
     color: var(--neutral-70);

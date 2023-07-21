@@ -4,7 +4,9 @@ import React, {
   useRef,
   useState,
   createContext,
+  useContext,
 } from 'react'
+import { decode, JwtPayload } from 'jsonwebtoken'
 
 import MakairaClient from '@/makaira/MakairaClient'
 
@@ -14,14 +16,29 @@ type MakairaAppProviderProps = React.PropsWithChildren<{
   makairaHmac: string
   domain: string
   instance: string
-  appType: 'app' | 'content-widget'
+  appType: 'app' | 'content-widget' | 'content-modal',
+  slug: string
 }>
+
+type MakairaAppMessage = {
+  action: string,
+  data: any
+}
+
+export type MakairaJWTPayload = JwtPayload & {
+  nickname: string
+  name: string
+  picture: string
+  email: string
+}
 
 export type MakairaAppContextData = {
   token: undefined | string
   domain: undefined | string
   instance: undefined | string
   client: MakairaClient
+  messages: undefined | MakairaAppMessage[]
+  payload: MakairaJWTPayload | null
 }
 
 type ResponseUserRequestPayload = {
@@ -33,6 +50,8 @@ const MakairaAppContext = createContext<MakairaAppContextData>({
   domain: undefined,
   instance: undefined,
   client: new MakairaClient(),
+  messages: [],
+  payload: null,
 })
 
 const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
@@ -43,9 +62,11 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
   domain,
   instance,
   appType = 'app',
+  slug
 }) => {
   const [token, setToken] = useState<string>()
   const client = useRef<MakairaClient>(new MakairaClient())
+  const [messages, setMessages] = useState<MakairaAppMessage[]>([])
 
   const handleMessage = useCallback((event: MessageEvent) => {
     if (
@@ -103,7 +124,7 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
 
       window.parent.postMessage(message, targetOrigin)
     }
-  }, [hmac, makairaHmac, nonce, token, appType])
+  }, [hmac, makairaHmac, nonce, token, appType, slug])
 
   const handleResponseUserRequest = (data: ResponseUserRequestPayload) => {
     console.debug('[Example-App] Received token from Makaira Admin UI.')
@@ -119,6 +140,8 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
         domain,
         instance,
         client: client.current,
+        messages,
+        payload: decode(token ?? '') as MakairaJWTPayload,
       }}
     >
       {children}
@@ -126,4 +149,8 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
   )
 }
 
-export { MakairaAppProvider, MakairaAppContext }
+const useMakairaApp = () => {
+  return useContext(MakairaAppContext)
+}
+
+export { MakairaAppProvider, MakairaAppContext, useMakairaApp }

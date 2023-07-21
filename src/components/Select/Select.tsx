@@ -19,7 +19,9 @@ export interface SelectProps extends RcSelectProps {
   size?: 'normal' | 'large'
   title?: string
   description?: string
-  error?: boolean
+  error?: {
+    message: string
+  }
   options?: SelectOption[]
   groupOptions?: {
     label?: string
@@ -60,7 +62,7 @@ const Select: React.FC<SelectProps> = ({
   dropdownRender,
   ...rest
 }) => {
-  const classNames = csx(styles.wrapper, className, {
+  const classNames = csx(styles.wrapper, className, 'select', {
     [styles.borderless]: borderless || size === 'large',
     [styles.error]: error,
     [styles.large]: size === 'large',
@@ -68,7 +70,7 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <div className={classNames}>
-      {title && <div className={styles.label}>{title}</div>}
+      {title && <div className={csx('label', styles.label)}>{title}</div>}
       <RcSelect
         inputIcon={() => <TfiAngleDown />}
         clearIcon={() => <TfiClose />}
@@ -105,14 +107,24 @@ const Select: React.FC<SelectProps> = ({
           ))}
       </RcSelect>
 
-      {(description || error) && (
+      {description  && (
         <Text
           element="p"
           weight="book"
           size="bravo"
           className={styles.message}
         >
-          {description || error}
+          {description}
+        </Text>
+      )}
+      { error && (
+        <Text
+          element="p"
+          weight="book"
+          size="bravo"
+          className={csx(styles.message, styles.errorMessage)}
+        >
+          {error.message}
         </Text>
       )}
     </div>

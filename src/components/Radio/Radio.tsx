@@ -3,6 +3,7 @@ import csx from 'classnames'
 import styles from '@/components/Radio/Radio.module.scss'
 
 type RadioProps = {
+  id?: string;
   label?: string;
   value?: string;
   disabled?: boolean;
@@ -14,6 +15,7 @@ type RadioProps = {
 };
 
 type LabelProps = {
+  id?: string;
   disabled?: boolean;
   size?: 'small' | 'medium' | 'large';
   direction?: 'horizontal' | 'vertical';
@@ -28,7 +30,11 @@ type LabelProps = {
 export type GroupProps = {
   onChange?: (value: string) => void;
   value?: string;
+  label?: string
   children?: React.ReactNode;
+  error?: {
+    message: string
+  }
 };
 
 const RadioContext = React.createContext<{
@@ -91,6 +97,7 @@ const Radio: FC<RadioProps> = ({
 };
 
 const Label: FC<LabelProps> = ({
+  id,
   disabled,
   size,
   direction,
@@ -104,10 +111,20 @@ const Label: FC<LabelProps> = ({
 
   return (
     <label
-      className={csx(styles['radio-button'], styles['radio-button'], styles[`radio-button--${size}`], { [styles[`radio-button--${direction}`]]: disabled }, wrapperClassName)}
+      className={csx(
+        styles['radio-button'], 
+        styles['radio-button'], 
+        styles[`radio-button--${size}`], 
+        { 
+          [styles[`radio-button--${direction}`]]: disabled 
+        }, 
+        wrapperClassName
+      )}
+      htmlFor={id}
       {...rest}
     >
       <input
+        id={id}
         type="radio"
         disabled={disabled}
         checked={selectedValue ? selectedValue === value : undefined}
@@ -120,10 +137,22 @@ const Label: FC<LabelProps> = ({
   );
 };
 
-const RadioGroup: FC<GroupProps> = ({ onChange, value, children }) => {
+const RadioGroup: FC<GroupProps> = ({ onChange, value, children, error, label}) => {
   return (
     <RadioContext.Provider value={{ onChange, value }}>
+      {label && (
+        <label className={csx('radio-group__label', styles.radioGroupLabel, styles.error)}>
+          {label}
+        </label>
+      )}
       {children}
+      {error && (
+        <div
+          className={csx(styles.message, styles.error)}
+        >
+          {error.message}
+        </div>
+      )}
     </RadioContext.Provider>
   );
 };

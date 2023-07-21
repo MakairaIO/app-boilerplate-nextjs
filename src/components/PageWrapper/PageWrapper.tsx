@@ -3,11 +3,13 @@ import React, { FunctionComponent } from 'react'
 import PageTitle from '@/components/PageWrapper/PageTitle'
 
 import styles from '@/components/PageWrapper/PageWrapper.module.scss'
+import classNames from 'classnames'
 
 type PageWrapperProps = React.PropsWithChildren<{
   title: string
   prefix?: string
   suffix?: string
+  className?: string
 }>
 
 const PageWrapper: FunctionComponent<PageWrapperProps> = ({
@@ -15,6 +17,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
   title,
   prefix,
   suffix,
+  className,
 }) => {
   return (
     <>
@@ -22,7 +25,7 @@ const PageWrapper: FunctionComponent<PageWrapperProps> = ({
         {title}
       </PageTitle>
 
-      <div className={styles.pageWrapper}>{children}</div>
+      <div className={classNames(styles.pageWrapper, className)}>{children}</div>
     </>
   )
 }

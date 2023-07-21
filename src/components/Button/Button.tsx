@@ -16,6 +16,7 @@ type ButtonProps = React.PropsWithChildren<{
   level?: -1 | 0 | 1
   iconPosition?: 'right' | 'left',
   tooltip?: string;
+  type?: 'button' | 'submit';
   [key: string]: any;
 }>
 
@@ -29,7 +30,8 @@ const Button: FunctionComponent<ButtonProps> = ({
   variant = 'secondary',
   level = 0,
   iconPosition = 'right',
-  tooltip
+  tooltip,
+  type = "button",
 }) => {
   const isIconOnly = !children && icon
   const classes = csx(
@@ -57,7 +59,7 @@ const Button: FunctionComponent<ButtonProps> = ({
   return (
     <Wrapper {...WrapperProps}>
       <button
-        type="button"
+        type={type}
         disabled={disabled || loading}
         onClick={onClick}
         className={classes}

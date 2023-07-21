@@ -180,7 +180,9 @@ export default function Example() {
             value={
               'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'
             }
-            error="Please enter the text"
+            error={{
+              message: "Please enter the text"
+            }}
             rows={5}
           />
           <Textarea
@@ -236,7 +238,9 @@ export default function Example() {
           <Select
             description="The selected type will be used when comparing two products."
             title="Error select"
-            error={true}
+            error={{
+              message: 'Required!'
+            }}
             placeholder="Choose an importer..."
             options={[
               { value: 'equals', label: 'equals' },
