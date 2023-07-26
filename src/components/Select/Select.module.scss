@@ -91,7 +91,7 @@
       position: absolute;
       font-weight: var(--font-weight-bold);
       min-width: 20px;
-      max-width: calc(100% - 3rem);
+      // max-width: calc(100% - 3rem);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -135,10 +135,10 @@
         padding-right: 1.2rem;
       }
 
-      .rc-select-selection-item,
-      .rc-select-selection-placeholder {
-        max-width: calc(100% - 4.5rem);
-      }
+      // .rc-select-selection-item,
+      // .rc-select-selection-placeholder {
+      //   max-width: calc(100% - 4.5rem);
+      // }
     }
 
     .rc-select-show-arrow {

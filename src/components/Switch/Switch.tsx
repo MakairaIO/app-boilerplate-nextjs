@@ -5,6 +5,7 @@ import styles from '@/components/Switch/Switch.module.scss'
 import "rc-switch/assets/index.css"
 
 export type SwitchProps = {
+  id?: string
   title?: string;
   defaultChecked?: boolean;
   checked?: boolean;
@@ -18,6 +19,7 @@ export type SwitchProps = {
 }
 
 const Switch: FC<SwitchProps> = ({
+  id,
   title,
   defaultChecked,
   checked,
@@ -29,10 +31,11 @@ const Switch: FC<SwitchProps> = ({
 
   return (
     <div
-      className={classNames(styles['switch-input'], styles[`switch-input--${type}`], className)}
+      className={classNames('switch-input', styles['switch-input'], styles[`switch-input--${type}`], className)}
     >
-      {title && <div className={styles["switch-input__label"]}>{title}</div>}
+      {title && <div className={classNames('label', styles["switch-input__label"])}>{title}</div>}
       <RcSwitch
+        id={id}
         title={title}
         checked={checked}
         defaultChecked={defaultChecked}

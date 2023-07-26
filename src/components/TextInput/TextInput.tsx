@@ -5,8 +5,8 @@ import React, {
   FunctionComponent,
 } from 'react'
 import classNames from 'classnames'
-
-import styles from '@/components/TextInput/TextInput.module.scss'
+import styles from './TextInput.module.scss'
+import { IconType } from 'react-icons/lib'
 
 interface TextInputProps {
   label?: string
@@ -24,6 +24,8 @@ interface TextInputProps {
   className?: string;
   type?: string
   style?: React.CSSProperties,
+  disabled?: boolean,
+  icon?: IconType
 }
 
 const TextInput: FunctionComponent<TextInputProps> = ({
@@ -38,8 +40,11 @@ const TextInput: FunctionComponent<TextInputProps> = ({
   error,
   className,
   placeholder,
-  style
-}) => {
+  style,
+  disabled,
+  icon
+}) => {  
+  const Icon = icon
   return (
     <div className={classNames(className, 'text-input', styles.textInput)} style={style}>
       {label && (
@@ -49,7 +54,13 @@ const TextInput: FunctionComponent<TextInputProps> = ({
       )}
 
       <div className={styles.textInputWrapper}>
-        <input type='text' defaultValue={defaultValue} onChange={onChange} onBlur={onBlur} name={name} onFocus={onFocus} onKeyUp={onKeyUp} placeholder={placeholder}/>
+        <input defaultValue={defaultValue} onChange={onChange} onBlur={onBlur} name={name} onFocus={onFocus} onKeyUp={onKeyUp} placeholder={placeholder} disabled={disabled}/>
+        {icon && (
+            <div className={csx(styles.icon, 'icon')}>
+              {/* @ts-ignore */}
+              <Icon />
+            </div>
+          )}
       </div>
 
       {description && (

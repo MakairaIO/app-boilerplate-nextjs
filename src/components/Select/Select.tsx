@@ -80,6 +80,7 @@ const Select: React.FC<SelectProps> = ({
         )}
         dropdownAlign={PLACEMENTS[customDropdownPlacement]}
         dropdownRender={dropdownRender}
+        defaultActiveFirstOption={false}
         {...rest}
       >
         {groupOptions &&
