@@ -9,9 +9,9 @@ import { useMakairaConfig } from "@/makaira/MakairaConfigProvider"
 import { Menu, MenuItem, SubMenu } from "../Menu/Menu"
 import { Spinner } from "../Spinner/Spinner"
 import { Button } from "../Button/Button"
-import { Modal } from "../Modal/Modal"
-import Image from "../Image/Image"
 import styles from './File.module.scss'
+import { Preview } from "./Preview"
+import { Thumbnail } from "./Thumbnail"
 
 type ActionProps = {
   loading?: boolean
@@ -131,24 +131,28 @@ export function File(props: FileProps) {
     <div id={id} className={csx('file-upload', styles.fileUpload, size === 'small' && styles.small)}>
       {label && <label className={csx('label', styles.label)}>{label}</label>}
       <div className={csx("file-upload__container", styles.container)}>
-        {
-          size === 'normal' && actions
-        }
-        {
-          size === 'small' && (
-            <Menu mode="horizontal" className="file-upload__menu-actions">
-              <SubMenu
-                title={<Button icon={FaCloudUploadAlt} variant="reduced" />}
-                key="Settings1"
-                popupClassName="submenu__lv1"
-              >
-                <MenuItem key="Tools/Users1">
-                  {actions}
-                </MenuItem>
-              </SubMenu>
-            </Menu>
-          )
-        }
+        <Thumbnail image={file}/>
+        <div className={styles.actionsWrapper}>
+          <div className={styles.placeholder}></div>
+          {
+            size === 'normal' && actions
+          }
+          {
+            size === 'small' && (
+              <Menu mode="horizontal" className="file-upload__menu-actions">
+                <SubMenu
+                  title={<Button icon={FaCloudUploadAlt} variant="reduced" />}
+                  key="Settings1"
+                  popupClassName="submenu__lv1"
+                >
+                  <MenuItem key="Tools/Users1">
+                    {actions}
+                  </MenuItem>
+                </SubMenu>
+              </Menu>
+            )
+          }
+        </div>
         {
           file && !file.url && (
             <div className={csx('file-upload__detail', styles.fileDetail)}>
@@ -165,16 +169,11 @@ export function File(props: FileProps) {
           {error.message}
         </div>
       )}
-      <Modal
-        onClose={() => setShowPreview(false)}
-        visible={showPreview}
-        header={"Preview"}
-        maxHeight="90vh"
-        mask={true}
-      >
-        {addedImage && !file?.url && <Image image={{ src: file || null, alt: '' }} />}
-        {addedImage && file?.url && <Image image={{ src: file.url as any, alt: '' }} />}
-      </Modal>
+      <Preview
+        onClose={setShowPreview} 
+        visible={!!addedImage && showPreview}
+        image={file}
+      />
       <input value={value as any} required={required} type="hidden" onChange={() => {}}/>
     </div>
   )

@@ -16,6 +16,7 @@
 .container {
   display: flex;
   flex-direction: row;
+  position: relative;
 
   input {
     visibility: hidden;
@@ -46,19 +47,68 @@
   }
 }
 
+.thumbnailWrapper {
+  position: absolute;
+  width: 11rem;
+  height: 11rem;
+  border: 1px solid var(--neutral-70);
+  border-radius: 4px;
+  overflow: hidden;
+
+  picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  & ~ .actionsWrapper {
+    opacity: 0;
+
+    &:hover {
+      opacity: 1;
+
+      .placeholder {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.actionsWrapper {
+  z-index: 1;
+  width: 11rem;
+  height: 11rem;
+
+  .placeholder {
+    position: absolute;
+    background-color: var(--neutral-40);
+    border: 1px solid var(--neutral-70);
+    border-radius: 4px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 11rem;
+    height: 11rem;
+  }
+}
+
 .actions {
+  width: 100%;
+  height: 100%;
   flex-wrap: wrap;
   justify-content: space-around;
   gap: 5px;
   display: flex;
   flex-direction: row;
-  width: 11rem;
-  height: 11rem;
-  border-radius: 4px;
   align-items: center;
   transition: all .3s ease;
-  background-color: var(--neutral-40);
-  border: 1px solid var(--neutral-70);
+  position: relative;
 }
 
 .action {
