@@ -238,7 +238,9 @@ export default function Example() {
           <Select
             description="The selected type will be used when comparing two products."
             title="Error select"
-            error={true}
+            error={{
+              message: 'Required!'
+            }}
             placeholder="Choose an importer..."
             options={[
               { value: 'equals', label: 'equals' },

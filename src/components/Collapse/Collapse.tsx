@@ -16,6 +16,7 @@ export interface CollapseProps {
   level?: number;
   noPadding?: boolean;
   activeKey?: React.Key | React.Key[];
+  [x: string]: any
 }
 
 interface CloneElementProps {
@@ -86,6 +87,7 @@ interface PanelProps extends React.PropsWithChildren {
   type?: 'arrow' | 'radio';
   value?: string;
   header?: string
+  extra?: React.ReactNode
 }
 
 const Panel: React.FC<PanelProps> = ({

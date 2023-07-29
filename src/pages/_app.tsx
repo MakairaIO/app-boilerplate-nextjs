@@ -10,6 +10,7 @@ import { LoadingScreen } from '@/components'
 
 import '@/styles/mixins.scss'
 import '@/styles/globals.scss'
+import '@/styles/DatetimePicker.scss'
 
 const queryClient = new QueryClient()
 

@@ -1,14 +1,16 @@
 .wrapper {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-  height: 2.6rem;
-  cursor: pointer;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  padding-left: 2.6rem;
-  margin-right: 1rem;
+  label {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+    height: 2.6rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    padding-left: 2.6rem;
+    margin-right: 1rem;
+  }
 
   input {
     position: absolute;
@@ -65,4 +67,15 @@
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
   }
+}
+
+.message {
+	font-style: italic;
+	font-weight: var(--font-weight-book);
+	margin-top: 0.35rem;
+	color: var(--neutral-60);
+}
+
+.error {
+  color: var(--brand-coral);
 }

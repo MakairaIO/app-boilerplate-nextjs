@@ -4,6 +4,7 @@
   color: var(--brand-aubergine);
   border-bottom: 1px solid var(--neutral-20);
   background: var(--neutral-10);
+  align-items: center;
 }
 
 .main {
@@ -12,7 +13,6 @@
   min-width: 0;
 
   .title {
-    padding-top: var(--spacer-xs);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -23,7 +23,6 @@
   width: 23rem;
   text-align: right;
   padding-right: var(--spacer-m);
-  padding-top: var(--spacer-l);
 
   .text {
     width: calc(230px - var(--spacer-s));
@@ -35,10 +34,14 @@
   flex: 1;
   text-align: left;
   padding-left: var(--spacer-m);
-  padding-top: var(--spacer-l);
 
   .text {
     width: calc(230px - var(--spacer-s));
     color: var(--neutral-60);
   }
+}
+
+.actions {
+  flex: 1;
+  padding-left: var(--spacer-m);
 }

@@ -6,8 +6,8 @@
   :global {
     .rc-select {
       @include bravo;
+      width: 100%;
       min-width: 10rem;
-      width: auto;
       color: var(--brand-aubergine);
       height: 3.3rem;
       display: inline-block;
@@ -18,6 +18,14 @@
         color: var(--neutral-80);
         position: absolute;
         opacity: 0.4;
+      }
+
+      .rc-select-selection-search {
+        display: none;
+      }
+
+      &.rc-select-show-search .rc-select-selection-search {
+        display: block
       }
     }
 
@@ -44,15 +52,53 @@
       }
     }
 
+    .rc-select-multiple {
+      height: auto;
+      min-height: 3.3rem;
+      .rc-select-selector {
+        height: auto;
+        min-height: 3.3rem;
+        .rc-select-selection-overflow {
+          width: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: center;
+          gap: 4px;
+          padding: 4px 0;
+
+          .rc-select-selection-overflow-item {
+            background: var(--neutral-10);
+            padding: 0 2px 2px 4px;
+            border-radius: 3px;
+
+            .rc-select-selection-item {
+              .rc-select-selection-item-remove {
+                color: var(--neutral-60);
+                margin-left: 3px;
+              }
+            }
+          }
+
+          .rc-select-selection-overflow-item-suffix {
+            display: none;
+          }
+        }
+      }
+    }
+
     .rc-select-selection-item,
     .rc-select-selection-placeholder {
       position: absolute;
       font-weight: var(--font-weight-bold);
       min-width: 20px;
-      max-width: calc(100% - 3rem);
+      // max-width: calc(100% - 3rem);
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .rc-select-selection-item{
+      position: relative;
     }
 
     .rc-select-disabled {
@@ -89,10 +135,10 @@
         padding-right: 1.2rem;
       }
 
-      .rc-select-selection-item,
-      .rc-select-selection-placeholder {
-        max-width: calc(100% - 4.5rem);
-      }
+      // .rc-select-selection-item,
+      // .rc-select-selection-placeholder {
+      //   max-width: calc(100% - 4.5rem);
+      // }
     }
 
     .rc-select-show-arrow {
@@ -145,7 +191,7 @@
 
 .error {
   .label,
-  .message {
+  .errorMessage {
     color: var(--brand-coral) !important;
   }
   :global {

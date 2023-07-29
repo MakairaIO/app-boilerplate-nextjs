@@ -1,4 +1,5 @@
 import RcTable, { Column, TableProps as TableRcProps } from 'rc-table'
+import type { GetRowKey } from 'rc-table/lib/interface';
 import React from 'react'
 import { FaAngleRight } from 'react-icons/fa'
 
@@ -8,45 +9,45 @@ import classNames from 'classnames'
 import Pagination from '../Pagination/Pagination'
 
 type DefaultRecordType = Record<string, any>
-type ColumnType = TableRcProps<DefaultRecordType>['columns']
 
-type TableProps = React.PropsWithChildren<{
+interface TableProps extends TableRcProps<DefaultRecordType> {
   pathname?: string
   data: object[]
-  rowKey: string
   onRowClick?: Function
   showRightArrow?: boolean
   loading?: boolean
-  columns?: ColumnType
   pagination?: PaginationProps,
   alternateRowBackground?: Boolean
-}>
+} 
 
 const Table: React.FunctionComponent<TableProps> = ({
   data,
-  rowKey,
   onRowClick = () => {},
   children,
   showRightArrow = false,
   loading,
   columns,
   pagination,
-  alternateRowBackground = false
+  alternateRowBackground = false,
+  className
 }) => {
-  const className = classNames(styles.table, { 
+  const _className = classNames(styles.table, className, { 
     [styles.loading]: loading,
-    [styles.alternateBackground] : alternateRowBackground
+    [styles.alternateBackground] : alternateRowBackground,
   })
+
   return (
-    <div className={className}>
+    <div className={_className}>
       {loading && <Spinner size='normal' className={styles.loadingSnipper}/>}
       <RcTable
         data={data}
-        rowKey={rowKey}
+        rowKey={(_, idx): React.Key => idx as React.Key}
         prefixCls="makaira-table"
-        onRow={(record, index) => ({
-          onClick: () => onRowClick(record, index),
-        })}
+        onRow={(record, index) => {
+          return {
+            onClick: (e) => onRowClick(record, index, e.target)
+          } 
+        }}
         columns={columns}
       >
         {children}

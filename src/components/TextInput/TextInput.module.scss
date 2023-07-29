@@ -3,12 +3,10 @@
 .textInput {
   display: flex;
   flex-direction: column;
-  margin-bottom: var(--spacer-xxs);
 }
 
 .textInputLabel {
   @include bravo;
-  font-weight: var(--font-weight-book);
   color: var(--neutral-70);
   padding-bottom: var(--spacer-three-xs);
   transition: color var(--transition-regular);
@@ -37,6 +35,21 @@
 
     &:focus {
       outline: 2px solid var(--brand-sun);
+    }
+  }
+  .icon {
+    position: absolute;
+    right: 8px;
+    bottom: 0;
+    width: 17px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 100%;
+      height: auto;
+      color: var(--brand-aubergine);
     }
   }
 }
