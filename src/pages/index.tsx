@@ -12,14 +12,12 @@ import {
   Button,
 } from '@/components'
 import useMakairaApp from '@/makaira/useMakairaApp'
-import { withMakaira } from '@/makaira/withMakaira'
 import type { ProductFeed } from '@/makaira/MakairaClient'
 
 import styles from '@/styles/HomePage.module.scss'
+import { withMakaira } from '@/makaira/withMakaira'
 
-export default function Home(
-  props: InferGetServerSidePropsType<typeof getServerSideProps>
-) {
+export default function Home() {
   const { token, client: makairaClient } = useMakairaApp()
 
   const { isLoading, data: feeds } = useQuery({

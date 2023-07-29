@@ -28,6 +28,7 @@ import {
   Divider,
   Textarea,
   Radio,
+  RadioGroup,
   Collapse,
   Panel,
   Switch,
@@ -48,6 +49,7 @@ import {
   Statistic,
   Modal,
   ShadowScroll,
+  TextInput,
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
@@ -69,7 +71,7 @@ export default function Example() {
   }
 
   return (
-    <>
+    <>    
       <PageWrapper
         title="Buttons"
         prefix="You are looking at"
@@ -166,7 +168,7 @@ export default function Example() {
         suffix="from Makaira library"
       >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
-          <Checkbox name="chk_01" label="Sample checkbox" />
+          <Checkbox name="chk_01" label="Sample checkbox" description='Checkbox description' error={{ message: 'Checkbox error'}}/>
           <Checkbox name="chk_02" label="Disabled checkbox" disabled />
         </div>
         <Divider />
@@ -180,7 +182,7 @@ export default function Example() {
             value={
               'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'
             }
-            error="Please enter the text"
+            error={{message: "Please enter the text"}}
             rows={5}
           />
           <Textarea
@@ -203,7 +205,7 @@ export default function Example() {
           <Switch title="Switch horizontal" type="horizontal" />
         </div>
         <Divider />
-        <RichTextInput label="Rich Text Input" language="en" />
+        <RichTextInput label="Rich Text Input" language="en" description="The richtext description" error={{ message: 'The richtext error' }}/>
         <Divider />
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px 60px' }}>
           <Select
@@ -322,14 +324,17 @@ export default function Example() {
         <Divider />
         <div
           style={{
-            display: 'grid',
-            grid: '50px / auto auto auto',
-            gridGap: 30,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '0 50px',
+            marginBottom: 30
           }}
         >
-          <Radio label={'Radio button'} value={'radio-1'} />
-          <Radio label={'Radio button'} value={'radio-1'} disabled />
-          <Radio size="large" label={'Radio button'} value={'radio-1'} />
+          <RadioGroup error={{ message: 'Radio group error message' }}>
+            <Radio label={'Radio button'} value={'radio-1'} />
+            <Radio label={'Radio button'} value={'radio-1'} disabled />
+            <Radio size="large" label={'Radio button'} value={'radio-1'} />
+          </RadioGroup>
         </div>
 
         <div>
@@ -348,6 +353,20 @@ export default function Example() {
             label="Number Input"
             disabled
             style={{ marginLeft: '30px' }}
+          />
+          <NumberInput
+            value={number}
+            max={20}
+            min={5}
+            label="Number Input"
+            style={{ marginLeft: '30px' }}
+            error={{message: "The number input has error"}}
+          />
+           <TextInput
+            label="Text Input"
+            name='text'
+            style={{ marginTop: '30px' }}
+            error={{message: "The number input has error"}}
           />
         </div>
 
