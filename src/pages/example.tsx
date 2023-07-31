@@ -28,6 +28,7 @@ import {
   Divider,
   Textarea,
   Radio,
+  RadioGroup,
   Collapse,
   Panel,
   Switch,
@@ -48,11 +49,14 @@ import {
   Statistic,
   Modal,
   ShadowScroll,
+  TextInput,
+  ActionLayer
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
 import Pagination from '@/components/Pagination/Pagination'
 import NumberInput from '@/components/NumberInput/NumberInput'
+import DatetimePicker from '@/components/DatetimePicker/DatetimePicker'
 
 export default function Example() {
   const [value, setValue] = useState('0')
@@ -63,13 +67,14 @@ export default function Example() {
     hex: '#b65454',
   })
   const [open, setOpen] = useState(false)
+  const [showActionLayer, setShowActionLayer] = useState(false)
 
   const onChange = (key: React.Key | React.Key[]) => {
     setValue(`${key}`)
   }
 
   return (
-    <>
+    <>    
       <PageWrapper
         title="Buttons"
         prefix="You are looking at"
@@ -166,7 +171,7 @@ export default function Example() {
         suffix="from Makaira library"
       >
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: 30 }}>
-          <Checkbox name="chk_01" label="Sample checkbox" />
+          <Checkbox name="chk_01" label="Sample checkbox" description='Checkbox description' error={{ message: 'Checkbox error'}}/>
           <Checkbox name="chk_02" label="Disabled checkbox" disabled />
         </div>
         <Divider />
@@ -180,9 +185,7 @@ export default function Example() {
             value={
               'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque consequuntur delectus doloremque ea eius iusto nam nisi officia perspiciatis quae quam, quos rem sint ullam veritatis. Consequuntur ea nesciunt nulla.'
             }
-            error={{
-              message: "Please enter the text"
-            }}
+            error={{message: "Please enter the text"}}
             rows={5}
           />
           <Textarea
@@ -205,7 +208,7 @@ export default function Example() {
           <Switch title="Switch horizontal" type="horizontal" />
         </div>
         <Divider />
-        <RichTextInput label="Rich Text Input" language="en" />
+        <RichTextInput label="Rich Text Input" language="en" description="The richtext description" error={{ message: 'The richtext error' }}/>
         <Divider />
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '30px 60px' }}>
           <Select
@@ -326,14 +329,17 @@ export default function Example() {
         <Divider />
         <div
           style={{
-            display: 'grid',
-            grid: '50px / auto auto auto',
-            gridGap: 30,
+            display: 'flex',
+            flexWrap: 'wrap',
+            gap: '0 50px',
+            marginBottom: 30
           }}
         >
-          <Radio label={'Radio button'} value={'radio-1'} />
-          <Radio label={'Radio button'} value={'radio-1'} disabled />
-          <Radio size="large" label={'Radio button'} value={'radio-1'} />
+          <RadioGroup error={{ message: 'Radio group error message' }}>
+            <Radio label={'Radio button'} value={'radio-1'} />
+            <Radio label={'Radio button'} value={'radio-1'} disabled />
+            <Radio size="large" label={'Radio button'} value={'radio-1'} />
+          </RadioGroup>
         </div>
 
         <div>
@@ -353,6 +359,20 @@ export default function Example() {
             disabled
             style={{ marginLeft: '30px' }}
           />
+          <NumberInput
+            value={number}
+            max={20}
+            min={5}
+            label="Number Input"
+            style={{ marginLeft: '30px' }}
+            error={{message: "The number input has error"}}
+          />
+           <TextInput
+            label="Text Input"
+            name='text'
+            style={{ marginTop: '30px' }}
+            error={{message: "The number input has error"}}
+          />
         </div>
 
         <Divider />
@@ -362,6 +382,19 @@ export default function Example() {
             value={color}
             description="This area is covered in mud! Be aware of crossing snakes."
           />
+        </div>
+
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker'/>
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker disabled' disabled />
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker' description='Description'/>
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker' description='Description' error={{ message: 'Error message'}}/>
         </div>
       </PageWrapper>
       <PageWrapper
@@ -803,6 +836,15 @@ export default function Example() {
             <ModalBody />
           </Modal>
         </div>
+      </PageWrapper>
+      
+      <PageWrapper
+        title="Action Layer"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+      <ActionLayer show={showActionLayer}/>
+      <Button onClick={() => setShowActionLayer(p => !p)}>Toggle Action Layer</Button>
       </PageWrapper>
     </>
   )
