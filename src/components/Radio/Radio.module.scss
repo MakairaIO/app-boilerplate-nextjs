@@ -1,5 +1,12 @@
 @import "../../styles/mixins";
 
+.radioGroupLabel {
+  @include bravo;
+  color: var(--neutral-70);
+  padding-bottom: var(--spacer-three-xs);
+  transition: color var(--transition-regular);
+}
+
 .radio-button {
   @include bravo;
   display: flex;
@@ -9,6 +16,7 @@
   font-weight: var(--font-weight-bold);
   color: var(--brand-aubergine);
   min-width: 1.8rem;
+  white-space: nowrap;
 
   &>input {
     position: absolute;
@@ -103,4 +111,17 @@
   display: flex;
   align-items: flex-start;
   gap: var(--spacer-xxs);
+}
+
+.message {
+  display: block;
+  width: 100%;
+	font-style: italic;
+	font-weight: var(--font-weight-book);
+	margin-top: 0.35rem;
+	color: var(--neutral-60);
+}
+
+.error {
+  color: var(--brand-coral);
 }

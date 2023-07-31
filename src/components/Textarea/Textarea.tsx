@@ -9,7 +9,9 @@ type TextareaProps = React.PropsWithChildren<{
   title?: string;
   placeholder?: string;
   description?: string;
-  error?: string;
+  error?: {
+    message: string
+  }
   disabled?: boolean;
   rows?: "auto" | number;
   onChange?: (value: string) => void;
@@ -17,7 +19,6 @@ type TextareaProps = React.PropsWithChildren<{
   wrapperClassName?: string;
   labelClassName?: string;
   descriptionClassName?: string;
-  errorClassName?: string;
 }>
 
 type HandlerEvent = <K extends keyof HTMLElementEventMap>(this: HTMLTextAreaElement, ev: HTMLElementEventMap[K]) => any
@@ -37,7 +38,6 @@ const Textarea: FunctionComponent<TextareaProps> = ({
   wrapperClassName,
   labelClassName,
   descriptionClassName,
-  errorClassName,
 }) => {
 
   const textarea = useRef(null)
@@ -92,7 +92,7 @@ const Textarea: FunctionComponent<TextareaProps> = ({
     // eslint-disable-next-line
   }, [])
 
-  const classes = classNames(styles['textarea-input'], wrapperClassName,
+  const classes = classNames(styles['textarea-input'], 'textarea-input', wrapperClassName,
   {
     [styles['has-error']]: error,
     [styles['auto-rows']]: rows === 'auto',
@@ -125,11 +125,10 @@ const Textarea: FunctionComponent<TextareaProps> = ({
         <div
           className={classNames(
             styles.description,
-            "description--error",
-            errorClassName,
+            styles.error,
           )}
         >
-          {error}
+          {error.message}
         </div>
       )}
     </div>

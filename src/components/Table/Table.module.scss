@@ -42,6 +42,10 @@
           padding: var(--spacer-xxs) var(--spacer-s);
           background: var(--neutral-00);
         }
+
+        .makaira-table-cell-row-hover {
+          background-color: #f9f9f9;
+        }
       }
     }
   }

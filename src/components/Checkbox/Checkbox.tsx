@@ -4,32 +4,57 @@ import { Text } from '@/components/Text/Text'
 import csx from 'classnames'
 
 interface CheckboxProps {
+  id?: string
   name: string
   label: string
   disabled?: boolean
-  onClick?: () => void;
+  onChange?: React.ChangeEventHandler<HTMLInputElement>
+  className?: string
+  checked?: boolean,
+  description?: string,
+  error?: {
+    message: string
+  }
 }
 
 const Checkbox: React.FC<CheckboxProps> = ({
+  id,
   name,
   label,
-  onClick,
+  onChange,
   disabled = false,
+  className = '',
+  checked,
+  description,
+  error
 }) => {
   
   const classes = csx(
+    className,
     styles.wrapper,
     disabled ? styles.disabled : ''
   )
 
   return (
-    <label className={classes} htmlFor={name}>
-      <input name={name} type="checkbox" id={name} onClick={onClick} disabled={disabled} />
-      <span className={styles.checkmark}></span>
-      <Text className={styles.text} weight="medium">
-        {label}
-      </Text>
-    </label>
+    <div className={classes}>
+      <label htmlFor={id || name}>
+        <input name={name} type="checkbox" id={id || name} checked={checked} onChange={onChange} disabled={disabled} />
+        <span className={styles.checkmark}></span>
+        <Text className={styles.text} weight="medium">
+          {label}
+        </Text>
+      </label>
+      {description && (
+        <div className={styles.message}>{description}</div>
+      )}
+      {error && (
+        <div
+          className={csx(styles.message, styles.error)}
+        >
+          {error.message}
+        </div>
+      )}
+    </div>
   )
 }
 

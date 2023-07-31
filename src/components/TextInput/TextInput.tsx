@@ -4,32 +4,49 @@ import React, {
   FocusEventHandler,
   FunctionComponent,
 } from 'react'
-
-import styles from '@/components/TextInput/TextInput.module.scss'
+import classNames from 'classnames'
+import styles from './TextInput.module.scss'
+import { IconType } from 'react-icons/lib'
 
 interface TextInputProps {
   label?: string
   defaultValue?: string
   description?: string
+  placeholder?: string;
   onChange?: ChangeEventHandler<HTMLInputElement>
   onBlur?: FocusEventHandler<HTMLInputElement>
+  onFocus?: FocusEventHandler<HTMLInputElement>
+  onKeyUp?: (e: any) => void
   name: string
   error?: {
     message: string
   }
+  className?: string;
+  type?: string
+  style?: React.CSSProperties,
+  disabled?: boolean,
+  icon?: IconType
 }
 
 const TextInput: FunctionComponent<TextInputProps> = ({
   onChange,
   onBlur,
+  onFocus,
+  onKeyUp,
   name,
   label,
   defaultValue,
   description,
   error,
-}) => {
+  className,
+  placeholder,
+  style,
+  disabled,
+  icon
+}) => {  
+  const Icon = icon
   return (
-    <div className={styles.textInput}>
+    <div className={classNames(className, 'text-input', styles.textInput)} style={style}>
       {label && (
         <label className={styles.textInputLabel} htmlFor={name}>
           {label}
@@ -37,7 +54,13 @@ const TextInput: FunctionComponent<TextInputProps> = ({
       )}
 
       <div className={styles.textInputWrapper}>
-        <input onChange={onChange} onBlur={onBlur} name={name} />
+        <input defaultValue={defaultValue} onChange={onChange} onBlur={onBlur} name={name} onFocus={onFocus} onKeyUp={onKeyUp} placeholder={placeholder} disabled={disabled}/>
+        {icon && (
+            <div className={csx(styles.icon, 'icon')}>
+              {/* @ts-ignore */}
+              <Icon />
+            </div>
+          )}
       </div>
 
       {description && (

@@ -8,6 +8,7 @@ type PageTitleProps = React.PropsWithChildren<{
   className?: string
   prefix?: string
   suffix?: string
+  actions?: React.ReactNode
 }>
 
 const PageTitle: FunctionComponent<PageTitleProps> = ({
@@ -15,6 +16,7 @@ const PageTitle: FunctionComponent<PageTitleProps> = ({
   children,
   prefix,
   suffix,
+  actions,
   ...rest
 }) => {
   return (
@@ -34,6 +36,11 @@ const PageTitle: FunctionComponent<PageTitleProps> = ({
           <Text className={styles.text} element="p" size="delta" weight="book">
             {suffix}
           </Text>
+        </div>
+      )}
+      {actions && (
+        <div className={styles.actions}>
+          {actions}
         </div>
       )}
     </div>

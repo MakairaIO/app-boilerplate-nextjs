@@ -8,6 +8,7 @@ import { MakairaAppProvider } from '@/makaira/MakairaAppProvider'
 
 import '@/styles/mixins.scss'
 import '@/styles/globals.scss'
+import '@/styles/DatetimePicker.scss'
 
 const queryClient = new QueryClient()
 export default function App({ Component, pageProps }: AppProps) {

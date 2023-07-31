@@ -1,0 +1,26 @@
+@import "../../styles/mixins";
+
+.datetimePicker {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.label {
+  @include bravo;
+  color: var(--neutral-70);
+  padding-bottom: var(--spacer-three-xs);
+  transition: color var(--transition-regular);
+}
+
+.description {
+  @include bravo;
+  font-style: italic;
+  font-weight: var(--font-weight-book);
+  margin-top: 0.35rem;
+  color: var(--neutral-60);
+}
+
+.error {
+  color: var(--brand-coral);
+}

@@ -27,6 +27,10 @@
   &:focus:not(:disabled) {
     outline: solid 2px var(--brand-sun);
   }
+
+  & > span {
+    white-space: nowrap;
+  }
 }
 
 .primary {

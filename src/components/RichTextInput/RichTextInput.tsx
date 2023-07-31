@@ -34,6 +34,9 @@ type RichTextInputProps = {
    * Default: 
    */
   lazyLoadingText?: string;
+  error?: {
+    message: string
+  }
 }
 
 export const RichTextInput: FC<RichTextInputProps> = (props) => {
@@ -52,7 +55,8 @@ export const RichTextInput: FC<RichTextInputProps> = (props) => {
     toolbarAdaptive = false,
     colorPickerDefaultTab = 'color',
     safePluginsList = [],
-    lazyLoadingText = 'Loading...'
+    lazyLoadingText = 'Loading...',
+    error
   } = props
 
   const touched = useRef(false)
@@ -91,7 +95,7 @@ export const RichTextInput: FC<RichTextInputProps> = (props) => {
     <div
       onFocus={onFocus}
       onClick={onFocus}
-      className={classNames(styles['rich-text'], className)}
+      className={classNames("rich-text", styles['rich-text'], className)}
     >
       {label && <div className={styles["rich-text__label"]}>{label}</div>}
       {
@@ -107,6 +111,11 @@ export const RichTextInput: FC<RichTextInputProps> = (props) => {
         )
       }
       {description && <div className={styles["rich-text__message"]}>{description}</div>}
+      {error && (
+        <div  className={classNames(styles["rich-text__message"], styles["rich-text__error"])}>
+          {error.message}
+        </div>
+      )}
     </div>
   )
 }
