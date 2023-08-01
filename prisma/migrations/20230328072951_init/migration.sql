@@ -1,5 +1,5 @@
 -- CreateTable
-CREATE TABLE `AppInfo` (
+CREATE TABLE `app_info` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `makaira_domain` VARCHAR(191) NOT NULL,
     `makaira_instance` VARCHAR(191) NOT NULL,

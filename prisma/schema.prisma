@@ -12,6 +12,8 @@ datasource db {
 
 
 model AppInfo {
+  @@map("app_info")
+
   id                Int     @id @default(autoincrement())
   makaira_domain    String
   makaira_instance  String
