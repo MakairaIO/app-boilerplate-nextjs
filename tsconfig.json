@@ -15,7 +15,8 @@
     "jsx": "preserve",
     "incremental": true,
     "baseUrl": ".",
-    "paths": {
+    "paths": {    
+      "@prisma": ["./src/server/db/client"],
       "@/*": ["./src/*"]
     }
   },

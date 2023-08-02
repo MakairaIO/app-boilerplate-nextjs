@@ -1,6 +1,7 @@
+import { withAuth } from '@/utils/withAuth'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-export default async function handler(
+async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
@@ -9,3 +10,7 @@ export default async function handler(
     message: 'This is an example message from an API route.',
   })
 }
+
+// all request need to be wrap with withAuth func as HOC 
+// to check valid app before process data
+export default  withAuth(handler)
