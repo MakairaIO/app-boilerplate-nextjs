@@ -50,11 +50,13 @@ import {
   Modal,
   ShadowScroll,
   TextInput,
+  ActionLayer
 } from '@/components'
 import React, { useState } from 'react'
 import { withMakaira } from '@/makaira/withMakaira'
 import Pagination from '@/components/Pagination/Pagination'
 import NumberInput from '@/components/NumberInput/NumberInput'
+import DatetimePicker from '@/components/DatetimePicker/DatetimePicker'
 
 export default function Example() {
   const [value, setValue] = useState('0')
@@ -65,6 +67,7 @@ export default function Example() {
     hex: '#b65454',
   })
   const [open, setOpen] = useState(false)
+  const [showActionLayer, setShowActionLayer] = useState(false)
 
   const onChange = (key: React.Key | React.Key[]) => {
     setValue(`${key}`)
@@ -379,6 +382,19 @@ export default function Example() {
             value={color}
             description="This area is covered in mud! Be aware of crossing snakes."
           />
+        </div>
+
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker'/>
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker disabled' disabled />
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker' description='Description'/>
+        </div>
+        <div style={{ marginTop: '20px' }}>
+          <DatetimePicker label='Datetime Picker' description='Description' error={{ message: 'Error message'}}/>
         </div>
       </PageWrapper>
       <PageWrapper
@@ -820,6 +836,15 @@ export default function Example() {
             <ModalBody />
           </Modal>
         </div>
+      </PageWrapper>
+      
+      <PageWrapper
+        title="Action Layer"
+        prefix="You are looking at"
+        suffix="from Makaira library"
+      >
+      <ActionLayer show={showActionLayer}/>
+      <Button onClick={() => setShowActionLayer(p => !p)}>Toggle Action Layer</Button>
       </PageWrapper>
     </>
   )

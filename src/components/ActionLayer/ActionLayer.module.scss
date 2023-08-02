@@ -1,0 +1,43 @@
+@import "../../styles/mixins";
+$component-height: 56px;
+
+.wrapper {
+    height: $component-height;
+    background-color: var(--brand-aubergine);
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: - $component-height;
+    transition: all ease .2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: var(--elevation-50);
+    visibility: hidden;
+}
+
+.show {
+    top: 0;
+    visibility: visible;
+}
+
+.redButton {
+    background: var(--brand-coral);
+    border-color: var(--brand-coral);
+    color: var(--neutral-00);
+
+    &:hover {
+        border-color: var(--brand-coral-hover) !important;
+        background: var(--brand-coral-hover) !important;
+    }
+}
+
+.whiteButton {
+    &:hover {
+        background: var(--neutral-10) !important;
+        border-color: var(--neutral-60) !important;
+    }
+}
+
