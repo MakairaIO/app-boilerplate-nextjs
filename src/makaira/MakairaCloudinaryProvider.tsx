@@ -65,7 +65,7 @@ const MakairaCloudinaryProvider: React.FC<MakairaCloudinaryProviderProps> = ({ c
 
   useEffect(() => {
     if (ready && !loading) {
-      (window as any).ml ||= (window as any).cloudinary.createMediaLibrary(
+      (window as any).ml = (window as any).cloudinary.createMediaLibrary(
         {
           cloud_name: cloudinaryCloudName,
           api_key: cloudinaryApiKey,
