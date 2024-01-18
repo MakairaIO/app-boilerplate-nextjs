@@ -99,7 +99,8 @@
     border-top: 1px solid var(--divider);
     border-bottom: 1px solid var(--divider);
     color: var(--brand-aubergine);
-    font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-medium);
+    font-family: inherit;
   }
 
   .modalFooter {

@@ -2,6 +2,7 @@
 
 .fileUpload {
   margin: 0 0.8rem 0.8rem 0;
+  position: relative;
 }
 
 .label {
@@ -172,4 +173,12 @@
 
 .error {
   color: var(--brand-coral);
+}
+
+
+.fileInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  visibility: hidden;
 }

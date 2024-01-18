@@ -23,6 +23,7 @@ export interface MakairaConfig {
   defaultLanguage?: string
   environment?: string
   availableLanguages: string[]
+  language?: string
 }
 
 type WithState<T> = T & {
@@ -56,6 +57,7 @@ const INIT_CONFIG = {
   defaultLanguage: undefined,
   environment: undefined,
   availableLanguages: [],
+  language: undefined
 }
 
 const MakairaConfigContext = createContext<WithFuncs<WithState<MakairaConfig>>>({
@@ -75,35 +77,42 @@ const MakairaConfigProvider: React.FC<MakairaConfigProviderProps> = ({ children 
   } = useMakairaApp()
   const [config, setConfig] = useState<MakairaConfig>(INIT_CONFIG)
   const [availableLanguages, setAvailableLanguages] = useState<string[]>([])
+  const [language, setLanguage] = useState<string>();
   const [ready, setReady] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetchSettings()
-  }, [domain, instance, token])
+    if (domain && instance && token && !ready) {
+      fetchSettings()
+    }
+  }, [domain, instance, token, ready, client])
 
   async function fetchSettings() {
-    if (domain && instance && token) {
-      try {
-        setReady(false)
-        setLoading(true)
-        await Promise.all([
-          fetchAvailableLanguages(),
-          fetchConfig(),
-        ])
-        setReady(true)
-      } catch (error) {
-        console.debug(error)
-      } finally {
-        setLoading(false)
-      }
+    try {
+      setReady(false)
+      setLoading(true)
+      await Promise.all([
+        fetchAvailableLanguages(),
+        fetchConfig(),
+      ])
+      setReady(true)
+    } catch (error) {
+      console.debug(error)
+    } finally {
+      setLoading(false)
     }
   }
 
   async function fetchAvailableLanguages() {
     try {
-      const languages = await client.fetch<string[]>('languages', 'GET')
-      setAvailableLanguages(languages)
+      let response = await client.fetch('languages')
+      if (response.ok) {
+        const languages = await response.json()
+        if (Array.isArray(languages) && languages.length > 0) {
+          setLanguage(languages[0])
+        }
+        setAvailableLanguages(languages)
+      }
     } catch (error) {
       console.debug('[Example-App] fetch instance language fail', error)
     }
@@ -111,9 +120,10 @@ const MakairaConfigProvider: React.FC<MakairaConfigProviderProps> = ({ children 
 
   async function fetchConfig() {
     try {
-      const makairaConfig = await client.fetch<MakairaConfig>('enterprise/config', 'GET')
-      if (makairaConfig) {
-        setConfig(makairaConfig)
+      let makairaConfig = await client.fetch('enterprise/config')
+      if (makairaConfig.ok) {
+        const response = await makairaConfig.json()
+        setConfig(response)
       }
     } catch (error) {
       console.debug('[Example-App] fetch instance config fail', error)
@@ -233,6 +243,7 @@ const MakairaConfigProvider: React.FC<MakairaConfigProviderProps> = ({ children 
       value={{
         ...config,
         availableLanguages,
+        language,
         loading,
         ready,
         getImageLink,

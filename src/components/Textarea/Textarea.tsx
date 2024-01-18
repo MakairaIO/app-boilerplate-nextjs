@@ -41,7 +41,7 @@ const Textarea: FunctionComponent<TextareaProps> = ({
 }) => {
 
   const textarea = useRef(null)
-  const warningClass = maxLength && value?.length > maxLength ? styles.warning : ''
+  const warningClass = maxLength && value?.length > maxLength ? 'warning' : ''
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     if (onChange) {

@@ -1,15 +1,23 @@
 import { withMakaira } from '@/makaira/withMakaira'
-
-import { Text } from '@/components'
+import { Button, Link, PageWrapper, Text } from '@/components'
+import styles from '@/styles/HomePage.module.scss'
+import { FaHome } from 'react-icons/fa'
 
 export default function ContentWidget() {
   return (
-    <div>
-      <Text element="p">
-        This is the example entry point of your Makaira content widget that was
+      <PageWrapper title="Welcome to Makaira Content Widget">
+        <Text element="p">
+        This is the example entry point of your <strong>Makaira content widget</strong> that was
         build based on NextJS.
-      </Text>
-    </div>
+        </Text>
+        <div className={styles.redirectWrapper}>
+          <Link pathname="/example">
+            <Button icon={FaHome} variant="primary" iconPosition='left'>
+              Home
+            </Button>
+          </Link>
+        </div>
+      </PageWrapper>
   )
 }
 

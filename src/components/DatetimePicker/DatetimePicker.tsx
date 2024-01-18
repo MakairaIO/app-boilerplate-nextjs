@@ -1,8 +1,7 @@
 import { FocusEventHandler } from 'react';
-import { formatISO } from 'date-fns'
 import Picker, { } from 'rc-picker';
 import generateConfig from 'rc-picker/lib/generate/dateFns';
-import de from 'rc-picker/lib/locale/en_US';
+import en from 'rc-picker/lib/locale/en_US';
 
 import styles from './DatetimePicker.module.scss'
 import classNames from 'classnames';
@@ -82,7 +81,7 @@ export default function DatetimePicker(props: DatetimePickerProps) {
         name={name}
         disabled={disabled}
         generateConfig={generateConfig}
-        locale={de}
+        locale={en}
         picker='date'
         format={'YYYY-MM-DD HH:mm'}
         showTime={{showSecond: false, format: 'HH:mm'}}

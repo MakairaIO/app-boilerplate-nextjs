@@ -14,19 +14,23 @@ export function getSingleVendorAuth(url: string, params: MakairaAppQuery) {
   } = params
 
   let secret = null
+  let appSlug = null
   switch (appType) {
     case APP_TYPE.CONTENT_WIDGET:
       secret = process.env.MAKAIRA_APP_SECRET_CONTENT_WIDGET
+      appSlug = process.env.MAKAIRA_APP_SLUG_CONTENT_WIDGET
       break;
     case APP_TYPE.CONTENT_MODAL:
       secret = process.env.MAKAIRA_APP_SECRET_CONTENT_MODAL
+      appSlug = process.env.MAKAIRA_APP_SLUG_CONTENT_MODAL
       break;
     default:
       secret = process.env.MAKAIRA_APP_SECRET
+      appSlug = process.env.MAKAIRA_APP_SLUG
       break;
   }
 
-  if (!secret || !slug) {
+  if (!secret || !appSlug) {
     throw Error('[Example App] Environment for Single App were not set')
   }
 
@@ -42,7 +46,7 @@ export function getSingleVendorAuth(url: string, params: MakairaAppQuery) {
   // If the provided HMAC isn't equal to the expected one (which will also be the
   // case when the query parameters were not provided at all), we will redirect to
   // the bad auth/error page.
-  if (expectedHMAC !== hmac && process.env.NODE_ENV !== 'development') {
+  if ((expectedHMAC !== hmac || slug !== appSlug) && process.env.NODE_ENV !== 'development') {
     return null
   }
 

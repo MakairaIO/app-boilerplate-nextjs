@@ -31,7 +31,13 @@ export function withMakaira<T>(
       process.env.MAKAIRA_APP_SECRET
     ) {
       console.debug("[Example-App]: Process app auth with single vendor from ENV")
-      secretProps = getSingleVendorAuth(url.pathname, ctx.query)
+
+      const appType = ctx.query.appType as string
+
+      secretProps = getSingleVendorAuth(url.pathname, {
+        ...ctx.query,
+        appType
+      })
 
       if (!secretProps) {
         return {

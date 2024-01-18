@@ -2,6 +2,8 @@
 
 .wrapper {
   display: inline-block;
+  max-width: unset !important;
+  width: 100%;
 
   :global {
     .rc-select {
@@ -20,12 +22,10 @@
         opacity: 0.4;
       }
 
-      .rc-select-selection-search {
-        display: none;
-      }
 
-      &.rc-select-show-search .rc-select-selection-search {
-        display: block
+
+      &.rc-select-selection-search-mirror {
+        padding-left: 0.25rem;
       }
     }
 
@@ -41,14 +41,30 @@
       align-items: center;
 
       .rc-select-selection-search-input {
-        display: block;
+        @include bravo;
+        letter-spacing: 0;
+        appearance: none;
         background: none;
-        width: 100%;
+        width: 102%;
         height: 100%;
+        min-width: 7px;
+        min-height: 33px;
         padding: 0;
+        margin: 0;
         border: none;
         outline: none;
-        cursor: pointer;
+        color: var(--brand-aubergine);
+        font-weight: var(--font-weight-bold);
+      }
+
+      .rc-select-selection-search-mirror  {
+        position: absolute;
+        z-index: 999;
+        white-space: nowrap;
+        left: 0;
+        top: 0;
+        visibility: hidden;
+        padding: 1px;
       }
     }
 
@@ -67,11 +83,17 @@
           padding: 4px 0;
 
           .rc-select-selection-overflow-item {
-            background: var(--neutral-10);
-            padding: 0 2px 2px 4px;
             border-radius: 3px;
 
             .rc-select-selection-item {
+              border: 1px solid var(--neutral-40);
+              border-radius: 16px;
+              padding: 8px;
+              display: flex;
+              align-items: center;
+              margin: 4px;
+              height: 3.2rem;
+
               .rc-select-selection-item-remove {
                 color: var(--neutral-60);
                 margin-left: 3px;
@@ -79,8 +101,13 @@
             }
           }
 
-          .rc-select-selection-overflow-item-suffix {
-            display: none;
+          .rc-select-selection-overflow-item.rc-select-selection-overflow-item-suffix {
+            padding: 0;
+          }
+
+          .rc-select-selection-search {
+            max-width: 650px;
+            position: relative;
           }
         }
       }
@@ -212,7 +239,6 @@
   min-height: 3.3rem;
   position: absolute;
   overflow: hidden;
-  z-index: 1;
 
   &[class~='rc-select-dropdown-hidden'] {
     display: none;
@@ -294,6 +320,7 @@
       max-width: 20rem !important
     }
 
+
     .rc-select-selection-search-input {
       @include echo;
       height: 100%;
@@ -302,6 +329,8 @@
       top: 0;
       left: .8rem;
       padding-right: 2.5rem;
+      color: var(--brand-aubergine);
+      min-width: 5px;
     }
 
     .rc-select-selection-item,
