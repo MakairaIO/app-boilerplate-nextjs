@@ -1,3 +1,5 @@
+import FormData from "form-data";
+
 interface RequestOption {
   body?: any;
   headers?: Record<string, any>;
@@ -56,7 +58,7 @@ export const request = async (path: string, option: RequestOption): Promise<any>
 		res = await fetch(url, {
 			method,
 			headers,
-			body: body instanceof FormData ? body : JSON.stringify(body), 
+			body: body instanceof FormData ? body as any : JSON.stringify(body), 
 		});
 	}
   if(res.status >= 400) {

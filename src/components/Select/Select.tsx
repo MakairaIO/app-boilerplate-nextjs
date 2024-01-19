@@ -10,7 +10,7 @@ import styles from './Select.module.scss'
 import csx from 'classnames'
 
 export type SelectOption = {
-  value: string
+  value: string | number
   label: string
 }
 

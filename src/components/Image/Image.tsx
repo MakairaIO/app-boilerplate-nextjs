@@ -54,3 +54,5 @@ function Image(props: ImageProps) {
 }
 
 export default Image
+
+export { Image }

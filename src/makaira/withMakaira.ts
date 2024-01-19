@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next'
 
-import { MakairaAuthData } from '@/types/App'
+import { APP_TYPE, MakairaAuthData } from '@/types/App'
 import { getSingleVendorAuth } from '@/utils/getSingleVendorAuth'
 import { requestWithMakaira } from '@/utils/request'
 
@@ -31,7 +31,13 @@ export function withMakaira<T>(
       process.env.MAKAIRA_APP_SECRET
     ) {
       console.debug("[Example-App]: Process app auth with single vendor from ENV")
-      secretProps = getSingleVendorAuth(url.pathname, ctx.query)
+
+      const appType = ctx.query.appType as string
+
+      secretProps = getSingleVendorAuth(url.pathname, {
+        ...ctx.query,
+        appType
+      })
 
       if (!secretProps) {
         return {

@@ -27,7 +27,7 @@ const PageTitle: FunctionComponent<PageTitleProps> = ({
         </Text>
       </div>
       <div className={styles.main}>
-        <Text element="p" className={styles.title} size="golf" weight="heavy">
+        <Text element="p" className={styles.title} size="echo" weight="bold">
           {children}
         </Text>
       </div>

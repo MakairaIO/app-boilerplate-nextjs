@@ -32,6 +32,7 @@ const AutoComplete: React.FC<AutoCompleteProps> = ({ options: defaultOptions, on
         filteredOptions = defaultOptions.filter((option) => {
             return (
               option.value
+                .toString()
                 .toLowerCase()
                 .includes(query.toLowerCase()) ||
               option.label

@@ -40,10 +40,20 @@ export type MakairaAppContextData = {
   client: MakairaClient
   messages: undefined | MakairaAppMessage[]
   payload: MakairaJWTPayload | null
+  addMessageListener: (
+    action: MessageListener['action'],
+    handler: MessageListener['handler']
+  ) => void
+  sendMessage: (action: string, payload?: Record<string, any>) => void
 }
 
 type ResponseUserRequestPayload = {
   token: string
+}
+
+type MessageListener = {
+  action: string
+  handler: (event: MessageEvent) => void
 }
 
 const MakairaAppContext = createContext<MakairaAppContextData>({
@@ -53,6 +63,8 @@ const MakairaAppContext = createContext<MakairaAppContextData>({
   client: new MakairaClient(),
   messages: [],
   payload: null,
+  addMessageListener: () => {},
+  sendMessage: () => {},
 })
 
 const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
@@ -63,24 +75,26 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
   domain,
   instance,
   appType = 'app',
-  slug
+  slug,
 }) => {
-  const [token, setToken] = useState<string>()
+  const [token, setToken] = useState<string>('')
   const client = useRef<MakairaClient>(new MakairaClient())
   const [messages, setMessages] = useState<MakairaAppMessage[]>([])
+  const messageListeners = useRef<MessageListener[]>([])
+
+  const addMessageListener = (action: string, handler: (event: MessageEvent) => void) => {
+    const listeners = messageListeners.current.filter((l) => l.action !== action)
+    messageListeners.current = [...listeners, { action, handler }]
+  }
 
   const handleMessage = useCallback((event: MessageEvent) => {
-    if (
-      event.origin.match('https:\\/\\/([a-zA-Z])+\\.makaira\\.io')?.index !==
-        0 &&
-      event.origin !== 'https://makaira.vm'
-    )
+    if (!event.origin.includes('.makaira.io') && event.origin !== 'https://makaira.vm') {
       return
+    }
+
+    console.debug('[Example-App] Response message from Makaira-Admin-UI', event)
 
     const { data } = event
-    if (data.source !== `makaira-${appType}-bridge`) return
-
-    console.debug('[Example-App] Makaira response message: ', event.data)
 
     switch (data.action) {
       case 'responseUserRequest':
@@ -90,17 +104,36 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
           return [
             ...current,
             {
-              ...data
-            }
+              ...data,
+            },
           ]
         })
     }
+
+    if (messageListeners.current?.length) {
+      messageListeners.current.forEach((listener) => {
+        if (listener.action === data.action && listener.handler) {
+          listener.handler(event)
+        }
+      })
+    }
   }, [])
+
+  const sendMessage = (action: string, payload = {}) => {
+    const targetOrigin = document.referrer?.length ? document.referrer : '*'
+    const message = {
+      source: `makaira-${appType}-${slug}`,
+      action,
+      ...payload,
+    }
+    window.parent.postMessage(message, targetOrigin)
+  }
 
   useEffect(() => {
     client.current.setInstance(instance)
     client.current.setDomain(domain)
-  }, [instance, domain])
+    client.current.setToken(token)
+  }, [instance, domain, token])
 
   useEffect(() => {
     window.addEventListener('message', handleMessage)
@@ -115,29 +148,19 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
       console.debug(
         '[Example-App] Skipping Auth-Request because app runs in dev-mode and query parameters are undefined'
       )
-      setToken(process.env.NEXT_PUBLIC_DEV_TOKEN)
+      setToken(process.env.NEXT_PUBLIC_DEV_TOKEN || '')
       client.current.setToken(process.env.NEXT_PUBLIC_DEV_TOKEN ?? '')
-    } else if (!token) {
-
-      const targetOrigin = document.referrer?.length ? document.referrer : '*'
-
-      const message = {
-        source: `makaira-${appType}-${slug}`,
-        action: 'requestUser',
+    } else if (!token && slug && appType && hmac && nonce && makairaHmac) {
+      console.debug('[Example-App] Request Auth-Token from Makaira-Admin-UI')
+      sendMessage('requestUser', {
         hmac,
         nonce,
         makairaHmac,
-      }
-
-      console.debug('[Example-App] Request Auth-Token from Makaira-Admin-UI', message)
-
-      window.parent.postMessage(message, targetOrigin)
+      })
     }
   }, [hmac, makairaHmac, nonce, token, appType, slug])
 
   const handleResponseUserRequest = (data: ResponseUserRequestPayload) => {
-    console.debug('[Example-App] Received token from Makaira Admin UI.')
-
     setToken(data.token)
     client.current.setToken(data.token)
   }
@@ -151,6 +174,8 @@ const MakairaAppProvider: React.FC<MakairaAppProviderProps> = ({
         client: client.current,
         messages,
         payload: decode(token ?? '') as MakairaJWTPayload,
+        addMessageListener,
+        sendMessage,
       }}
     >
       {children}
